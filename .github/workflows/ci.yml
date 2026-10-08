@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+
+jobs:
+  extension:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          uv venv
+          uv pip install -e . pytest build hatchling ruff
+      - name: Validate source and examples
+        run: |
+          .venv/bin/ruff check src tests
+          .venv/bin/ruff format --check src tests
+          .venv/bin/lfx extension validate src/lfx_acedatacloud --execute-imports
+          .venv/bin/pytest -q tests
+      - name: Build distribution
+        run: .venv/bin/python -m build --no-isolation

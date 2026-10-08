@@ -1,0 +1,141 @@
+{
+  "checked_at": "2026-10-08T18:52:00.114072+00:00",
+  "method": "read-only task lookup with existing completed Dify task IDs; no generation submitted",
+  "results": [
+    {
+      "service": "gpt_image",
+      "source": "AceDataCloud/GPTImageDify tests/e2e-results.json",
+      "task_sha256": "2442eab367b325a4b9ebc48e3e3e40f2a61c02be4b5e284c2d9fd4ac480f6576",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "suno",
+      "source": "AceDataCloud/SunoDify tests/e2e-results.json",
+      "task_sha256": "9cbce9b99b9513a4912b6df646a0cb99801b4d84d118e337b327fdf29b5da8fd",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 6,
+      "trace_id_present": true
+    },
+    {
+      "service": "seedance",
+      "source": "AceDataCloud/SeedanceDify tests/e2e-results.json",
+      "task_sha256": "e12771f370968e75577a999fc3071c22bfb0bb0a0dec307c850670e5b33dce6d",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "fish_audio",
+      "source": "AceDataCloud/FishAudioDify tests/e2e-results.json",
+      "task_sha256": "9e461ee04ee347e3c4543d9851a2d9b9f7c7f5637971d0ec60442ce4a8a23e61",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "seedream",
+      "source": "AceDataCloud/SeedreamDify tests/e2e-results.json",
+      "task_sha256": "4faecb011a936bf6b0a8aee4f3e989108f9bfa466bd7e465d0138faff9623510",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "happy_horse",
+      "source": "AceDataCloud/HappyHorseDify tests/e2e-results.json",
+      "task_sha256": "81f340bd2bcd046469469f6e4c3408e7cdc2e0d524177a4b4ddf9f705e2f71cb",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "qwen_image",
+      "source": "AceDataCloud/QwenImageDify tests/e2e-results.json",
+      "task_sha256": "6a15f873b9181c855898f6f84f73377d3fff905e7d50d96a3462238f20cce8d8",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "veo",
+      "source": "AceDataCloud/VeoDify tests/e2e-results.json",
+      "task_sha256": "b6b0fddbca3d238295c0f1e485521f4103912465a6d8602430621bdbf6726091",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "grok",
+      "source": "AceDataCloud/GrokDify tests/e2e-results.json",
+      "task_sha256": "455f028955ea0294f857a40b9ae741b95275e4899b5c0773e1920e43d870c60e",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "midjourney",
+      "source": "AceDataCloud/MidjourneyDify tests/e2e-results.json",
+      "task_sha256": "644a8f508bb2bbf6b3d6f19e1fee2f2f7320b3b4215511a4a5b62647cb3c3e72",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 2,
+      "trace_id_present": true
+    },
+    {
+      "service": "flux",
+      "source": "AceDataCloud/FluxDify tests/e2e-results.json",
+      "task_sha256": "42a881bf4ed9fe98427df9e98114decf0a38053e9b51cf6adb991d46c5e2967e",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "minimax_h3",
+      "source": "AceDataCloud/MiniMaxDify tests/e2e-results.json",
+      "task_sha256": "232a5707bec77a63d45967580a21394353f9d203731a5e728952cb1206d93c18",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": false
+    },
+    {
+      "service": "wan",
+      "source": "AceDataCloud/WanDify tests/e2e-results.json",
+      "task_sha256": "ba982a43bfeae5089a6f210d4c67d12a28214b13e6d1440e6202e917323ec639",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "kling",
+      "source": "AceDataCloud/KlingDify tests/e2e-results.json",
+      "task_sha256": "298faaff741c8b264d3edc29f8c8fbc0e03a01fbfd0b51ea3daec46cf958ea91",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    },
+    {
+      "service": "nano_banana",
+      "source": "AceDataCloud/NanoBananaDify tests/e2e-results.json",
+      "task_sha256": "70dab7e1c5435f23471bdc92f4b531a33214d84e9d34ac75e334443f02fc5921",
+      "status": "succeeded",
+      "success": true,
+      "media_count": 1,
+      "trace_id_present": true
+    }
+  ]
+}

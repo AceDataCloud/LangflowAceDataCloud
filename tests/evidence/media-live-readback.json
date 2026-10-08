@@ -1,0 +1,141 @@
+{
+  "checked_at": "2026-10-08T18:56:51.318304+00:00",
+  "method": "read-only task lookup and HEAD of first returned media URL",
+  "results": [
+    {
+      "service": "gpt_image",
+      "task_sha256": "2442eab367b325a4b9ebc48e3e3e40f2a61c02be4b5e284c2d9fd4ac480f6576",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "a48751c060c33a55b8e1fe35546e8ff6394113fe467324ed3810c46cc3b2048c",
+      "media_http_status": 200,
+      "media_content_type": "image/png"
+    },
+    {
+      "service": "suno",
+      "task_sha256": "9cbce9b99b9513a4912b6df646a0cb99801b4d84d118e337b327fdf29b5da8fd",
+      "task_status": "succeeded",
+      "media_count": 6,
+      "media_url_sha256": "6ac32b4547a03e20a83e2e30d54464c0a30026df3f984af2e3ba39fd05dd1ecf",
+      "media_http_status": 200,
+      "media_content_type": "image/jpeg"
+    },
+    {
+      "service": "seedance",
+      "task_sha256": "e12771f370968e75577a999fc3071c22bfb0bb0a0dec307c850670e5b33dce6d",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "ad9e685c3fd8688c0566e06ccaf6b7752441d1bb095f12dd48cbcc26145265d3",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "fish_audio",
+      "task_sha256": "9e461ee04ee347e3c4543d9851a2d9b9f7c7f5637971d0ec60442ce4a8a23e61",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "c11968b76d2ecc4539b9b73807bcc58b11d59884daa73f5e8f3128d83936b6e4",
+      "media_http_status": 200,
+      "media_content_type": "audio/mpeg"
+    },
+    {
+      "service": "seedream",
+      "task_sha256": "4faecb011a936bf6b0a8aee4f3e989108f9bfa466bd7e465d0138faff9623510",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "a3a33db455497363780e2f1aa61a10ead47fb40af2bb7f4a668d04061d7c9e64",
+      "media_http_status": 200,
+      "media_content_type": "image/jpeg"
+    },
+    {
+      "service": "happy_horse",
+      "task_sha256": "81f340bd2bcd046469469f6e4c3408e7cdc2e0d524177a4b4ddf9f705e2f71cb",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "d15f778912e16a6e8490d52181e12fd3d0601d6ecf6980a955617088ce02cdd3",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "qwen_image",
+      "task_sha256": "6a15f873b9181c855898f6f84f73377d3fff905e7d50d96a3462238f20cce8d8",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "9006e48991de980d94e270446e4dfb0672bdc8995cea5353cc2da64b6bdd65d1",
+      "media_http_status": 200,
+      "media_content_type": "image/png"
+    },
+    {
+      "service": "veo",
+      "task_sha256": "b6b0fddbca3d238295c0f1e485521f4103912465a6d8602430621bdbf6726091",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "7eae808fc93e9ef0845aabda0d54671164c55216bffe2cc91f8aeb7eb122b2de",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "grok",
+      "task_sha256": "455f028955ea0294f857a40b9ae741b95275e4899b5c0773e1920e43d870c60e",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "826422d9ccadf5d42dc13bec9eacc6a395751f4961d4756b56012c40249069c6",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "midjourney",
+      "task_sha256": "644a8f508bb2bbf6b3d6f19e1fee2f2f7320b3b4215511a4a5b62647cb3c3e72",
+      "task_status": "succeeded",
+      "media_count": 2,
+      "media_url_sha256": "3c1306e69c9eff27fad097867f25ed298d389c192674ea690e8bcbdd751a8cd2",
+      "media_http_status": 200,
+      "media_content_type": "image/png"
+    },
+    {
+      "service": "flux",
+      "task_sha256": "42a881bf4ed9fe98427df9e98114decf0a38053e9b51cf6adb991d46c5e2967e",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "175f13f606bb18c44601e98be19eecbc3a082b422c470a044ed389ab2bf2b3cd",
+      "media_http_status": 200,
+      "media_content_type": "image/png"
+    },
+    {
+      "service": "minimax_h3",
+      "task_sha256": "232a5707bec77a63d45967580a21394353f9d203731a5e728952cb1206d93c18",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "82e2edb18fc1b58482b402e5f1a78f7321ce921fe0bca032dd7e771810fbefe8",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "wan",
+      "task_sha256": "ba982a43bfeae5089a6f210d4c67d12a28214b13e6d1440e6202e917323ec639",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "f76535b2ea53bdb5af71d4d18d267a23a347676319de9a120e54298da843d27d",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "kling",
+      "task_sha256": "298faaff741c8b264d3edc29f8c8fbc0e03a01fbfd0b51ea3daec46cf958ea91",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "4bce6f7f780440e663f3fe9d949595897d9e4a54312a7c170af7705c7bdebef3",
+      "media_http_status": 200,
+      "media_content_type": "video/mp4"
+    },
+    {
+      "service": "nano_banana",
+      "task_sha256": "70dab7e1c5435f23471bdc92f4b531a33214d84e9d34ac75e334443f02fc5921",
+      "task_status": "succeeded",
+      "media_count": 1,
+      "media_url_sha256": "b4b8da1811f734e48c81730b49ddc1499bdc2d67c333b31330632a5970ca469c",
+      "media_http_status": 200,
+      "media_content_type": "image/jpeg"
+    }
+  ]
+}

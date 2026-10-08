@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-08T19:23:48.612658+00:00",
+  "langflow_version": "1.12.5",
+  "extension_version": "0.1.0",
+  "flow_id": "fbb5fc75-3949-4f46-b194-ab12b444b344",
+  "graph_run_id": "70b2f5da-72bc-425a-b211-d35154876ac9",
+  "task_id": "ac4ffabb-ada6-4689-b275-7e9f9928493a",
+  "trace_id": "813ac552-4724-4d05-8b17-3c93534fbed6",
+  "task_status": "succeeded",
+  "task_success": true,
+  "media_url": "https://cdn.acedata2.cloud/gpt-image/cba5fa78d3d7b0584f5caa2562e42a47fdae10960ff5193006b9f58792918a01.png",
+  "media_http_status": 200,
+  "media_content_type": "image/png",
+  "usage_id": "ad2e5dd2-8b35-4e2c-b178-bfbcc585abb0",
+  "usage_status_code": 200,
+  "deducted_credits": 0.099,
+  "billing_records_for_same_api_credential_window": 1,
+  "generation_attempts": 1
+}

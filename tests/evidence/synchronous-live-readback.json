@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-08T18:52:44.470287+00:00",
+  "results": [
+    {
+      "service": "google_search",
+      "status": "succeeded",
+      "success": true,
+      "trace_id": "",
+      "result_keys": [
+        "organic",
+        "people_also_ask",
+        "related_searches",
+        "cost"
+      ]
+    },
+    {
+      "service": "face_transform",
+      "status": "succeeded",
+      "success": true,
+      "trace_id": "",
+      "result_keys": [
+        "image_width",
+        "image_height",
+        "face_model_version",
+        "face_shape_set"
+      ]
+    }
+  ]
+}

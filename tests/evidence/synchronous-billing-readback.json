@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-08T20:11:11.636662+00:00",
+  "method": "user credential and six-second production usage window, one API record per tested service",
+  "results": [
+    {
+      "service": "google_search",
+      "usage_id": "dfd10e68-7e94-49f0-82dd-417141a0a0c9",
+      "trace_id": "5cedd757-aa37-42e5-b31e-0ad657c359e0",
+      "usage_status_code": 200,
+      "deducted_credits": 0.009,
+      "created_at": "2026-10-08T18:52:42.982563Z",
+      "matched_records": 1
+    },
+    {
+      "service": "face_transform",
+      "usage_id": "7fe908ec-72c8-4f40-83b1-a2ff85d37040",
+      "trace_id": "4d8b633f-4461-4309-b360-eef18393be3b",
+      "usage_status_code": 200,
+      "deducted_credits": 0.0025,
+      "created_at": "2026-10-08T18:52:44.775994Z",
+      "matched_records": 1
+    }
+  ]
+}
