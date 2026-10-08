@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-08T19:39:55.043511+00:00",
+  "langflow_version": "1.12.5",
+  "extension_version": "0.1.0",
+  "flow_id": "64a5455a-9add-4d5f-b51b-477a506fd187",
+  "graph_run_id": "ab679791-592c-43c9-a018-0ddb174ec8e6",
+  "provider": "Ace Data Cloud",
+  "model": "gpt-4.1-mini",
+  "reply": "OK",
+  "input_tokens": 11,
+  "output_tokens": 5,
+  "total_tokens": 16,
+  "usage_id": "27f13bf1-65f5-4ec5-a3c2-a1bece58d94f",
+  "usage_status_code": 200,
+  "deducted_credits": 2.3463602099999994e-05,
+  "billing_records_for_same_credential_window": 1,
+  "invocations": 1
+}
