@@ -4,22 +4,22 @@ Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or late
 
 [简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **Availability:** This package is installed by the Langflow operator from this source repository. It is not in Langflow's default curated installation or an official Langflow marketplace. The [official contribution process](https://github.com/langflow-ai/langflow/blob/main/CONTRIBUTING.md) is tracked separately from this install path.
+> **Availability:** The [0.1.0 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.0) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
 
 ## 1. Install the extension
 
-Ask your Langflow administrator to install it in the **same Python environment** as Langflow. This is a source install until a package release is available:
+Ask your Langflow administrator to install it in the **same Python environment** as Langflow. For a fresh local environment:
 
 ```bash
-git clone https://github.com/AceDataCloud/LangflowAceDataCloud.git
-cd LangflowAceDataCloud
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install "langflow==1.12.5"
-uv pip install .
+uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.0/lfx_acedatacloud-0.1.0-py3-none-any.whl"
 lfx extension list
 langflow run
 ```
+
+You can also clone this repository and run `uv pip install .` to install from source. The GitHub wheel is a public package artifact, not a PyPI listing.
 
 Restart an existing Langflow server after installing. Open the local URL shown by `langflow run` (normally `http://localhost:7860`). In a flow, open **Components → Ace Data Cloud**. The package exposes 17 service actions and 15 separate task readers. An installed Python package appearing in this palette is proof of this server's installation only.
 
