@@ -4,7 +4,7 @@ Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or late
 
 [简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **Availability:** The [0.1.0 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.0) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
+> **Availability:** The [0.1.1 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
 
 ## 1. Install the extension
 
@@ -14,7 +14,7 @@ Ask your Langflow administrator to install it in the **same Python environment**
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install "langflow==1.12.5"
-uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.0/lfx_acedatacloud-0.1.0-py3-none-any.whl"
+uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.1/lfx_acedatacloud-0.1.1-py3-none-any.whl"
 lfx extension list
 langflow run
 ```

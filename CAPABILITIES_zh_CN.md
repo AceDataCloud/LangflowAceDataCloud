@@ -28,4 +28,4 @@
 
 编辑、续写、批量查询、声音管理、视频口型同步等高级动作，以及关键点之外的人脸动作，**尚未全部配有独立首跑流程和真实测试**，不能宣称已在 Langflow 全面支持。Hailuo、Luma、Producer 不属于这次 Dify 正式投稿对标清单，因此未纳入本包。
 
-验证记录：`lfx extension validate --execute-imports` 通过；0.1.0 wheel 在新的 Langflow 1.12.5 环境中加载了 32 个命名服务组件与模型 Provider；18 个首跑 JSON 和 15 个独立查询 JSON 均可导入。GPT Image UI 首跑后，其余 14 个媒体服务也各新发一次组件调用，全部到终态、媒体可打开、各匹配唯一扣费。Midjourney、Grok 原同步提交超时后只读找回原任务，未重试生成。[脱敏读回](tests/evidence/)区分新付费调用、旧任务查询和账单。
+验证记录：`lfx extension validate --execute-imports` 通过；公开的 0.1.1 wheel 在新的 Langflow 1.12.5 环境中加载了 32 个命名服务组件与模型 Provider；18 个首跑 JSON 和 15 个独立查询 JSON 均可导入。GPT Image UI 首跑后，其余 14 个媒体服务也各新发一次组件调用，全部到终态、媒体可打开、各匹配唯一扣费。Midjourney、Grok 原同步提交超时后只读找回原任务，未重试生成。[脱敏读回](tests/evidence/)区分新付费调用、旧任务查询和账单。
