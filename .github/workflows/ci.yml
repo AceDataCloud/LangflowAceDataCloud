@@ -16,7 +16,7 @@ jobs:
       - name: Install
         run: |
           uv venv
-          uv pip install -e . pytest build ruff
+          uv pip install -e . pytest build hatchling ruff
       - name: Validate source and examples
         run: |
           .venv/bin/ruff check src tests
