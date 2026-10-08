@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-08T22:50:37.239492+00:00",
+  "artifact": "lfx_acedatacloud-0.1.1-py3-none-any.whl",
+  "sha256": "2cd3f7acdd73853fe92f35bd0b01d5b5f01fb98b90306842a4d981d9bb47d28b",
+  "environment": "fresh Python 3.12 virtual environment with Langflow 1.12.5",
+  "installed_extension": "lfx-acedatacloud",
+  "bundle": "ace_data_cloud",
+  "loaded_service_components": 32,
+  "loader_errors": 0,
+  "new_media_async_default": true,
+  "midjourney_trace_lookup_input": true,
+  "first_run_flows_imported": 18,
+  "retrieve_only_flows_imported": 15
+}

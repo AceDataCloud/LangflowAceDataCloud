@@ -77,9 +77,14 @@ langflow run
 | Size | `1024x1024` |
 | Quality | `low` |
 | Image count | `1` |
+| Additional route parameters | `{"async": true}` |
 | Retrieve Task → Wait up to seconds | `240` |
 
-只点击 **Chat Output** 的 **Run component 一次**。Generate 只提交一次付费任务；返回的 `task_id` 已连到 Retrieve Task 的 **Submitted task** 输入。查询节点仅调用 `/openai/tasks`，最多等待 240 秒，始终查询同一任务 ID。流程变绿不能单独证明媒体任务已经完成。
+在编辑器选中 Generate → **Parameters**，对 **Additional route parameters** 点 **Add**，即可看到预填的 `async=true`。提交接口会尽快返回任务 ID，不必等媒体全部生成。
+
+![Langflow 0.1.1 实际界面中的 async true 参数](_assets/tutorial/41-async-first-run.png)
+
+只点击 **Chat Output** 的 **Run component 一次**。Generate 只提交一次付费任务，并请求尽快返回任务 ID；返回的 `task_id` 已连到 Retrieve Task 的 **Submitted task** 输入。查询节点仅调用 `/openai/tasks`，最多等待 240 秒，始终查询同一任务 ID。流程变绿不能单独证明媒体任务已经完成。
 
 ![一次完成的 Langflow 运行及打码凭据引用](_assets/tutorial/21-gpt-image-run.png)
 
@@ -92,6 +97,10 @@ langflow run
 ![该任务生成的图片](_assets/tutorial/38-generated-image.png)
 
 如果状态仍是 `pending`，**不要重跑生成流程**，否则会再次提交付费任务。导入 [`examples/retrieve_only/gpt_image.json`](examples/retrieve_only/gpt_image.json)，绑定同一个 Credential 变量，在 **Task ID** 粘贴原任务 ID，然后运行 Chat Output。这个流程没有生成节点；直到任务结束前，只重复运行此查询流程。
+
+如果提交超时但服务已接收，先查 Usage History，不要再提交。GPT Image、Midjourney、Veo 的任务查询组件还可在未返回任务 ID 时用请求历史中的 **Trace ID** 找回任务；其他服务可从原用量记录找任务 ID，或带 trace ID 联系支持。只查询找回的任务，不要为了解状态而重新生成。
+
+![真实 Midjourney 任务通过 Trace ID 在独立 Langflow 查询流程中找回](_assets/tutorial/39-trace-recovery.png)
 
 ![只查询原任务 ID 的独立流程](_assets/tutorial/34-retrieve-only.png)
 
@@ -106,6 +115,8 @@ langflow run
 ## 其他服务示例
 
 下表每个文件都是无密钥的首跑流程。异步服务旁的 `retrieve_only` 文件只查询已有任务 ID，不再次提交生成。每个命名组件实现所列首跑动作，并提供仅允许该公开接口字段的 **Additional route parameters**。当前版本聚焦这些入口，不宣称覆盖底层 API 的全部高级操作。
+
+15 个异步首跑流程及新添加的媒体组件预填 `{"async": true}`，使查询组件能尽快收到任务 ID。Fish Audio 不设置该选项时也可能同步完成；已完成的结果会直接通过其查询节点，不会再次发 API 请求。
 
 每项的公开接口路径、默认值和验证级别见 [能力清单](CAPABILITIES_zh_CN.md)。
 
@@ -129,7 +140,7 @@ langflow run
 | Kling | 文生视频 | [流程](examples/kling.json) | [查询](examples/retrieve_only/kling.json) |
 | Nano Banana | 生成一张图 | [流程](examples/nano_banana.json) | [查询](examples/retrieve_only/nano_banana.json) |
 
-18 个首跑 JSON（1 个模型 + 17 个服务）和 15 个独立查询 JSON 全部已在 Langflow 1.12.5 导入。15 个查询组件还用已有已完成任务做了只读调用：全部返回 `succeeded`，各自首个媒体链接均返回 HTTP 200。GPT Image 新生成、Google Search、人脸关键点与命名对话模型均已通过本扩展真实运行。其余 14 个媒体生成入口尚需各自新发一次 Langflow 付费生成，才能算生成端到端已验证。
+18 个首跑 JSON（1 个模型 + 17 个服务）和 15 个独立查询 JSON 全部已在 Langflow 1.12.5 导入。15 个查询组件先复用了已有完成任务，没有再次生成。随后其余 14 个媒体 Component 类各自仅新发一次付费请求：14 项任务全部完成，首媒体链接均为 HTTP 200，每项各匹配一条 Credits 用量；合计扣费 19.302232 Credits，见[逐服务脱敏证据](tests/evidence/media-generation-live.json)。Midjourney 与 Grok 的原同步提交在服务接收后发生客户端超时；两项均从账单记录找回原任务并完成，未重发付费生成。GPT Image 与对话模型已验证完整导入 UI 流程；其他服务已导入 flow 并真实调用组件方法，但不把它们称为完整 UI 图执行已验证。
 
 ## 常见问题
 
@@ -141,7 +152,7 @@ langflow run
 | 400 | 核对准确模型、动作、时长、尺寸及附加参数。组件会固定各首跑动作的公开接口路径。 |
 | `pending` 或无媒体 | 用独立查询流程查询同一任务 ID，不要通过重跑 Generate 轮询。 |
 | 429 | 等待并降低并发，不要启用自动付费重试。 |
-| 超时或 5xx | 先查请求历史与原任务状态，再判断是否需要新提交。给支持团队提供任务或 trace ID，不提供 Key。 |
+| 超时或 5xx | 先查请求历史与原任务状态，再判断是否需要新提交。支持时可用任务查询组件的 Trace ID 字段。给支持团队提供任务或 trace ID，不提供 Key。 |
 
 ## 隐私、范围与开发
 

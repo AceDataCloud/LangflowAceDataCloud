@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-08T22:43:06.423654+00:00",
+  "langflow_version": "1.12.5",
+  "extension_version": "0.1.1",
+  "query_only_flow_id": "4c8e2818-ec31-44ec-ac8b-3c4f431a8ae5",
+  "query_mode": "trace_id",
+  "trace_id": "3c8ff857-fa25-4ad4-895d-c57c7ddd6749",
+  "recovered_task_id": "c01a83c9-e94c-4e1f-96f6-a7b0f94e3dc6",
+  "task_status": "succeeded",
+  "media_count": 2,
+  "first_media_http_status": 200,
+  "ui_result": "success",
+  "generation_nodes_in_flow": 0,
+  "generation_usage_records_matching_original_trace": 1,
+  "note": "Another account-key request with a different trace exists in the time window; this query-only flow contains no Generate node."
+}

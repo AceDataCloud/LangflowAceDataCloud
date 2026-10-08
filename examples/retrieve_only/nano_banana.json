@@ -172,7 +172,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.0",
+            "extension_version": "0.1.1",
             "namespaced_id": "ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official",
             "name": "NanoBananaRetrieveTaskComponent"
           },
