@@ -4,22 +4,22 @@
 
 [English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **上架状态：** 目前由 Langflow 部署管理员从本源码仓库安装；尚未进入 Langflow 默认精选依赖，也没有官方 Langflow 市场条目。[上游贡献](https://github.com/langflow-ai/langflow/blob/main/CONTRIBUTING.md)与本仓库可安装分别验收。
+> **上架状态：** [0.1.0 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.0) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
 
 ## 1. 安装扩展
 
-请管理员在运行 Langflow 的**同一个 Python 环境**中安装。包发行之前先使用源码安装：
+请管理员在运行 Langflow 的**同一个 Python 环境**中安装。本地全新环境示例：
 
 ```bash
-git clone https://github.com/AceDataCloud/LangflowAceDataCloud.git
-cd LangflowAceDataCloud
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install "langflow==1.12.5"
-uv pip install .
+uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.0/lfx_acedatacloud-0.1.0-py3-none-any.whl"
 lfx extension list
 langflow run
 ```
+
+也可克隆本仓库后执行 `uv pip install .` 从源码安装。GitHub wheel 是公开包文件，但不等于 PyPI 收录。
 
 现有 Langflow 服务安装后需要重启。打开 `langflow run` 显示的本地地址（通常为 `http://localhost:7860`），在流程中选择 **Components → Ace Data Cloud**。这里有 17 个服务操作和 15 个独立任务查询组件。某台服务器能看到组件，只证明该服务器已经安装扩展。
 
