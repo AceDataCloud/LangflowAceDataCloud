@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import asyncio
-from typing import Any
+from typing import Any, ClassVar
 
 from lfx.custom.custom_component.component import Component
 from lfx.io import (
@@ -107,10 +107,10 @@ def _payload(
             body[field.name] = value
     extra = getattr(component, "extra_parameters", None) or {}
     if not isinstance(extra, dict):
-        raise ValueError("Additional route parameters must be an object.")
+        raise TypeError("Additional route parameters must be an object.")
     unknown = set(extra) - set(service.advanced)
     if unknown:
-        raise ValueError(f"Unsupported additional parameter: {sorted(unknown)[0]}.")
+        raise ValueError(f"Unsupported additional parameter: {min(unknown)}.")
     if set(extra) & set(body):
         raise ValueError(
             "Additional parameters may not override a visible or fixed field."
@@ -158,7 +158,9 @@ class AceGenerationComponent(Component):
     """Base for one explicit service action. Subclasses set service_name."""
 
     service_name: str = ""
-    outputs = [Output(display_name="Result and task ID", name="result", method="run")]
+    outputs: ClassVar[list[Output]] = [
+        Output(display_name="Result and task ID", name="result", method="run")
+    ]
 
     async def run(self) -> Data:
         service = SERVICES[self.service_name]
@@ -171,7 +173,9 @@ class AceTaskComponent(Component):
     """Read only the submitted task ID; a workflow retry never generates media."""
 
     service_name: str = ""
-    outputs = [Output(display_name="Task result", name="result", method="run")]
+    outputs: ClassVar[list[Output]] = [
+        Output(display_name="Task result", name="result", method="run")
+    ]
 
     async def run(self) -> Data:
         service = SERVICES[self.service_name]

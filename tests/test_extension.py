@@ -6,9 +6,9 @@ from types import SimpleNamespace
 
 import httpx
 import pytest
+from lfx.custom.utils import create_component_template
 from lfx.extension.loader import load_extension
 from lfx.extension.manifest import load_manifest
-from lfx.custom.utils import create_component_template
 from lfx.schema.data import Data
 
 from lfx_acedatacloud.client import AceAPIError, normalize, post_json, scrub

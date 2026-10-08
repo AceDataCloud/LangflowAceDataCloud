@@ -90,7 +90,9 @@ def scrub(value: Any) -> Any:
         result = {}
         for key, item in value.items():
             if key.lower() in _PRIVATE_KEYS or re.search(
-                r"(^internal(?:_|$)|supplier|upstream|(?:^|_)secret(?:_|$))", key, re.I
+                r"(^internal(?:_|$)|supplier|upstream|(?:^|_)secret(?:_|$))",
+                key,
+                re.IGNORECASE,
             ):
                 continue
             if key.lower() == "error" and item:
@@ -183,15 +185,16 @@ def normalize(
     )
     failed = has_error or any(state in _FAILED for state in states)
     urls = media_urls(safe)
+    completed_by_state = bool(states) and all(state in _DONE for state in states)
+    completed_by_record = bool(
+        retrieved and isinstance(body, dict) and body.get("finished_at") and response
+    )
+    completed_by_url = bool(retrieved and urls and not states)
     if unfinished:
         status = "pending"
     elif failed:
         status = "failed"
-    elif states and all(state in _DONE for state in states):
-        status = "succeeded"
-    elif retrieved and isinstance(body, dict) and body.get("finished_at") and response:
-        status = "succeeded"
-    elif retrieved and urls and not states:
+    elif completed_by_state or completed_by_record or completed_by_url:
         status = "succeeded"
     elif task_id:
         status = "pending"
