@@ -4,7 +4,7 @@
 
 [English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **上架状态：** [0.1.0 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.0) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
+> **上架状态：** [0.1.1 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
 
 ## 1. 安装扩展
 
@@ -14,7 +14,7 @@
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install "langflow==1.12.5"
-uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.0/lfx_acedatacloud-0.1.0-py3-none-any.whl"
+uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.1/lfx_acedatacloud-0.1.1-py3-none-any.whl"
 lfx extension list
 langflow run
 ```

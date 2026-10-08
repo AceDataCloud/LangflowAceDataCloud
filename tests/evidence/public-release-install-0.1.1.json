@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-08T23:01:06.955029+00:00",
+  "release": "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1",
+  "artifact": "lfx_acedatacloud-0.1.1-py3-none-any.whl",
+  "sha256": "2cd3f7acdd73853fe92f35bd0b01d5b5f01fb98b90306842a4d981d9bb47d28b",
+  "install_source": "public GitHub Release URL",
+  "environment": "Python 3.12 virtual environment with langflow==1.12.5, upgraded from public 0.1.0 wheel",
+  "extension_id": "lfx-acedatacloud",
+  "version": "0.1.1",
+  "bundle": "ace_data_cloud",
+  "lfx_extension_list_errors": 0,
+  "new_media_async_default": true,
+  "midjourney_trace_lookup_input": true,
+  "result": "discovered"
+}
