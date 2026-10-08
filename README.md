@@ -77,9 +77,14 @@ Bind `ACEDATACLOUD_API_KEY` to both Ace nodes. The example already sets these fi
 | Size | `1024x1024` |
 | Quality | `low` |
 | Image count | `1` |
+| Additional route parameters | `{"async": true}` |
 | Retrieve Task → Wait up to seconds | `240` |
 
-Click **Run component** on **Chat Output once**. Generate makes one paid submission. Its returned `task_id` is connected to Retrieve Task's **Submitted task** input. Retrieve Task uses only `/openai/tasks` and waits up to 240 seconds for that same ID. A green flow before the service task is terminal is not proof that the media is ready.
+In the editor, select Generate → **Parameters → Add** on **Additional route parameters** to inspect the prefilled `async=true` pair. It requests a task ID without waiting for the full media generation in the submit call.
+
+![The real 0.1.1 Langflow form with async true visible](_assets/tutorial/41-async-first-run.png)
+
+Click **Run component** on **Chat Output once**. Generate makes one paid submission and requests an immediate task ID. Its returned `task_id` is connected to Retrieve Task's **Submitted task** input. Retrieve Task uses only `/openai/tasks` and waits up to 240 seconds for that same ID. A green flow before the service task is terminal is not proof that the media is ready.
 
 ![One completed Langflow run with both API components and a masked credential reference](_assets/tutorial/21-gpt-image-run.png)
 
@@ -92,6 +97,10 @@ The real test returned `status=succeeded`, `success=true`, task ID `ac4ffabb-ada
 ![Image produced by that run](_assets/tutorial/38-generated-image.png)
 
 If the result is still `pending`, **do not rerun the generation flow**. That would submit another paid task. Import [`examples/retrieve_only/gpt_image.json`](examples/retrieve_only/gpt_image.json), bind the same Credential variable, paste the original task ID into **Task ID**, and run Chat Output. This flow contains no generation node. Repeat this read-only flow until the task is terminal.
+
+If a submission times out after the service accepted it, check Usage History before another submission. GPT Image, Midjourney, and Veo task readers also accept a **Trace ID** from request history when the task ID was not returned. For other services, recover the task ID from the original usage record or ask support with its trace ID. Query the recovered task; never regenerate only to learn its status.
+
+![An actual Midjourney result recovered in a query-only Langflow flow using its trace ID](_assets/tutorial/39-trace-recovery.png)
 
 ![Separate task lookup with the original task ID](_assets/tutorial/34-retrieve-only.png)
 
@@ -106,6 +115,8 @@ The chat model example had one matching usage record for `gpt-4.1-mini`, 16 toke
 ## Other service examples
 
 Each file below is a no-key first-run flow. For asynchronous services, the matching `retrieve_only` file queries an existing task ID without another submission. Each named component exposes the listed first-run action and an allowlisted **Additional route parameters** field. These are focused entry points; they do not claim every advanced action supported by the underlying API.
+
+The 15 asynchronous first-run flows and newly added media components prefill `{"async": true}` so the task reader can query promptly. Fish Audio can also finish synchronously when used without that option; a connected completed result passes through its reader without another API call.
 
 The exact public routes, default values, and proof level for each action are in [Capabilities](CAPABILITIES.md).
 
@@ -129,7 +140,7 @@ The exact public routes, default values, and proof level for each action are in 
 | Kling | Generate text-to-video | [Flow](examples/kling.json) | [Lookup](examples/retrieve_only/kling.json) |
 | Nano Banana | Generate one image | [Flow](examples/nano_banana.json) | [Lookup](examples/retrieve_only/nano_banana.json) |
 
-All 18 first-run JSON flows (one model plus 17 services) and all 15 retrieve-only flows were imported into Langflow 1.12.5. The 15 readers were also tested against existing completed tasks without submitting generation; all returned `succeeded`, and the first media URL for each returned HTTP 200. A new GPT Image generation, Google Search, Face keypoints, and the named chat model were run through this extension. The other 14 media generation paths still need a fresh Langflow-paid submit before they can be marked as end-to-end generation proven.
+All 18 first-run JSON flows (one model plus 17 services) and all 15 retrieve-only flows were imported into Langflow 1.12.5. The 15 readers first retrieved existing completed tasks without submitting generation. We then made exactly one new paid submission through each of the other 14 media Component classes: all 14 tasks completed, their first media URLs returned HTTP 200, and each matched one Credits usage record. Those 14 calls deducted 19.302232 Credits in total; see [sanitized per-service evidence](tests/evidence/media-generation-live.json). Midjourney and Grok's original synchronous submit calls timed out after the service accepted them; both tasks were recovered from usage records and completed without a paid retry. The imported UI flow itself was run end to end for GPT Image and the chat model; the other service flows were imported and their component methods were called, but their full UI graph execution has not been claimed.
 
 ## Troubleshooting
 
@@ -141,7 +152,7 @@ All 18 first-run JSON flows (one model plus 17 services) and all 15 retrieve-onl
 | 400 | Check the exact model, action, duration, size, and any additional parameters. This bundle fixes the public route for each first-run action. |
 | `pending` or no media | Query the same task ID with the retrieve-only flow. Do not click Generate again to poll. |
 | 429 | Wait and reduce concurrency. Do not enable automatic paid retries. |
-| Timeout or 5xx | Check request history and task status before deciding whether a new submission is needed. Give support the task or trace ID, never the key. |
+| Timeout or 5xx | Check request history and task status before deciding whether a new submission is needed. Use the task reader's Trace ID field where available. Give support the task or trace ID, never the key. |
 
 ## Privacy, scope, and development
 

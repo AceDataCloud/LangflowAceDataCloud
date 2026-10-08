@@ -166,7 +166,9 @@
                 "placeholder": "",
                 "show": true,
                 "name": "extra_parameters",
-                "value": {},
+                "value": {
+                  "async": true
+                },
                 "display_name": "Additional route parameters",
                 "advanced": true,
                 "api_editable": false,
@@ -318,7 +320,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.0",
+            "extension_version": "0.1.1",
             "namespaced_id": "ext:ace_data_cloud:NanoBananaGenerateComponent@official",
             "name": "NanoBananaGenerateComponent"
           },
@@ -504,7 +506,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.0",
+            "extension_version": "0.1.1",
             "namespaced_id": "ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official",
             "name": "NanoBananaRetrieveTaskComponent"
           },

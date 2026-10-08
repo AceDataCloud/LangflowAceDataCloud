@@ -22,6 +22,9 @@ from lfx.schema.data import Data
 from lfx_acedatacloud.client import normalize, post_json
 from lfx_acedatacloud.specs import FACE_PATHS, SERVICES, Field, Service
 
+TRACE_QUERY_SERVICES = frozenset({"gpt_image", "midjourney", "veo"})
+MAX_WAIT_SECONDS = 240
+
 
 def _key(value: Any) -> str:
     if hasattr(value, "get_secret_value"):
@@ -59,6 +62,7 @@ def generation_inputs(service_name: str) -> list[Any]:
         DictInput(
             name="extra_parameters",
             display_name="Additional route parameters",
+            value={"async": True} if service.task_path else {},
             advanced=True,
             info="Only published fields for this action are accepted. Leave empty for the first run.",
         ),
@@ -66,7 +70,8 @@ def generation_inputs(service_name: str) -> list[Any]:
 
 
 def task_inputs(service_name: str) -> list[Any]:
-    return [
+    service = SERVICES[service_name]
+    inputs = [
         SecretStrInput(
             name="api_key", display_name="Ace Data Cloud API key", required=True
         ),
@@ -75,7 +80,7 @@ def task_inputs(service_name: str) -> list[Any]:
             display_name="Submitted task",
             input_types=["Data", "JSON"],
             required=False,
-            info="Connect the generation result to query the same task.",
+            info=f"Connect the {service.display} generation result to query the same task.",
         ),
         MessageTextInput(
             name="task_id",
@@ -83,14 +88,27 @@ def task_inputs(service_name: str) -> list[Any]:
             required=False,
             info="Or paste an existing task ID. No generation is performed by this component.",
         ),
+    ]
+    if service_name in TRACE_QUERY_SERVICES:
+        inputs.append(
+            MessageTextInput(
+                name="trace_id",
+                display_name="Trace ID",
+                required=False,
+                advanced=True,
+                info="Use a trace ID from request history if the paid submission timed out before returning a task ID.",
+            )
+        )
+    inputs.append(
         IntInput(
             name="wait_seconds",
             display_name="Wait up to seconds",
             value=0,
             advanced=True,
             info="0 makes one read-only query; at most 240 seconds queries only this task.",
-        ),
-    ]
+        )
+    )
+    return inputs
 
 
 def _payload(
@@ -196,23 +214,45 @@ class AceTaskComponent(Component):
         task_id = str(
             (linked or {}).get("task_id") or getattr(self, "task_id", "") or ""
         ).strip()
-        if not task_id:
-            raise ValueError("Connect a submitted task or enter its task ID.")
+        if (
+            linked is not None
+            and not task_id
+            and linked.get("status") in {"succeeded", "failed"}
+        ):
+            return Data(data=linked)
+        trace_id = (
+            str(getattr(self, "trace_id", "") or "").strip()
+            if self.service_name in TRACE_QUERY_SERVICES
+            else ""
+        )
+        if not task_id and not trace_id:
+            raise ValueError("Connect a submitted task or enter its task or trace ID.")
         wait_seconds = int(getattr(self, "wait_seconds", 0) or 0)
-        if not 0 <= wait_seconds <= 240:
+        if not 0 <= wait_seconds <= MAX_WAIT_SECONDS:
             raise ValueError("Wait seconds must be from 0 to 240.")
         deadline = asyncio.get_running_loop().time() + wait_seconds
+        lookup = (
+            {"action": "retrieve", "id": task_id}
+            if task_id
+            else {"action": "retrieve", "trace_id": trace_id}
+        )
         while True:
             payload = await post_json(
                 service.task_path,
                 _key(self.api_key),
-                {"action": "retrieve", "id": task_id},
+                lookup,
+            )
+            resolved_id = task_id or (
+                str(payload.get("id") or payload.get("task_id") or "")
+                if isinstance(payload, dict)
+                else ""
             )
             result = normalize(
                 payload,
                 service=self.service_name,
                 retrieved=True,
-                requested_task_id=task_id,
+                requested_task_id=resolved_id,
+                requested_trace_id=trace_id,
             )
             if (
                 result["status"] != "pending"
