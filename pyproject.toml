@@ -27,7 +27,7 @@ lfx-acedatacloud = "lfx_acedatacloud"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/lfx_acedatacloud"]
-include = ["src/lfx_acedatacloud/**/*.py", "src/lfx_acedatacloud/extension.json", "src/lfx_acedatacloud/chat_models.json"]
+include = ["src/lfx_acedatacloud/**/*.py", "src/lfx_acedatacloud/extension.json"]
 
 [tool.hatch.build.targets.sdist]
 include = ["src/lfx_acedatacloud", "README.md", "README_zh_CN.md", "PRIVACY.md", "CAPABILITIES.md", "CAPABILITIES_zh_CN.md", "LICENSE", "pyproject.toml", "examples"]

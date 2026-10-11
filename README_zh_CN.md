@@ -29,10 +29,16 @@ langflow run
 
 首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
 
-1. 登录 [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key)。
-2. 若要用同一 Key 调用对话模型和多个服务，打开 **General application**。服务专属应用 Key 只能调用对应服务。可以复制现有 Key，也可以进入 **Manage Keys → Create** 新建专用 Key。
-3. 发起付费调用前，检查服务权限、当前价格和余额。若启用了 **Allowed APIs** 限制，需同时允许流程使用的提交和任务查询接口。GPT Image 示例需要 `/openai/images/generations` 与 `/openai/tasks`；对话模型示例需要 `/v1/models` 与 `/v1/chat/completions`。
-4. 只复制 token 本身，不要加 `Bearer `，也不要填平台管理 token。不要把 Key 写进提示词、流程 JSON、截图或支持工单。
+1. 登录 [Ace Data Cloud → 我的应用](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key)，打开 **General application（通用应用）**。通用应用 Key 可用于账号有权使用的多个服务；服务专用 Key 仅限对应服务。
+2. 复用当前 Key 时，点击下图 **①复制**。要单独给 Langflow 创建 Key，点击 **②Manage Keys（管理密钥）→ Create（创建）**。
+
+![复制当前 Key 或进入管理密钥](_assets/tutorial/get-api-key-en.png)
+
+3. 填名称，例如 `Langflow tutorial`，按需设置过期时间、用量与 **Allowed APIs（允许的 API）**，点击 **Create**，再回到列表或应用卡片复制 token。
+
+![按需新建专用 Key](_assets/tutorial/create-api-key-en.png)
+
+4. 首次付费调用前检查服务权限、当前价格和余额。若启用 **Allowed APIs**，GPT Image 需要 `/openai/images/generations` 和 `/openai/tasks`；对话模型需要 `/v1/models` 和 `/v1/chat/completions`。只复制 token 本身，不加 `Bearer `，不用平台管理 token，也不把 Key 写进提示词、流程 JSON 或截图。
 
 ## 3. 在 Langflow 中保存凭据
 
@@ -42,7 +48,7 @@ langflow run
 
 ![凭据型全局变量保存后被打码](_assets/tutorial/18-saved-credential.png)
 
-同一个变量也会连接模型 Provider。进入 **Settings → Model Providers → Ace Data Cloud**，确认 API Key 已连接。2026 年 10 月 9 日的测试环境显示 84 个公开对话模型；目录和账号权限可能变化。打开想使用的具体模型。
+同一个变量也会连接模型 Provider。进入 **Settings → Model Providers → Ace Data Cloud**，确认 API Key 已连接。0.1.1 的测试环境在 2026 年 10 月 9 日显示 84 个对话模型 ID。下一版将从当前公开对话目录与此 Key 可见模型实时取交集，新文本模型无需等待扩展发版。打开想使用的具体模型。
 
 ![Langflow 设置中的 Ace Data Cloud 模型 Provider](_assets/tutorial/26-model-provider-settings.png)
 

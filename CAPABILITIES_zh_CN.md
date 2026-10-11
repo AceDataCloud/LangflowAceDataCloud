@@ -22,7 +22,7 @@
 | Kling | `kling-v3-turbo` 标准模式文生视频 | `/kling/videos` | `/kling/tasks` | 新组件调用、完成、媒体 200、唯一账单 |
 | Nano Banana | `nano-banana-2-lite`、1K 图片 | `/nano-banana/images` | `/nano-banana/tasks` | 新组件调用、完成、媒体 200、唯一账单 |
 
-模型 Provider 固定使用 Ace Data Cloud 的 OpenAI 兼容 `/v1` 接口，注册 `ChatAceDataCloud`，内置 5 条已知模型目录回退项，并在用户连接 Key 后读取需要鉴权的 `/v1/models`。实际调用模型必须提供 Key。只展示 2026 年 10 月 9 日已和线上模型列表交叉核对的 84 个公开对话模型 ID；图像与 embedding 模型不会误入对话列表。`gpt-4.1-mini` 已完成真实 Langflow 流程，返回 16 tokens，并匹配到 Credits 用量记录。
+模型 Provider 固定使用 Ace Data Cloud 的 OpenAI 兼容 `/v1` 接口，注册 `ChatAceDataCloud`，内置 5 条已知首选模型，并在用户连接 Key 后取当前公开 `type=chat` 目录与鉴权 `/v1/models` 的交集。实际调用模型必须提供 Key。新文本对话模型无需扩展发版即可进入列表；图像生成变体与 embedding 模型不会误入。公开目录没有逐模型的工具调用能力声明，因此 Provider 暂不向 Langflow Agent 选择器宣称支持工具调用。Chat Completions 不自动重试。`gpt-4.1-mini` 已完成真实 Langflow 流程，返回 16 tokens，并匹配到 Credits 用量记录。
 
 15 类异步服务分别有 Generate 和 Retrieve Task 组件。首跑 flow 预填 `{"async": true}`，以尽快返回任务 ID。Generate 只发一次 HTTP 请求，不自动重试；Retrieve Task 仅访问对应 `/tasks`，可接收生成结果或已有任务 ID，且会核对已连接任务的服务身份。GPT Image、Midjourney、Veo 在提交已接收但超时、未拿到任务 ID 时还支持用 trace ID 只读查询。Fish Audio 若同步完成，则已完成结果直接通过查询节点，不再调用 API。状态明确为 `pending`、`succeeded` 或 `failed`，只有 `succeeded` 才显示媒体链接。15 个 `retrieve_only` 示例均不含生成节点。
 

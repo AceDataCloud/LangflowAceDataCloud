@@ -29,10 +29,16 @@ Restart an existing Langflow server after installing. Open the local URL shown b
 
 New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
 
-1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key).
-2. Open **General application** if you want one key for both chat models and several services. A service-specific application key can only use that service. Copy an existing key or create a dedicated key in **Manage Keys → Create**.
-3. Check service access, current price, and balance before any paid run. If you restrict **Allowed APIs**, include the exact submit and task-query routes used by your flow. For GPT Image, allow `/openai/images/generations` and `/openai/tasks`. For chat models, allow `/v1/models` and `/v1/chat/completions`.
-4. Copy the token string only. Do not prepend `Bearer ` or use a platform management token. Keep the key out of prompts, flow JSON, screenshots, and support tickets.
+1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key) and open **General application**. A general-application key can use the services your account has access to; a service-specific key is limited to that service.
+2. To reuse the selected key, click the copy icon marked **1** below. For a separate Langflow key, click **Manage Keys** marked **2**, then **Create**.
+
+![Copy the selected key or open Manage Keys](_assets/tutorial/get-api-key-en.png)
+
+3. Name the new key, for example `Langflow tutorial`, and set expiration, usage and **Allowed APIs** restrictions as needed. Click **Create**, return to the list or application card, and copy the token.
+
+![Create an optional separate API key](_assets/tutorial/create-api-key-en.png)
+
+4. Check service access, current price and balance before a paid run. If **Allowed APIs** is enabled, include both routes used by the flow: `/openai/images/generations` and `/openai/tasks` for GPT Image; `/v1/models` and `/v1/chat/completions` for the chat model. Copy only the token string. Do not prepend `Bearer `, use a platform management token, or put the key in a prompt, flow export or screenshot.
 
 ## 3. Store the key in Langflow
 
@@ -42,7 +48,7 @@ Choose your profile icon → **Settings → Global Variables → Add New**. Set 
 
 ![Credential global variable saved with its value masked](_assets/tutorial/18-saved-credential.png)
 
-The same variable connects the named model provider. Open **Settings → Model Providers → Ace Data Cloud** and check the API Key shows as connected. The test installation showed 84 public chat models on 9 October 2026; model access and the live catalog can change. Enable the specific model you want to use.
+The same variable connects the named model provider. Open **Settings → Model Providers → Ace Data Cloud** and check the API Key shows as connected. The 0.1.1 test installation showed 84 chat model IDs on 9 October 2026. In the next package version, the list refreshes from the current public chat catalog and the models visible to your key, so new text models do not need a package update. Enable the specific model you want to use.
 
 ![Named Ace Data Cloud provider in Langflow settings](_assets/tutorial/26-model-provider-settings.png)
 
