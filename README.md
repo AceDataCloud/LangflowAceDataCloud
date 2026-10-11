@@ -2,7 +2,7 @@
 
 Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or later. One Extension Bundle supplies a named **Ace Data Cloud** model provider and separate components for 17 image, video, audio, search, and face service families. The examples contain no credentials.
 
-[简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
+[简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
 > **Availability:** The [0.1.1 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
 
@@ -27,7 +27,9 @@ Restart an existing Langflow server after installing. Open the local URL shown b
 
 ## 2. Create an API key with the right access
 
-1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications).
+New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+
+1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key).
 2. Open **General application** if you want one key for both chat models and several services. A service-specific application key can only use that service. Copy an existing key or create a dedicated key in **Manage Keys → Create**.
 3. Check service access, current price, and balance before any paid run. If you restrict **Allowed APIs**, include the exact submit and task-query routes used by your flow. For GPT Image, allow `/openai/images/generations` and `/openai/tasks`. For chat models, allow `/v1/models` and `/v1/chat/completions`.
 4. Copy the token string only. Do not prepend `Bearer ` or use a platform management token. Keep the key out of prompts, flow JSON, screenshots, and support tickets.
@@ -108,7 +110,7 @@ If a submission times out after the service accepted it, check Usage History bef
 
 ## 6. Check the charge
 
-In [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages), filter to the relevant API, key, and time, then compare the task or trace ID. The completed GPT Image test had trace ID `813ac552-4724-4d05-8b17-3c93534fbed6`; the platform returned **one** HTTP 200 usage record for that trace and deducted **0.099 Credits**. Langflow's task output also reported `cost.amount=0.099` in `credit` currency. This is evidence for that single test, not a fixed future price. Read your account's current package rate if you need a USD conversion.
+In [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_usage), filter to the relevant API, key, and time, then compare the task or trace ID. The completed GPT Image test had trace ID `813ac552-4724-4d05-8b17-3c93534fbed6`; the platform returned **one** HTTP 200 usage record for that trace and deducted **0.099 Credits**. Langflow's task output also reported `cost.amount=0.099` in `credit` currency. This is evidence for that single test, not a fixed future price. Read your account's current package rate if you need a USD conversion.
 
 The chat model example had one matching usage record for `gpt-4.1-mini`, 16 tokens, and `0.0000234636021` Credits. [Sanitized run evidence](tests/evidence/) keeps task, media, import, and billing readbacks separate.
 

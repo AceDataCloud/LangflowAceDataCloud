@@ -2,7 +2,7 @@
 
 在 Langflow 1.12.5 及以上版本中使用 Ace Data Cloud 对话模型与服务组件。一个 Extension Bundle 提供命名的 **Ace Data Cloud** 模型 Provider，以及图像、视频、音频、搜索和人脸共 17 类服务的独立组件。示例文件不含密钥。
 
-[English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
+[English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
 > **上架状态：** [0.1.1 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
 
@@ -27,7 +27,9 @@ langflow run
 
 ## 2. 获取权限正确的 API Key
 
-1. 登录 [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications)。
+首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
+
+1. 登录 [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key)。
 2. 若要用同一 Key 调用对话模型和多个服务，打开 **General application**。服务专属应用 Key 只能调用对应服务。可以复制现有 Key，也可以进入 **Manage Keys → Create** 新建专用 Key。
 3. 发起付费调用前，检查服务权限、当前价格和余额。若启用了 **Allowed APIs** 限制，需同时允许流程使用的提交和任务查询接口。GPT Image 示例需要 `/openai/images/generations` 与 `/openai/tasks`；对话模型示例需要 `/v1/models` 与 `/v1/chat/completions`。
 4. 只复制 token 本身，不要加 `Bearer `，也不要填平台管理 token。不要把 Key 写进提示词、流程 JSON、截图或支持工单。
@@ -108,7 +110,7 @@ langflow run
 
 ## 6. 核对费用
 
-到 [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages) 按 API、Key 和时间过滤，对照任务或 trace ID。本次 GPT Image 测试的 trace ID 为 `813ac552-4724-4d05-8b17-3c93534fbed6`；平台对该 trace 只查到**一条** HTTP 200 用量记录，扣除 **0.099 Credits**。Langflow 的任务输出也显示 `cost.amount=0.099`、货币为 `credit`。这是该次测试的证据，并非永久价格；如需换算 USD，应读取你当前套餐的单价。
+到 [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_usage) 按 API、Key 和时间过滤，对照任务或 trace ID。本次 GPT Image 测试的 trace ID 为 `813ac552-4724-4d05-8b17-3c93534fbed6`；平台对该 trace 只查到**一条** HTTP 200 用量记录，扣除 **0.099 Credits**。Langflow 的任务输出也显示 `cost.amount=0.099`、货币为 `credit`。这是该次测试的证据，并非永久价格；如需换算 USD，应读取你当前套餐的单价。
 
 对话模型示例对应一条 `gpt-4.1-mini` 用量记录，共 16 tokens，扣除 `0.0000234636021` Credits。[脱敏验证记录](tests/evidence/) 分别保存任务、媒体、导入和账单读回。
 
