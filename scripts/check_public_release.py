@@ -12,10 +12,11 @@ from datetime import datetime, timezone
 from importlib.metadata import distribution, version
 from pathlib import Path
 
-import lfx_acedatacloud
 from lfx.custom.utils import create_component_template
 from lfx.extension.loader import load_extension
 from lfx.graph import Graph
+
+import lfx_acedatacloud
 
 
 def main() -> None:
