@@ -4,7 +4,7 @@ Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or late
 
 [简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **Availability:** The [0.1.1 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
+> **Availability:** The [0.1.2 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
 
 ## 1. Install the extension
 
@@ -14,7 +14,7 @@ Ask your Langflow administrator to install it in the **same Python environment**
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install "langflow==1.12.5"
-uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.1/lfx_acedatacloud-0.1.1-py3-none-any.whl"
+uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.2/lfx_acedatacloud-0.1.2-py3-none-any.whl"
 lfx extension list
 langflow run
 ```
@@ -48,7 +48,7 @@ Choose your profile icon → **Settings → Global Variables → Add New**. Set 
 
 ![Credential global variable saved with its value masked](_assets/tutorial/18-saved-credential.png)
 
-The same variable connects the named model provider. Open **Settings → Model Providers → Ace Data Cloud** and check the API Key shows as connected. The 0.1.1 test installation showed 84 chat model IDs on 9 October 2026. In the next package version, the list refreshes from the current public chat catalog and the models visible to your key, so new text models do not need a package update. Enable the specific model you want to use.
+The same variable connects the named model provider. Open **Settings → Model Providers → Ace Data Cloud** and check the API Key shows as connected. The published 0.1.2 package still uses the earlier 84-ID filter. This 0.1.3 source change refreshes the list from the current public chat catalog and the models visible to your key, so new text models do not need a package update after 0.1.3 is released. Enable the specific model you want to use.
 
 ![Named Ace Data Cloud provider in Langflow settings](_assets/tutorial/26-model-provider-settings.png)
 

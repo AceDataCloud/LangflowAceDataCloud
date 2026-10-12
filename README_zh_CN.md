@@ -4,7 +4,7 @@
 
 [English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **上架状态：** [0.1.1 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.1) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
+> **上架状态：** [0.1.2 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
 
 ## 1. 安装扩展
 
@@ -14,7 +14,7 @@
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install "langflow==1.12.5"
-uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.1/lfx_acedatacloud-0.1.1-py3-none-any.whl"
+uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.2/lfx_acedatacloud-0.1.2-py3-none-any.whl"
 lfx extension list
 langflow run
 ```
@@ -48,7 +48,7 @@ langflow run
 
 ![凭据型全局变量保存后被打码](_assets/tutorial/18-saved-credential.png)
 
-同一个变量也会连接模型 Provider。进入 **Settings → Model Providers → Ace Data Cloud**，确认 API Key 已连接。0.1.1 的测试环境在 2026 年 10 月 9 日显示 84 个对话模型 ID。下一版将从当前公开对话目录与此 Key 可见模型实时取交集，新文本模型无需等待扩展发版。打开想使用的具体模型。
+同一个变量也会连接模型 Provider。进入 **Settings → Model Providers → Ace Data Cloud**，确认 API Key 已连接。已发布的 0.1.2 包仍使用旧版 84 个 ID 过滤。本次 0.1.3 源码改为从当前公开对话目录与此 Key 可见模型取交集；0.1.3 正式发布后，新文本模型无需等待扩展再次发版。打开想使用的具体模型。
 
 ![Langflow 设置中的 Ace Data Cloud 模型 Provider](_assets/tutorial/26-model-provider-settings.png)
 
