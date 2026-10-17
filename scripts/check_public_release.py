@@ -23,6 +23,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--release", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--langflow-version", required=True)
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
@@ -33,8 +34,8 @@ def main() -> None:
     installed_version = version("lfx-acedatacloud")
     if release["tag_name"] != f"v{installed_version}":
         raise RuntimeError("The installed version does not match the public tag")
-    if version("langflow") != "1.12.5":
-        raise RuntimeError("This check requires stable Langflow 1.12.5")
+    if version("langflow") != args.langflow_version:
+        raise RuntimeError(f"This check requires Langflow {args.langflow_version}")
     direct_url = json.loads(
         distribution("lfx-acedatacloud").read_text("direct_url.json") or "{}"
     )
