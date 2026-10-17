@@ -6,6 +6,19 @@
 
 > **上架状态：** [0.1.2 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
 
+
+## 先按服务名找入口
+
+本候选提供 **Suno / Seedance / Happy Horse / GPT Image / Nano Banana … by Ace Data Cloud** 独立节点；生成和查询分开。可在组件搜索直接输入服务名，不必先知道Ace。图标按音频、视频和图片分类。现有`ext:ace_data_cloud:<Class>@official`流程ID不变。
+
+- [Suno：音乐与音频](guides/suno_zh_CN.md)
+- [Seedance：视频](guides/seedance_zh_CN.md)
+- [Happy Horse：视频](guides/happy-horse_zh_CN.md)
+- [GPT Image：图片](guides/gpt-image_zh_CN.md)
+- [Nano Banana：图片](guides/nano-banana_zh_CN.md)
+
+这些是Ace提供的集成，不冒充原服务官方插件。当前正式wheel为0.1.2，带品牌标题的候选为0.1.3；官方默认安装已在[Langflow投稿](https://github.com/langflow-ai/langflow/pull/15659)提出，须审核、合并和发行后才算上线。下文历史截图保留原日期和旧标签。
+
 ## 1. 安装扩展
 
 请管理员在运行 Langflow 的**同一个 Python 环境**中安装。本地全新环境示例：

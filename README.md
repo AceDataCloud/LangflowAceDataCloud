@@ -6,6 +6,19 @@ Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or late
 
 > **Availability:** The [0.1.2 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
 
+
+## Find the service you already know
+
+Search the component palette for **suno**, **seedance**, **happyhorse**, **gpt image**, or **nano banana**. The candidate exposes independent **Generate** and **Retrieve Task** nodes with service-first labels ending **by Ace Data Cloud**, category-appropriate audio/video/image icons, and their own guide links. Existing `ext:ace_data_cloud:<Class>@official` saved-flow IDs are unchanged.
+
+- [Suno music and audio](guides/suno.md) · [中文](guides/suno_zh_CN.md)
+- [Seedance video](guides/seedance.md) · [中文](guides/seedance_zh_CN.md)
+- [Happy Horse video](guides/happy-horse.md) · [中文](guides/happy-horse_zh_CN.md)
+- [GPT Image images](guides/gpt-image.md) · [中文](guides/gpt-image_zh_CN.md)
+- [Nano Banana images](guides/nano-banana.md) · [中文](guides/nano-banana_zh_CN.md)
+
+These integrations are provided by Ace Data Cloud and do not claim endorsement by the service owners. The current released wheel is 0.1.2; the branded labels belong to candidate 0.1.3. [The Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) now requests default inclusion, which still requires maintainer acceptance and an official release. Historical screenshots below retain their original version and labels.
+
 ## 1. Install the extension
 
 Ask your Langflow administrator to install it in the **same Python environment** as Langflow. For a fresh local environment:

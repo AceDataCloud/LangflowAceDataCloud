@@ -65,8 +65,8 @@ def test_ui_templates_keep_generation_and_retrieval_forms_separate() -> None:
     retrieved, _ = create_component_template(
         component_extractor=GPTImageRetrieveTaskComponent()
     )
-    assert generated["display_name"] == "GPT Image Generate"
-    assert retrieved["display_name"] == "GPT Image Retrieve Task"
+    assert generated["display_name"] == "GPT Image Generate by Ace Data Cloud"
+    assert retrieved["display_name"] == "GPT Image Retrieve Task by Ace Data Cloud"
     assert (
         "prompt" in generated["field_order"]
         and "task_id" not in generated["field_order"]
@@ -399,4 +399,22 @@ def test_importable_examples_have_no_keys_and_connect_existing_nodes() -> None:
             assert len(nodes) == 2 and len(flow["data"]["edges"]) == 1
             assert not any(
                 "GenerateComponent" in node["data"]["type"] for node in nodes
+            )
+
+
+def test_service_first_labels_keep_stable_saved_flow_ids() -> None:
+    loaded = load_extension(ROOT)
+    for component in loaded.components:
+        if component.klass.service_name in {
+            "suno",
+            "seedance",
+            "happy_horse",
+            "gpt_image",
+            "nano_banana",
+        }:
+            assert component.klass.display_name.endswith("by Ace Data Cloud")
+            assert component.klass.icon in {"Music", "Clapperboard", "Image"}
+            assert component.namespaced_id.startswith("ext:ace_data_cloud:")
+            assert component.klass.documentation.startswith(
+                "https://docs.langflow.org/acedatacloud-"
             )
