@@ -418,3 +418,17 @@ def test_service_first_labels_keep_stable_saved_flow_ids() -> None:
             assert component.klass.documentation.startswith(
                 "https://docs.langflow.org/acedatacloud-"
             )
+
+
+def test_top_service_examples_show_candidate_service_labels() -> None:
+    import json
+
+    for slug in ("suno", "seedance", "happy_horse", "gpt_image", "nano_banana"):
+        for folder in ("examples", "examples/retrieve_only"):
+            flow = json.loads((ROOT.parents[1] / folder / f"{slug}.json").read_text())
+            for node in flow["data"]["nodes"]:
+                if node["data"]["type"].startswith("ext:ace_data_cloud:"):
+                    form = node["data"]["node"]
+                    assert form["display_name"].endswith("by Ace Data Cloud")
+                    assert "by Ace Data Cloud" in form["template"]["code"]["value"]
+                    assert form["extension_version"] == "0.1.3"

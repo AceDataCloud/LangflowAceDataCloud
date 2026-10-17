@@ -23,12 +23,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:NanoBananaGenerateComponent@officialœ,œidœ:œext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart{œfieldNameœ:œsubmitted_taskœ,œidœ:œext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstartœ,œinputTypesœ:[œDataœ,œJSONœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:NanoBananaGenerateComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart{\u0153fieldName\u0153:\u0153submitted_task\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:NanoBananaGenerateComponent@officialœ, œidœ: œext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:NanoBananaGenerateComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:NanoBananaGenerateComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart",
-        "targetHandle": "{œfieldNameœ: œsubmitted_taskœ, œidœ: œext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstartœ, œinputTypesœ: [œDataœ, œJSONœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153submitted_task\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153], \u0153type\u0153: \u0153other\u0153}"
       },
       {
         "animated": false,
@@ -55,12 +55,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:NanoBananaRetrieveTaskComponent@officialœ,œidœ:œext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ChatOutput-nanobanana{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-nanobananaœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ChatOutput-nanobanana{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-nanobanana\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153,\u0153DataFrame\u0153,\u0153Table\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:NanoBananaRetrieveTaskComponent@officialœ, œidœ: œext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ChatOutput-nanobanana",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-nanobananaœ, œinputTypesœ: [œDataœ, œJSONœ, œDataFrameœ, œTableœ, œMessageœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ChatOutput-nanobanana\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153, \u0153DataFrame\u0153, \u0153Table\u0153, \u0153Message\u0153], \u0153type\u0153: \u0153other\u0153}"
       }
     ],
     "nodes": [
@@ -123,7 +123,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Nano Banana generation component.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceGenerationComponent, generation_inputs\n\n\nclass NanoBananaGenerateComponent(AceGenerationComponent):\n    display_name = \"Nano Banana Generate\"\n    description = \"Run the Ace Data Cloud Nano Banana first-run API action.\"\n    icon = \"Bot\"\n    service_name = \"nano_banana\"\n    inputs = generation_inputs(\"nano_banana\")\n",
+                "value": "\"\"\"Nano Banana generation component.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceGenerationComponent, generation_inputs\n\n\nclass NanoBananaGenerateComponent(AceGenerationComponent):\n    display_name = \"Nano Banana Generate by Ace Data Cloud\"\n    description = \"Generate Nano Banana (NanoBanana) images through Ace Data Cloud.\"\n    icon = \"Image\"\n    documentation = \"https://docs.langflow.org/acedatacloud-nano-banana\"\n    service_name = \"nano_banana\"\n    inputs = generation_inputs(\"nano_banana\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -263,13 +263,13 @@
                 "_input_type": "MessageTextInput"
               }
             },
-            "description": "Run the Ace Data Cloud Nano Banana first-run API action.",
-            "icon": "Bot",
+            "description": "Generate Nano Banana (NanoBanana) images through Ace Data Cloud.",
+            "icon": "Image",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "Nano Banana Generate",
-            "documentation": "",
+            "display_name": "Nano Banana Generate by Ace Data Cloud",
+            "documentation": "https://docs.langflow.org/acedatacloud-nano-banana",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -320,7 +320,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:NanoBananaGenerateComponent@official",
             "name": "NanoBananaGenerateComponent"
           },
@@ -392,7 +392,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Nano Banana task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass NanoBananaRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"Nano Banana Retrieve Task\"\n    description = \"Read a submitted task without starting another paid generation.\"\n    icon = \"Bot\"\n    service_name = \"nano_banana\"\n    inputs = task_inputs(\"nano_banana\")\n",
+                "value": "\"\"\"Nano Banana task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass NanoBananaRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"Nano Banana Retrieve Task by Ace Data Cloud\"\n    description = \"Query the same Nano Banana task through Ace Data Cloud without another paid generation.\"\n    icon = \"Image\"\n    documentation = \"https://docs.langflow.org/acedatacloud-nano-banana\"\n    service_name = \"nano_banana\"\n    inputs = task_inputs(\"nano_banana\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -452,13 +452,13 @@
                 "_input_type": "IntInput"
               }
             },
-            "description": "Read a submitted task without starting another paid generation.",
-            "icon": "Bot",
+            "description": "Query the same Nano Banana task through Ace Data Cloud without another paid generation.",
+            "icon": "Image",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "Nano Banana Retrieve Task",
-            "documentation": "",
+            "display_name": "Nano Banana Retrieve Task by Ace Data Cloud",
+            "documentation": "https://docs.langflow.org/acedatacloud-nano-banana",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -506,7 +506,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:NanoBananaRetrieveTaskComponent@official",
             "name": "NanoBananaRetrieveTaskComponent"
           },

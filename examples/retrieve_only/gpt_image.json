@@ -58,7 +58,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Gpt Image task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass GPTImageRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"GPT Image Retrieve Task\"\n    description = \"Read a submitted task without starting another paid generation.\"\n    icon = \"Bot\"\n    service_name = \"gpt_image\"\n    inputs = task_inputs(\"gpt_image\")\n",
+                "value": "\"\"\"Gpt Image task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass GPTImageRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"GPT Image Retrieve Task by Ace Data Cloud\"\n    description = \"Query the same GPT Image task through Ace Data Cloud without another paid generation.\"\n    icon = \"Image\"\n    documentation = \"https://docs.langflow.org/acedatacloud-gpt-image\"\n    service_name = \"gpt_image\"\n    inputs = task_inputs(\"gpt_image\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -144,13 +144,13 @@
                 "_input_type": "MessageTextInput"
               }
             },
-            "description": "Read a submitted task without starting another paid generation.",
-            "icon": "Bot",
+            "description": "Query the same GPT Image task through Ace Data Cloud without another paid generation.",
+            "icon": "Image",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "GPT Image Retrieve Task",
-            "documentation": "",
+            "display_name": "GPT Image Retrieve Task by Ace Data Cloud",
+            "documentation": "https://docs.langflow.org/acedatacloud-gpt-image",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -199,7 +199,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official",
             "name": "GPTImageRetrieveTaskComponent"
           },
@@ -544,12 +544,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:GPTImageRetrieveTaskComponent@officialœ,œidœ:œext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ChatOutput-gptimage{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-gptimageœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ChatOutput-gptimage{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-gptimage\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153,\u0153DataFrame\u0153,\u0153Table\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:GPTImageRetrieveTaskComponent@officialœ, œidœ: œext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:GPTImageRetrieveTaskComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ChatOutput-gptimage",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-gptimageœ, œinputTypesœ: [œDataœ, œJSONœ, œDataFrameœ, œTableœ, œMessageœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ChatOutput-gptimage\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153, \u0153DataFrame\u0153, \u0153Table\u0153, \u0153Message\u0153], \u0153type\u0153: \u0153other\u0153}"
       }
     ],
     "viewport": {
