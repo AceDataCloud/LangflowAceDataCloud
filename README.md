@@ -23,10 +23,12 @@ These integrations are provided by Ace Data Cloud and do not claim endorsement b
 
 ### Install only one service
 
+> **PyPI availability:** Suno and Seedance project creation is temporarily rate-limited by PyPI. Both 0.1.3 wheels are already available in the GitHub release; install them directly using the URLs below. The aggregate, GPT Image, HappyHorse and Nano Banana are on PyPI. No separate account is required to install a public wheel.
+
 | Service | Distribution | Install in Langflow's Python environment |
 | --- | --- | --- |
-| Suno | `lfx-acedatacloud-suno` | `python -m pip install "lfx-acedatacloud-suno==0.1.3"` |
-| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "lfx-acedatacloud-seedance==0.1.3"` |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.3/lfx_acedatacloud_suno-0.1.3-py3-none-any.whl"` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.3/lfx_acedatacloud_seedance-0.1.3-py3-none-any.whl"` |
 | HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "lfx-acedatacloud-happyhorse==0.1.3"` |
 | GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "lfx-acedatacloud-gpt-image==0.1.3"` |
 | Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "lfx-acedatacloud-nano-banana==0.1.3"` |
