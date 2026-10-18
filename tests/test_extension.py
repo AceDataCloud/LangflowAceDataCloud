@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 from pathlib import Path
 from types import SimpleNamespace
+from urllib.parse import parse_qs, urlsplit
 
 import httpx
 import pytest
@@ -56,6 +57,17 @@ def test_manifest_has_provider_and_bundle() -> None:
     manifest = load_manifest(ROOT).manifest
     assert manifest.providers[0].provider_id == "acedatacloud"
     assert manifest.bundles[0].name == "ace_data_cloud"
+    # Langflow renders api_docs_url as the provider's credential-acquisition link.
+    credential_url = urlsplit(manifest.providers[0].metadata["api_docs_url"])
+    assert credential_url.scheme == "https"
+    assert credential_url.netloc == "platform.acedata.cloud"
+    assert credential_url.path == "/console/applications"
+    assert parse_qs(credential_url.query) == {
+        "utm_source": ["langflow"],
+        "utm_medium": ["referral"],
+        "utm_campaign": ["evergreen"],
+        "utm_content": ["langflow_provider_api_key"],
+    }
 
 
 def test_ui_templates_keep_generation_and_retrieval_forms_separate() -> None:
