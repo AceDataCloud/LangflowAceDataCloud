@@ -81,7 +81,12 @@ def main() -> None:
             payload = json.loads(path.read_text())
             assert "ext:ace_data_cloud:" not in path.read_text()
             for node in payload["data"]["nodes"]:
-                key_field = node["data"]["node"]["template"].get("api_key")
+                form = node["data"]["node"]
+                if node["data"]["type"].startswith("ext:ace_"):
+                    assert form["bundle"] == f"ace_{key}"
+                    assert form["extension"] == dist.metadata["Name"]
+                    assert form["namespaced_id"] == node["data"]["type"]
+                key_field = form["template"].get("api_key")
                 assert not key_field or not key_field.get("value")
             graph = Graph.from_payload(payload, emit_extension_events=False)
             assert len(graph.vertices) == len(payload["data"]["nodes"])

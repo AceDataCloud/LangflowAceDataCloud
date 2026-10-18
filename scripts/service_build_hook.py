@@ -14,6 +14,29 @@ from pathlib import Path
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
 
+def service_flow(value, *, module: str, bundle: str, extension: str):
+    """Rewrite saved component coordinates and embedded imports consistently."""
+    if isinstance(value, dict):
+        return {
+            key: service_flow(item, module=module, bundle=bundle, extension=extension)
+            for key, item in value.items()
+        }
+    if isinstance(value, list):
+        return [
+            service_flow(item, module=module, bundle=bundle, extension=extension)
+            for item in value
+        ]
+    if isinstance(value, str):
+        if value == "ace_data_cloud":
+            return bundle
+        if value == "lfx-acedatacloud":
+            return extension
+        return value.replace("ext:ace_data_cloud:", f"ext:{bundle}:").replace(
+            "lfx_acedatacloud", module
+        )
+    return value
+
+
 class ServiceBuildHook(BuildHookInterface):
     """Stage one service from canonical source, or use its self-contained sdist."""
 
@@ -76,9 +99,17 @@ class ServiceBuildHook(BuildHookInterface):
                 target = source / "examples" / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(
-                    example.read_text(encoding="utf-8")
-                    .replace("ext:ace_data_cloud:", f"ext:{config['bundle']}:")
-                    .replace("lfx_acedatacloud", module),
+                    json.dumps(
+                        service_flow(
+                            json.loads(example.read_text(encoding="utf-8")),
+                            module=module,
+                            bundle=config["bundle"],
+                            extension=self.metadata.core.name,
+                        ),
+                        ensure_ascii=False,
+                        indent=2,
+                    )
+                    + "\n",
                     encoding="utf-8",
                 )
         else:
