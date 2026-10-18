@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lfx-acedatacloud-seedance"
-version = "0.1.3"
+version = "0.1.4"
 description = "Seedance by Ace Data Cloud: generation and same-task retrieval for Langflow"
 readme = "README.md"
 requires-python = ">=3.10,<3.15"
@@ -15,8 +15,8 @@ keywords = ["langflow", "lfx", "seedance", "acedatacloud"]
 dependencies = ["lfx>=1.12.5,<2", "httpx>=0.24,<1"]
 
 [project.urls]
-Homepage = "https://platform.acedata.cloud"
-Documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/main/guides/seedance.md"
+Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_seedance_package_homepage"
+Documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/guides/seedance.md"
 Repository = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 
 [project.entry-points."langflow.extensions"]

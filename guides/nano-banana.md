@@ -5,13 +5,13 @@
 
 ## 1. Install and find the nodes
 
-In Langflow's Python environment, install `lfx-acedatacloud-nano-banana==0.1.3`, then restart the server:
+In Langflow's Python environment, install `lfx-acedatacloud-nano-banana==0.1.4`, then restart the server:
 
 ```bash
-python -m pip install "lfx-acedatacloud-nano-banana==0.1.3"
+python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_nano_banana-0.1.4-py3-none-any.whl"
 ```
 
-The [v0.1.3 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) also provides a wheel for this service. Open **Components → Nano Banana by Ace Data Cloud** or search the service name. This package registers only its two nodes and no chat provider. Its Python package `examples/` directory contains matching no-key Generate and Retrieve-only flows. See the [package README](../packages/nano-banana/README.md).
+The [v0.1.4 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.4) also provides a wheel for this service. Open **Components → Nano Banana by Ace Data Cloud** or search the service name. This package registers only its two nodes and no chat provider. Its Python package `examples/` directory contains matching no-key Generate and Retrieve-only flows. See the [package README](../packages/nano-banana/README.md).
 
 The [aggregate installation](../README.md#1-install-the-extension) provides all services and a native chat provider. Root [generation](../examples/nano_banana.json) and [retrieve-only](../examples/retrieve_only/nano_banana.json) examples use aggregate IDs. Service-only examples use a separate bundle ID; both categories can coexist without replacing saved nodes. Official default inclusion is still [under review](https://github.com/langflow-ai/langflow/pull/15659); the proposed official documentation URL may remain unavailable until accepted.
 
