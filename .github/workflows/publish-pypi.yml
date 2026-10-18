@@ -1,0 +1,99 @@
+name: Publish verified release to PyPI
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Published GitHub release tag
+        required: true
+        default: v0.1.4
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-pypi-${{ inputs.release_tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # Suno/Seedance project creation remains rate-limited; do not retry it here.
+        package: [lfx-acedatacloud, lfx-acedatacloud-gpt-image, lfx-acedatacloud-happyhorse, lfx-acedatacloud-nano-banana]
+    env:
+      RELEASE_TAG: ${{ inputs.release_tag }}
+      PACKAGE: ${{ matrix.package }}
+    steps:
+      - name: Require the existing publishing credential
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          if [ -z "$PYPI_TOKEN" ]; then
+            echo "::error::PYPI_TOKEN is not available to this repository; no upload attempted."
+            exit 1
+          fi
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Download the exact published assets and verify their digests
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, re, subprocess, urllib.request
+          from pathlib import Path
+          tag, package = os.environ["RELEASE_TAG"], os.environ["PACKAGE"]
+          if not re.fullmatch(r"v[0-9]+\.[0-9]+\.[0-9]+", tag):
+              raise SystemExit("Expected a stable vX.Y.Z release tag")
+          release = json.loads(subprocess.check_output([
+              "gh", "api", f"repos/{os.environ['GITHUB_REPOSITORY']}/releases/tags/{tag}"
+          ]))
+          if release["draft"] or release["prerelease"]:
+              raise SystemExit("The GitHub release must already be public and stable")
+          prefix = f"{package.replace('-', '_')}-{tag[1:]}"
+          names = {prefix + "-py3-none-any.whl", prefix + ".tar.gz"}
+          assets = [a for a in release["assets"] if a["name"] in names]
+          if {a["name"] for a in assets} != names:
+              raise SystemExit("Missing wheel or source archive")
+          Path("dist").mkdir()
+          expected = {}
+          for asset in assets:
+              with urllib.request.urlopen(asset["browser_download_url"], timeout=60) as response:
+                  data = response.read()
+              digest = hashlib.sha256(data).hexdigest()
+              if asset.get("digest") != "sha256:" + digest:
+                  raise SystemExit("GitHub asset digest mismatch")
+              Path("dist", asset["name"]).write_bytes(data)
+              expected[asset["name"]] = digest
+          Path("expected.json").write_text(json.dumps(expected))
+          PY
+      - name: Validate and publish the released distributions
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          python -m pip install 'twine>=6.1,<7'
+          python -m twine check dist/*
+          python -m twine upload --non-interactive --disable-progress-bar --skip-existing dist/*
+      - name: Verify PyPI serves exactly the uploaded files and new documentation
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          package, version = os.environ["PACKAGE"], os.environ["RELEASE_TAG"][1:]
+          with urllib.request.urlopen(f"https://pypi.org/pypi/{package}/{version}/json", timeout=60) as response:
+              data = json.load(response)
+          actual = {item["filename"]: item["digests"]["sha256"] for item in data["urls"]}
+          expected = json.loads(Path("expected.json").read_text())
+          if any(actual.get(name) != digest for name, digest in expected.items()):
+              raise SystemExit("Published PyPI file digest mismatch")
+          for text in ["Initialize General Application", "Manage Keys", "Allowed APIs", "Credential",
+                       "utm_source=", "utm_medium=", "utm_campaign=", "utm_content="]:
+              if text not in data["info"]["description"]:
+                  raise SystemExit(f"PyPI README missing {text}")
+          print(f"Verified {package}=={version}: two files and complete onboarding/UTM")
+          PY
