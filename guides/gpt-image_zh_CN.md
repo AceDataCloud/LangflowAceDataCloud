@@ -7,10 +7,10 @@
 在运行 Langflow 的同一 Python 环境安装后重启：
 
 ```bash
-python -m pip install "lfx-acedatacloud-gpt-image==0.1.3"
+python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_gpt_image-0.1.4-py3-none-any.whl"
 ```
 
-[v0.1.3 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) 也提供该服务的独立 wheel。打开 **Components → GPT Image by Ace Data Cloud**，或直接搜索服务名。单服务包只注册两个节点，不注册聊天 Provider。使用该 Python 包内 `examples/` 的生成/纯查询两份无 Key 流程；详见[包 README](../packages/gpt-image/README.md)。
+[v0.1.4 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.4) 也提供该服务的独立 wheel。打开 **Components → GPT Image by Ace Data Cloud**，或直接搜索服务名。单服务包只注册两个节点，不注册聊天 Provider。使用该 Python 包内 `examples/` 的生成/纯查询两份无 Key 流程；详见[包 README](../packages/gpt-image/README.md)。
 
 [合集安装](../README_zh_CN.md#1-安装扩展)提供全部服务和原生聊天 Provider。根目录[生成示例](../examples/gpt_image.json)及[纯查询示例](../examples/retrieve_only/gpt_image.json)使用合集 ID；独立包的示例使用单服务 ID，两种分类可以共存，不替换旧保存节点。[官方默认收录](https://github.com/langflow-ai/langflow/pull/15659)仍在审核，拟发布官方文档 URL 在获接受前可能不可用。
 
