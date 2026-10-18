@@ -7,6 +7,6 @@ class HappyHorseRetrieveTaskComponent(AceTaskComponent):
     display_name = "Happy Horse Retrieve Task by Ace Data Cloud"
     description = "Query the same Happy Horse task through Ace Data Cloud without another paid generation."
     icon = "Clapperboard"
-    documentation = "https://docs.langflow.org/acedatacloud-happy-horse"
+    documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/happy-horse.md"
     service_name = "happy_horse"
     inputs = task_inputs("happy_horse")

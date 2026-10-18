@@ -2,13 +2,17 @@
 
 这是Ace提供的Nano Banana集成，不是原服务官方插件。独立的Generate和Retrieve Task节点支持一次生成、同ID查询。英文版见[Nano Banana guide](nano-banana.md)。
 
-## 1. 安装后按服务名搜索
+## 1. 安装并找到节点
 
-当前可用安装方式：请管理员按[公开安装说明](../README_zh_CN.md#1-安装扩展)，在运行Langflow的同一Python环境安装[公开0.1.2 wheel](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2)，然后重启。下方带品牌标题的0.1.3节点仍是候选，不能用0.1.2安装结果证明这些标题已发布。[默认发行投稿](https://github.com/langflow-ai/langflow/pull/15659)仍待审核及发包；[拟发布官方组件页](https://docs.langflow.org/bundles-acedatacloud)尚不是当前可用的安装入口，未发布时可能返回404。官方目录、安装成功和默认内置不是同一件事。
+在运行 Langflow 的同一 Python 环境安装后重启：
 
-组件搜索输入`nano banana`或`nanobanana`；候选0.1.3会显示**Nano Banana Generate by Ace Data Cloud**与**Nano Banana Retrieve Task by Ace Data Cloud**，0.1.2仍是旧标题。也可进入**Components → Ace Data Cloud**，导入[不含Key的现有示例](../examples/nano_banana.json)。
+```bash
+python -m pip install "lfx-acedatacloud-nano-banana==0.1.3"
+```
 
-**只装本服务的 0.1.3 源码候选：** 检出 [PR #6 精确 head](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6)，在仓库根目录、Langflow 同一 Python 环境运行 `python -m pip install ./packages/nano-banana`，重启后打开本服务 **by Ace Data Cloud** 分类。只注册两个服务节点，不注册聊天 Provider；尚未正式发包。使用 wheel 的 Python 包内 `examples/` 两份无 Key 流程，其服务 ID 与下文合集示例不同。共存和构建说明见[包 README](../packages/nano-banana/README.md)。
+[v0.1.3 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) 也提供该服务的独立 wheel。打开 **Components → Nano Banana by Ace Data Cloud**，或直接搜索服务名。单服务包只注册两个节点，不注册聊天 Provider。使用该 Python 包内 `examples/` 的生成/纯查询两份无 Key 流程；详见[包 README](../packages/nano-banana/README.md)。
+
+[合集安装](../README_zh_CN.md#1-安装扩展)提供全部服务和原生聊天 Provider。根目录[生成示例](../examples/nano_banana.json)及[纯查询示例](../examples/retrieve_only/nano_banana.json)使用合集 ID；独立包的示例使用单服务 ID，两种分类可以共存，不替换旧保存节点。[官方默认收录](https://github.com/langflow-ai/langflow/pull/15659)仍在审核，拟发布官方文档 URL 在获接受前可能不可用。
 
 ## 2. 注册、取得应用API Token
 
@@ -54,7 +58,7 @@
 
 ## 常见问题
 
-- 搜不到：核同一Python环境安装并重启；当前正式包和候选品牌标题分开。
+- 搜不到：核同一Python环境安装并重启；确认已安装0.1.3或以上版本。
 - 401/403：核原始应用token、服务权限、余额和提交/查询接口白名单。
 - 400：核当前模型及该路由参数。
 - 429：降低并发，保持自动收费重试关闭。

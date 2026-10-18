@@ -7,6 +7,6 @@ class SunoRetrieveTaskComponent(AceTaskComponent):
     display_name = "Suno Retrieve Task by Ace Data Cloud"
     description = "Query the same Suno task through Ace Data Cloud without another paid generation."
     icon = "Music"
-    documentation = "https://docs.langflow.org/acedatacloud-suno"
+    documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno.md"
     service_name = "suno"
     inputs = task_inputs("suno")

@@ -428,7 +428,7 @@ def test_service_first_labels_keep_stable_saved_flow_ids() -> None:
             assert component.klass.icon in {"Music", "Clapperboard", "Image"}
             assert component.namespaced_id.startswith("ext:ace_data_cloud:")
             assert component.klass.documentation.startswith(
-                "https://docs.langflow.org/acedatacloud-"
+                "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/"
             )
 
 

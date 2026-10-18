@@ -5,11 +5,15 @@
 
 ## 1. Install and find the nodes
 
-For a currently available installation, ask the Langflow administrator to follow the [public installation instructions](https://github.com/AceDataCloud/LangflowAceDataCloud#1-install-the-extension) and install the [public v0.1.2 GitHub wheel](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) in the same Python environment, then restart. The branded 0.1.3 node labels described below are still a candidate, so v0.1.2 installation does not prove those labels have shipped. Default inclusion is proposed in [the open Langflow PR](https://github.com/langflow-ai/langflow/pull/15659). The [proposed official bundle page](https://docs.langflow.org/bundles-acedatacloud) becomes an installation entry only after acceptance and publication; the public URL may return404 before then. A local installation does not prove official publication.
+In Langflow's Python environment, install `lfx-acedatacloud-seedance==0.1.3`, then restart the server:
 
-After installation and restart, search **seedance** under Components, or open **Components → Ace Data Cloud**. Import the [no-key Seedance flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/main/examples/seedance.json) if you prefer ready connections.
+```bash
+python -m pip install "lfx-acedatacloud-seedance==0.1.3"
+```
 
-For a **service-only 0.1.3 source candidate**, check out the exact [PR #6 head](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6), then run `python -m pip install ./packages/seedance` from the repository root in Langflow's Python environment. Restart and open the service's **by Ace Data Cloud** category. This installs only its two nodes and no chat provider. It is not a published package listing. Use the two flow JSONs shipped inside its Python package `examples/`, whose service bundle IDs differ from the aggregate examples linked below. See the [package README](../packages/seedance/README.md) for coexistence and build details.
+The [v0.1.3 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) also provides a wheel for this service. Open **Components → Seedance by Ace Data Cloud** or search the service name. This package registers only its two nodes and no chat provider. Its Python package `examples/` directory contains matching no-key Generate and Retrieve-only flows. See the [package README](../packages/seedance/README.md).
+
+The [aggregate installation](../README.md#1-install-the-extension) provides all services and a native chat provider. Root [generation](../examples/seedance.json) and [retrieve-only](../examples/retrieve_only/seedance.json) examples use aggregate IDs. Service-only examples use a separate bundle ID; both categories can coexist without replacing saved nodes. Official default inclusion is still [under review](https://github.com/langflow-ai/langflow/pull/15659); the proposed official documentation URL may remain unavailable until accepted.
 
 ## 2. Get an application API Token
 
@@ -60,7 +64,7 @@ Check [Usage History](https://platform.acedata.cloud/console/usages?utm_source=o
 
 ## Troubleshooting
 
-- **No search result:** confirm the bundle is installed in the server's Python environment, restart it, then search the service name. The pending branded labels require the corresponding release.
+- **No search result:** confirm the bundle is installed in the server's Python environment, restart it, then search the service name. Use version 0.1.3 or later for the service-first labels.
 - **401/403:** check the raw application token, service access and allowed submit/query routes.
 - **400:** check model and route-specific fields against the current guide.
 - **429:** wait and reduce concurrency; keep automatic paid retries off.

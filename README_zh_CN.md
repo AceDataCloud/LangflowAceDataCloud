@@ -4,12 +4,12 @@
 
 [English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **上架状态：** [0.1.2 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) 已可用 pip 安装；尚未发布到 PyPI，也未进入 Langflow 默认精选依赖。[Langflow 官方投稿](https://github.com/langflow-ai/langflow/pull/15659)正在审核。
+> **版本 0.1.3：** 可从 PyPI 安装合集或单个服务，也可使用 [GitHub Release 的 wheel](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3)。[Langflow 官方默认收录](https://github.com/langflow-ai/langflow/pull/15659)仍在审核中。
 
 
 ## 先按服务名找入口
 
-本候选提供 **Suno / Seedance / Happy Horse / GPT Image / Nano Banana … by Ace Data Cloud** 独立节点；生成和查询分开。可在组件搜索直接输入服务名，不必先知道Ace。图标按音频、视频和图片分类。现有`ext:ace_data_cloud:<Class>@official`流程ID不变。
+本扩展提供 **Suno / Seedance / Happy Horse / GPT Image / Nano Banana … by Ace Data Cloud** 独立节点；生成和查询分开。可在组件搜索直接输入服务名，不必先知道Ace。图标按音频、视频和图片分类。现有`ext:ace_data_cloud:<Class>@official`流程ID不变。
 
 - [Suno：音乐与音频](guides/suno_zh_CN.md)
 - [Seedance：视频](guides/seedance_zh_CN.md)
@@ -17,50 +17,37 @@
 - [GPT Image：图片](guides/gpt-image_zh_CN.md)
 - [Nano Banana：图片](guides/nano-banana_zh_CN.md)
 
-这些是Ace提供的集成，不冒充原服务官方插件。当前正式wheel为0.1.2，带品牌标题的候选为0.1.3；官方默认安装已在[Langflow投稿](https://github.com/langflow-ai/langflow/pull/15659)提出，须审核、合并和发行后才算上线。下文历史截图保留原日期和旧标签。
+这些集成由 Ace Data Cloud 提供，不冒充原服务官方插件。下方历史截图保留原日期、宿主版本和旧标签。
 
 ## 1. 安装扩展
 
-### 只安装一个服务（0.1.3 源码候选）
+### 只安装一个服务
 
-本候选有五个实际独立的发行包。在 PR #6 精确 head 的完整仓库中，按需选择：
-
-| 服务 | 发行包 | 在仓库根目录安装 |
+| 服务 | 发行包 | 在 Langflow 同一 Python 环境安装 |
 | --- | --- | --- |
-| Suno | `lfx-acedatacloud-suno` | `python -m pip install ./packages/suno` |
-| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install ./packages/seedance` |
-| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install ./packages/happyhorse` |
-| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install ./packages/gpt-image` |
-| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install ./packages/nano-banana` |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install "lfx-acedatacloud-suno==0.1.3"` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "lfx-acedatacloud-seedance==0.1.3"` |
+| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "lfx-acedatacloud-happyhorse==0.1.3"` |
+| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "lfx-acedatacloud-gpt-image==0.1.3"` |
+| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "lfx-acedatacloud-nano-banana==0.1.3"` |
 
-在 Langflow 的同一个 Python 环境安装并重启；每包只注册本服务的生成和查询两个节点，
-分类为 **服务名 by Ace Data Cloud**，不安装完整合集、不注册聊天 Provider。
-五包尚未在 PyPI 或 0.1.2 GitHub Release 发布；先核对并检出
-[PR #6](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6) 当前完整 head。
+每包只注册本服务的 Generate 和 Retrieve Task 两个节点，分类为 **服务名 by Ace Data Cloud**，不安装完整合集、不注册聊天 Provider。安装后重启服务器。每个 wheel 的 Python 包内 `examples/` 附生成与纯查询两份无 Key 流程。
 
-每个 wheel 的 Python 包内 `examples/` 附有生成和纯查询两份无 Key 流程，使用独立的
-`ext:ace_<service>:*` ID。仓库根目录原示例仍用合集 `ext:ace_data_cloud:*` ID，需安装合集。
-五包可共同安装，文件和注册 ID 均不冲突；与合集共存时两个分类都会保留，旧保存流继续使用
-旧 ID。安装单服务包不会自动迁移旧节点。
+独立服务流程使用 `ext:ace_<service>:*` ID；仓库根目录的原示例仍使用合集 `ext:ace_data_cloud:*` ID，需安装合集。五包可共存；与合集共存时保留两个分类和原保存流 ID，不自动迁移节点。
 
-### 安装当前正式合集
-
-请管理员在运行 Langflow 的**同一个 Python 环境**中安装。本地全新环境示例：
+### 安装合集与原生聊天 Provider
 
 ```bash
 uv venv --python 3.12
 source .venv/bin/activate
-uv pip install "langflow==1.12.5"
-uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.2/lfx_acedatacloud-0.1.2-py3-none-any.whl"
+uv pip install "langflow==1.12.6" "lfx-acedatacloud==0.1.3"
 lfx extension list
 langflow run
 ```
 
-也可克隆本仓库后执行 `uv pip install .` 从源码安装。GitHub wheel 是公开包文件，但不等于 PyPI 收录。
+[v0.1.3 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) 提供相同六个发行包的 wheel 和源码归档。合集 wheel 为 `lfx_acedatacloud-0.1.3-py3-none-any.whl`。下载后在服务器的同一 Python 环境安装并重启；合集提供 17 个生成动作、15 个任务查询节点和命名 Ace Data Cloud 模型 Provider。
 
-现有 Langflow 服务安装后需要重启。打开 `langflow run` 显示的本地地址（通常为 `http://localhost:7860`），在流程中选择 **Components → Ace Data Cloud**。这里有 17 个服务操作和 15 个独立任务查询组件。某台服务器能看到组件，只证明该服务器已经安装扩展。
-
-![Langflow 1.12.5 中的 Ace Data Cloud 组件分组](_assets/tutorial/04-service-components.png)
+![Langflow 1.12.5 历史组件分类截图](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/04-service-components.png)
 
 ## 2. 获取权限正确的 API Key
 
@@ -69,11 +56,11 @@ langflow run
 1. 登录 [Ace Data Cloud → 我的应用](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key)，打开 **General application（通用应用）**。通用应用 Key 可用于账号有权使用的多个服务；服务专用 Key 仅限对应服务。
 2. 复用当前 Key 时，点击下图 **①复制**。要单独给 Langflow 创建 Key，点击 **②Manage Keys（管理密钥）→ Create（创建）**。
 
-![复制当前 Key 或进入管理密钥](_assets/tutorial/get-api-key-en.png)
+![复制当前 Key 或进入管理密钥](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/get-api-key-en.png)
 
 3. 填名称，例如 `Langflow tutorial`，按需设置过期时间、用量与 **Allowed APIs（允许的 API）**，点击 **Create**，再回到列表或应用卡片复制 token。
 
-![按需新建专用 Key](_assets/tutorial/create-api-key-en.png)
+![按需新建专用 Key](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/create-api-key-en.png)
 
 4. 首次付费调用前检查服务权限、当前价格和余额。若启用 **Allowed APIs**，GPT Image 需要 `/openai/images/generations` 和 `/openai/tasks`；对话模型需要 `/v1/models` 和 `/v1/chat/completions`。只复制 token 本身，不加 `Bearer `，不用平台管理 token，也不把 Key 写进提示词、流程 JSON 或截图。
 
@@ -81,15 +68,15 @@ langflow run
 
 点击右上角头像 → **Settings → Global Variables → Add New**。**Type** 选 **Credential**，**Name** 填 `ACEDATACLOUD_API_KEY`，在 **Value** 粘贴 Key，然后点 **Save Variable**。保存后的值会打码。
 
-![尚未输入 Key 的 Create Variable 对话框](_assets/tutorial/17-create-credential.png)
+![尚未输入 Key 的 Create Variable 对话框](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/17-create-credential.png)
 
-![凭据型全局变量保存后被打码](_assets/tutorial/18-saved-credential.png)
+![凭据型全局变量保存后被打码](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/18-saved-credential.png)
 
 同一个变量也会连接模型 Provider。进入 **Settings → Model Providers → Ace Data Cloud**，确认 API Key 已连接。已发布的 0.1.2 包仍使用旧版 84 个 ID 过滤。本次 0.1.3 源码改为从当前公开对话目录与此 Key 可见模型取交集；0.1.3 正式发布后，新文本模型无需等待扩展再次发版。打开想使用的具体模型。
 
-![Langflow 设置中的 Ace Data Cloud 模型 Provider](_assets/tutorial/26-model-provider-settings.png)
+![Langflow 设置中的 Ace Data Cloud 模型 Provider](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/26-model-provider-settings.png)
 
-![已连接并打码的 Provider 凭据及模型列表](_assets/tutorial/27-model-provider-detail.png)
+![已连接并打码的 Provider 凭据及模型列表](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/27-model-provider-detail.png)
 
 每个服务节点的 **Ace Data Cloud API key** 字段都有地球图标；点击后选择 `ACEDATACLOUD_API_KEY`。GPT Image 首跑流程的 Generate 和 Retrieve Task **都要绑定**。流程保存的是变量名，Key 值存放在 Langflow 的 Credential 全局变量中。分享导出的流程前仍要检查是否混入明文密钥。实测 Langflow 1.12.5 在 `LANGFLOW_REMOVE_API_KEYS=true` 时也会在重新加载时去掉此字段的全局变量引用；要持久绑定请使用默认设置，并重载流程确认引用仍在。
 
@@ -97,21 +84,21 @@ langflow run
 
 在 Projects 页面点 **Upload a flow**，选择 [`examples/chat_model.json`](examples/chat_model.json)。流程把 **Ace Data Cloud → `gpt-4.1-mini`** 的 Language Model 连到 Chat Output，固定输入为 `Reply with exactly OK.`。API Key 覆盖字段留空，使用上一步配置的 Provider 凭据。只点击一次 Chat Output 的 **Run component** 三角按钮，再查看输出或 **Traces**。
 
-![可导入的对话模型最小流程](_assets/tutorial/31-chat-model-flow.png)
+![可导入的对话模型最小流程](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/31-chat-model-flow.png)
 
 真实测试返回 `OK`，输入 11 tokens、输出 5 tokens。流程追踪与一条对应的 Credits 用量记录均已读回。你的结果和费用取决于当前模型与账号。
 
-![Langflow Traces 中的真实模型结果](_assets/tutorial/33-chat-model-trace.png)
+![Langflow Traces 中的真实模型结果](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/33-chat-model-trace.png)
 
 ## 5. 生成一张 GPT Image，只查询同一个任务
 
 上传 [`examples/gpt_image.json`](examples/gpt_image.json)。Langflow 1.12.5 成功导入该无密钥文件，显示三节点路径：
 
-![Projects 页面显示无密钥流程上传成功](_assets/tutorial/12-import-result.png)
+![Projects 页面显示无密钥流程上传成功](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/12-import-result.png)
 
 **GPT Image Generate → GPT Image Retrieve Task → Chat Output**
 
-![实际导入的 GPT Image 流程与两条连线](_assets/tutorial/13-imported-gpt-image-flow.png)
+![实际导入的 GPT Image 流程与两条连线](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/13-imported-gpt-image-flow.png)
 
 在两个 Ace 节点都绑定 `ACEDATACLOUD_API_KEY`。示例已填好以下首跑参数，其他参数留空：
 
@@ -127,29 +114,29 @@ langflow run
 
 在编辑器选中 Generate → **Parameters**，对 **Additional route parameters** 点 **Add**，即可看到预填的 `async=true`。提交接口会尽快返回任务 ID，不必等媒体全部生成。
 
-![Langflow 0.1.1 实际界面中的 async true 参数](_assets/tutorial/41-async-first-run.png)
+![Langflow 0.1.1 实际界面中的 async true 参数](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/41-async-first-run.png)
 
 只点击 **Chat Output** 的 **Run component 一次**。Generate 只提交一次付费任务，并请求尽快返回任务 ID；返回的 `task_id` 已连到 Retrieve Task 的 **Submitted task** 输入。查询节点仅调用 `/openai/tasks`，最多等待 240 秒，始终查询同一任务 ID。流程变绿不能单独证明媒体任务已经完成。
 
-![一次完成的 Langflow 运行及打码凭据引用](_assets/tutorial/21-gpt-image-run.png)
+![一次完成的 Langflow 运行及打码凭据引用](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/21-gpt-image-run.png)
 
-![Flow Activity 中的一次成功运行](_assets/tutorial/22-run-traces.png)
+![Flow Activity 中的一次成功运行](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/22-run-traces.png)
 
 真实测试返回 `status=succeeded`、`success=true`、任务 ID `ac4ffabb-ada6-4689-b275-7e9f9928493a` 和一个 PNG 链接。该媒体已通过 HTTPS 打开，响应为 `200 image/png`。
 
-![Langflow Traces 中的真实任务结果](_assets/tutorial/25-task-output.png)
+![Langflow Traces 中的真实任务结果](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/25-task-output.png)
 
-![该任务生成的图片](_assets/tutorial/38-generated-image.png)
+![该任务生成的图片](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/38-generated-image.png)
 
 如果状态仍是 `pending`，**不要重跑生成流程**，否则会再次提交付费任务。导入 [`examples/retrieve_only/gpt_image.json`](examples/retrieve_only/gpt_image.json)，绑定同一个 Credential 变量，在 **Task ID** 粘贴原任务 ID，然后运行 Chat Output。这个流程没有生成节点；直到任务结束前，只重复运行此查询流程。
 
 如果提交超时但服务已接收，先查 Usage History，不要再提交。GPT Image、Midjourney、Veo 的任务查询组件还可在未返回任务 ID 时用请求历史中的 **Trace ID** 找回任务；其他服务可从原用量记录找任务 ID，或带 trace ID 联系支持。只查询找回的任务，不要为了解状态而重新生成。
 
-![真实 Midjourney 任务通过 Trace ID 在独立 Langflow 查询流程中找回](_assets/tutorial/39-trace-recovery.png)
+![真实 Midjourney 任务通过 Trace ID 在独立 Langflow 查询流程中找回](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/39-trace-recovery.png)
 
-![只查询原任务 ID 的独立流程](_assets/tutorial/34-retrieve-only.png)
+![只查询原任务 ID 的独立流程](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/34-retrieve-only.png)
 
-![没有生成节点的独立查询流程完成运行](_assets/tutorial/35-retrieve-only-run.png)
+![没有生成节点的独立查询流程完成运行](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/35-retrieve-only-run.png)
 
 ## 6. 核对费用
 

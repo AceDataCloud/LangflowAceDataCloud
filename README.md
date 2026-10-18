@@ -4,12 +4,12 @@ Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or late
 
 [简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
-> **Availability:** The [0.1.2 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2) is pip-installable. It is not yet published on PyPI or included in Langflow's default curated installation. The [official Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) is under review.
+> **Version 0.1.3:** install the aggregate or a single service from PyPI, or use the wheels in the [GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3). [Official Langflow default inclusion](https://github.com/langflow-ai/langflow/pull/15659) remains under review.
 
 
 ## Find the service you already know
 
-Search the component palette for **suno**, **seedance**, **happyhorse**, **gpt image**, or **nano banana**. The candidate exposes independent **Generate** and **Retrieve Task** nodes with service-first labels ending **by Ace Data Cloud**, category-appropriate audio/video/image icons, and their own guide links. Existing `ext:ace_data_cloud:<Class>@official` saved-flow IDs are unchanged.
+Search the component palette for **suno**, **seedance**, **happyhorse**, **gpt image**, or **nano banana**. The extension exposes independent **Generate** and **Retrieve Task** nodes with service-first labels ending **by Ace Data Cloud**, category-appropriate audio/video/image icons, and their own guide links. Existing `ext:ace_data_cloud:<Class>@official` saved-flow IDs are unchanged.
 
 - [Suno music and audio](guides/suno.md) · [中文](guides/suno_zh_CN.md)
 - [Seedance video](guides/seedance.md) · [中文](guides/seedance_zh_CN.md)
@@ -17,54 +17,37 @@ Search the component palette for **suno**, **seedance**, **happyhorse**, **gpt i
 - [GPT Image images](guides/gpt-image.md) · [中文](guides/gpt-image_zh_CN.md)
 - [Nano Banana images](guides/nano-banana.md) · [中文](guides/nano-banana_zh_CN.md)
 
-These integrations are provided by Ace Data Cloud and do not claim endorsement by the service owners. The current released wheel is 0.1.2; the branded labels belong to candidate 0.1.3. [The Langflow submission](https://github.com/langflow-ai/langflow/pull/15659) now requests default inclusion, which still requires maintainer acceptance and an official release. Historical screenshots below retain their original version and labels.
+These integrations are provided by Ace Data Cloud and do not claim endorsement by the service owners. Historical screenshots below retain their original date, Langflow version and labels.
 
 ## 1. Install the extension
 
-### Install only one service (0.1.3 source candidate)
+### Install only one service
 
-Five separate distributions are buildable from this candidate checkout:
-
-| Service | Distribution | Install from the repository root |
+| Service | Distribution | Install in Langflow's Python environment |
 | --- | --- | --- |
-| Suno | `lfx-acedatacloud-suno` | `python -m pip install ./packages/suno` |
-| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install ./packages/seedance` |
-| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install ./packages/happyhorse` |
-| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install ./packages/gpt-image` |
-| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install ./packages/nano-banana` |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install "lfx-acedatacloud-suno==0.1.3"` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "lfx-acedatacloud-seedance==0.1.3"` |
+| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "lfx-acedatacloud-happyhorse==0.1.3"` |
+| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "lfx-acedatacloud-gpt-image==0.1.3"` |
+| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "lfx-acedatacloud-nano-banana==0.1.3"` |
 
-Use the same Python environment as Langflow, then restart the server. Each
-service package registers only Generate and Retrieve Task under **Components →
-<service> by Ace Data Cloud**, with no chat provider or aggregate extension
-dependency. These packages are not published on PyPI or in the 0.1.2 release.
-Review or clone [PR #6](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6)
-at its exact head before using these candidate paths.
+Each service package registers only Generate and Retrieve Task under **Components → service name by Ace Data Cloud**, with no chat provider or aggregate dependency. Restart an existing server after installation. Each wheel includes matching no-key flows in its Python package's `examples/` directory.
 
-Each wheel includes two no-key flow JSONs inside its Python package's `examples/`
-directory. Use those with a service-only install. Root `examples/` retain
-aggregate `ext:ace_data_cloud:*` IDs. Service packages use distinct
-`ext:ace_<service>:*` IDs; all five can coexist without file or registry collisions.
-If installed alongside the aggregate, both categories remain visible so existing
-saved flows keep working. Installing a service does not migrate saved nodes.
+Service flows use `ext:ace_<service>:*` IDs. Root `examples/` keep aggregate `ext:ace_data_cloud:*` IDs and require the aggregate. All five packages can coexist; with the aggregate installed, both categories remain so saved flows keep their IDs. Installation does not migrate saved nodes.
 
-### Install the released aggregate
-
-Ask your Langflow administrator to install it in the **same Python environment** as Langflow. For a fresh local environment:
+### Install the aggregate and native chat provider
 
 ```bash
 uv venv --python 3.12
 source .venv/bin/activate
-uv pip install "langflow==1.12.5"
-uv pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.2/lfx_acedatacloud-0.1.2-py3-none-any.whl"
+uv pip install "langflow==1.12.6" "lfx-acedatacloud==0.1.3"
 lfx extension list
 langflow run
 ```
 
-You can also clone this repository and run `uv pip install .` to install from source. The GitHub wheel is a public package artifact, not a PyPI listing.
+The [v0.1.3 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) provides the same six distributions as wheels and source archives. The aggregate wheel is `lfx_acedatacloud-0.1.3-py3-none-any.whl`. Install downloaded wheels in the server's Python environment, then restart. The aggregate exposes 17 generation actions, 15 task readers and the named Ace Data Cloud model provider under **Components → Ace Data Cloud**.
 
-Restart an existing Langflow server after installing. Open the local URL shown by `langflow run` (normally `http://localhost:7860`). In a flow, open **Components → Ace Data Cloud**. The package exposes 17 service actions and 15 separate task readers. An installed Python package appearing in this palette is proof of this server's installation only.
-
-![Ace Data Cloud component group in Langflow 1.12.5](_assets/tutorial/04-service-components.png)
+![Historical Ace component group on Langflow 1.12.5](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/04-service-components.png)
 
 ## 2. Create an API key with the right access
 
@@ -73,11 +56,11 @@ New account? Register and sign in first. If the Applications page has no General
 1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key) and open **General application**. A general-application key can use the services your account has access to; a service-specific key is limited to that service.
 2. To reuse the selected key, click the copy icon marked **1** below. For a separate Langflow key, click **Manage Keys** marked **2**, then **Create**.
 
-![Copy the selected key or open Manage Keys](_assets/tutorial/get-api-key-en.png)
+![Copy the selected key or open Manage Keys](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/get-api-key-en.png)
 
 3. Name the new key, for example `Langflow tutorial`, and set expiration, usage and **Allowed APIs** restrictions as needed. Click **Create**, return to the list or application card, and copy the token.
 
-![Create an optional separate API key](_assets/tutorial/create-api-key-en.png)
+![Create an optional separate API key](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/create-api-key-en.png)
 
 4. Check service access, current price and balance before a paid run. If **Allowed APIs** is enabled, include both routes used by the flow: `/openai/images/generations` and `/openai/tasks` for GPT Image; `/v1/models` and `/v1/chat/completions` for the chat model. Copy only the token string. Do not prepend `Bearer `, use a platform management token, or put the key in a prompt, flow export or screenshot.
 
@@ -85,15 +68,15 @@ New account? Register and sign in first. If the Applications page has no General
 
 Choose your profile icon → **Settings → Global Variables → Add New**. Set **Type** to **Credential**, **Name** to `ACEDATACLOUD_API_KEY`, paste the token into **Value**, then choose **Save Variable**. The saved value is masked.
 
-![Langflow's Create Variable dialog before a key is entered](_assets/tutorial/17-create-credential.png)
+![Langflow's Create Variable dialog before a key is entered](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/17-create-credential.png)
 
-![Credential global variable saved with its value masked](_assets/tutorial/18-saved-credential.png)
+![Credential global variable saved with its value masked](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/18-saved-credential.png)
 
-The same variable connects the named model provider. Open **Settings → Model Providers → Ace Data Cloud** and check the API Key shows as connected. The published 0.1.2 package still uses the earlier 84-ID filter. This 0.1.3 source change refreshes the list from the current public chat catalog and the models visible to your key, so new text models do not need a package update after 0.1.3 is released. Enable the specific model you want to use.
+The same variable connects the named model provider. Open **Settings → Model Providers → Ace Data Cloud** and check the API Key shows as connected. Version 0.1.2 used the earlier 84-ID filter. Version 0.1.3 refreshes the list from the current public chat catalog and the models visible to your key, so new text models do not need a package update with this release. Enable the specific model you want to use.
 
-![Named Ace Data Cloud provider in Langflow settings](_assets/tutorial/26-model-provider-settings.png)
+![Named Ace Data Cloud provider in Langflow settings](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/26-model-provider-settings.png)
 
-![Connected provider credential and model list, with the key masked](_assets/tutorial/27-model-provider-detail.png)
+![Connected provider credential and model list, with the key masked](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/27-model-provider-detail.png)
 
 On each service node, click the globe icon in **Ace Data Cloud API key** and select `ACEDATACLOUD_API_KEY`. The first GPT Image flow has **two** key fields: one on Generate and one on Retrieve Task. Bind both. A global variable reference saves the variable name in the flow; the token stays in Langflow's credential store. Before sharing an exported flow, inspect it for literal secrets. In our Langflow 1.12.5 test, enabling `LANGFLOW_REMOVE_API_KEYS=true` also removed this field's global-variable reference on reload; use the default setting for persistent binding and confirm the reference survives a reload.
 
@@ -101,21 +84,21 @@ On each service node, click the globe icon in **Ace Data Cloud API key** and sel
 
 On the Projects page, click **Upload a flow** and select [`examples/chat_model.json`](examples/chat_model.json). It has a Language Model node set to **Ace Data Cloud → `gpt-4.1-mini`**, connected to Chat Output. Its fixed input says `Reply with exactly OK.`. The API Key override is empty so Langflow uses the provider credential configured above. Click the **Run component** triangle on Chat Output once, then inspect the output or **Traces**.
 
-![Ready-to-import chat model flow](_assets/tutorial/31-chat-model-flow.png)
+![Ready-to-import chat model flow](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/31-chat-model-flow.png)
 
 The recorded test returned `OK` using 11 input and 5 output tokens. The model and reply were verified in the flow trace and one matching Credits usage record. Your response and charge depend on the current model and account.
 
-![Actual Ace Data Cloud model response in Langflow Traces](_assets/tutorial/33-chat-model-trace.png)
+![Actual Ace Data Cloud model response in Langflow Traces](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/33-chat-model-trace.png)
 
 ## 5. Generate one GPT Image and query the same task
 
 Upload [`examples/gpt_image.json`](examples/gpt_image.json). Langflow 1.12.5 accepted the no-key JSON and displayed this path:
 
-![The no-key flow uploaded successfully in Projects](_assets/tutorial/12-import-result.png)
+![The no-key flow uploaded successfully in Projects](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/12-import-result.png)
 
 **GPT Image Generate → GPT Image Retrieve Task → Chat Output**
 
-![Actual imported GPT Image flow with two connections](_assets/tutorial/13-imported-gpt-image-flow.png)
+![Actual imported GPT Image flow with two connections](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/13-imported-gpt-image-flow.png)
 
 Bind `ACEDATACLOUD_API_KEY` to both Ace nodes. The example already sets these first-run values; leave other parameters empty:
 
@@ -131,29 +114,29 @@ Bind `ACEDATACLOUD_API_KEY` to both Ace nodes. The example already sets these fi
 
 In the editor, select Generate → **Parameters → Add** on **Additional route parameters** to inspect the prefilled `async=true` pair. It requests a task ID without waiting for the full media generation in the submit call.
 
-![The real 0.1.1 Langflow form with async true visible](_assets/tutorial/41-async-first-run.png)
+![The real 0.1.1 Langflow form with async true visible](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/41-async-first-run.png)
 
 Click **Run component** on **Chat Output once**. Generate makes one paid submission and requests an immediate task ID. Its returned `task_id` is connected to Retrieve Task's **Submitted task** input. Retrieve Task uses only `/openai/tasks` and waits up to 240 seconds for that same ID. A green flow before the service task is terminal is not proof that the media is ready.
 
-![One completed Langflow run with both API components and a masked credential reference](_assets/tutorial/21-gpt-image-run.png)
+![One completed Langflow run with both API components and a masked credential reference](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/21-gpt-image-run.png)
 
-![One successful run in Flow Activity](_assets/tutorial/22-run-traces.png)
+![One successful run in Flow Activity](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/22-run-traces.png)
 
 The real test returned `status=succeeded`, `success=true`, task ID `ac4ffabb-ada6-4689-b275-7e9f9928493a`, and one PNG URL. The returned media was opened over HTTPS and its response was `200 image/png`.
 
-![Actual task output in Langflow Traces](_assets/tutorial/25-task-output.png)
+![Actual task output in Langflow Traces](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/25-task-output.png)
 
-![Image produced by that run](_assets/tutorial/38-generated-image.png)
+![Image produced by that run](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/38-generated-image.png)
 
 If the result is still `pending`, **do not rerun the generation flow**. That would submit another paid task. Import [`examples/retrieve_only/gpt_image.json`](examples/retrieve_only/gpt_image.json), bind the same Credential variable, paste the original task ID into **Task ID**, and run Chat Output. This flow contains no generation node. Repeat this read-only flow until the task is terminal.
 
 If a submission times out after the service accepted it, check Usage History before another submission. GPT Image, Midjourney, and Veo task readers also accept a **Trace ID** from request history when the task ID was not returned. For other services, recover the task ID from the original usage record or ask support with its trace ID. Query the recovered task; never regenerate only to learn its status.
 
-![An actual Midjourney result recovered in a query-only Langflow flow using its trace ID](_assets/tutorial/39-trace-recovery.png)
+![An actual Midjourney result recovered in a query-only Langflow flow using its trace ID](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/39-trace-recovery.png)
 
-![Separate task lookup with the original task ID](_assets/tutorial/34-retrieve-only.png)
+![Separate task lookup with the original task ID](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/34-retrieve-only.png)
 
-![The retrieve-only flow completed without a generation node](_assets/tutorial/35-retrieve-only-run.png)
+![The retrieve-only flow completed without a generation node](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/35-retrieve-only-run.png)
 
 ## 6. Check the charge
 

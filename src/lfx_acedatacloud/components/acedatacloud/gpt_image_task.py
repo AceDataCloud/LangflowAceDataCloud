@@ -7,6 +7,6 @@ class GPTImageRetrieveTaskComponent(AceTaskComponent):
     display_name = "GPT Image Retrieve Task by Ace Data Cloud"
     description = "Query the same GPT Image task through Ace Data Cloud without another paid generation."
     icon = "Image"
-    documentation = "https://docs.langflow.org/acedatacloud-gpt-image"
+    documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/gpt-image.md"
     service_name = "gpt_image"
     inputs = task_inputs("gpt_image")
