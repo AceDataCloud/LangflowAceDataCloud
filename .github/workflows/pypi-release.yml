@@ -1,0 +1,48 @@
+name: Published PyPI service installs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  published-services:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DO_NOT_TRACK: "1"
+      LANGFLOW_MODELS_DEV_REFRESH: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - name: Install the published service packages through the normal PyPI index
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LANGFLOW_CONFIG_DIR: ${{ runner.temp }}/langflow-pypi-install
+        run: |
+          release_version=$(gh api repos/AceDataCloud/LangflowAceDataCloud/releases/latest --jq .tag_name)
+          [[ "$release_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
+          release_version=${release_version#v}
+          uv venv "$RUNNER_TEMP/pypi-venv"
+          uv pip install --python "$RUNNER_TEMP/pypi-venv/bin/python" 'lfx==1.12.6'
+          for service in suno seedance happyhorse gpt-image nano-banana; do
+            uv pip install --python "$RUNNER_TEMP/pypi-venv/bin/python" "lfx-acedatacloud-$service==$release_version"
+            "$RUNNER_TEMP/pypi-venv/bin/python" scripts/check_service_install.py --services "$service" --output "pypi-evidence/$service.json"
+            uv pip uninstall --python "$RUNNER_TEMP/pypi-venv/bin/python" "lfx-acedatacloud-$service"
+          done
+          uv pip install --python "$RUNNER_TEMP/pypi-venv/bin/python" "lfx-acedatacloud-suno==$release_version" "lfx-acedatacloud-seedance==$release_version" "lfx-acedatacloud-happyhorse==$release_version" "lfx-acedatacloud-gpt-image==$release_version" "lfx-acedatacloud-nano-banana==$release_version"
+          "$RUNNER_TEMP/pypi-venv/bin/python" scripts/check_service_install.py --services suno seedance happyhorse gpt-image nano-banana --output pypi-evidence/together.json
+          uv pip install --python "$RUNNER_TEMP/pypi-venv/bin/python" "lfx-acedatacloud==$release_version"
+          "$RUNNER_TEMP/pypi-venv/bin/python" scripts/check_service_install.py --services suno seedance happyhorse gpt-image nano-banana --aggregate --output pypi-evidence/with-aggregate.json
+          uv pip uninstall --python "$RUNNER_TEMP/pypi-venv/bin/python" lfx-acedatacloud-suno
+          "$RUNNER_TEMP/pypi-venv/bin/python" scripts/check_service_install.py --services seedance happyhorse gpt-image nano-banana --aggregate --output pypi-evidence/after-uninstall.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: published-pypi-service-install-evidence
+          path: pypi-evidence/
+          if-no-files-found: error

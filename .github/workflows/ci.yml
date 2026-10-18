@@ -21,7 +21,35 @@ jobs:
         run: |
           .venv/bin/ruff check src tests scripts
           .venv/bin/ruff format --check src tests scripts
+          .venv/bin/python scripts/service_packages.py --check
           .venv/bin/lfx extension validate src/lfx_acedatacloud --execute-imports
           .venv/bin/pytest -q tests
       - name: Build distribution
         run: .venv/bin/python -m build --no-isolation
+      - name: Build service wheels from self-contained sdists
+        run: |
+          for service in suno seedance happyhorse gpt-image nano-banana; do
+            .venv/bin/python -m build "packages/$service" --no-isolation --outdir service-dist
+          done
+      - name: Install services separately, together and with the aggregate
+        run: |
+          uv venv .service-venv
+          uv pip install --python .service-venv/bin/python 'lfx>=1.12.5,<2'
+          for service in suno seedance happyhorse gpt-image nano-banana; do
+            wheel_service=$(echo "$service" | tr '-' '_')
+            uv pip install --python .service-venv/bin/python service-dist/lfx_acedatacloud_"$wheel_service"-*.whl
+            .service-venv/bin/python scripts/check_service_install.py --services "$service" --output "service-evidence/$service.json"
+            uv pip uninstall --python .service-venv/bin/python "lfx-acedatacloud-$service"
+          done
+          uv pip install --python .service-venv/bin/python service-dist/*.whl
+          .service-venv/bin/python scripts/check_service_install.py --services suno seedance happyhorse gpt-image nano-banana --output service-evidence/together.json
+          uv pip install --python .service-venv/bin/python dist/*.whl
+          .service-venv/bin/python scripts/check_service_install.py --services suno seedance happyhorse gpt-image nano-banana --aggregate --output service-evidence/with-aggregate.json
+          uv pip uninstall --python .service-venv/bin/python lfx-acedatacloud-suno
+          .service-venv/bin/python scripts/check_service_install.py --services seedance happyhorse gpt-image nano-banana --aggregate --output service-evidence/after-uninstall.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: service-distributions-and-install-evidence
+          path: |
+            service-dist/
+            service-evidence/

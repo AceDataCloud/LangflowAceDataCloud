@@ -23,12 +23,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:SunoGenerateComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:SunoGenerateComponent@officialœ,œidœ:œext:ace_data_cloud:SunoGenerateComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart{œfieldNameœ:œsubmitted_taskœ,œidœ:œext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstartœ,œinputTypesœ:[œDataœ,œJSONœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:SunoGenerateComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:SunoGenerateComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:SunoGenerateComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart{\u0153fieldName\u0153:\u0153submitted_task\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:SunoGenerateComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:SunoGenerateComponent@officialœ, œidœ: œext:ace_data_cloud:SunoGenerateComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:SunoGenerateComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:SunoGenerateComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart",
-        "targetHandle": "{œfieldNameœ: œsubmitted_taskœ, œidœ: œext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstartœ, œinputTypesœ: [œDataœ, œJSONœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153submitted_task\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153], \u0153type\u0153: \u0153other\u0153}"
       },
       {
         "animated": false,
@@ -55,12 +55,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:SunoRetrieveTaskComponent@officialœ,œidœ:œext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ChatOutput-suno{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-sunoœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:SunoRetrieveTaskComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ChatOutput-suno{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-suno\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153,\u0153DataFrame\u0153,\u0153Table\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:SunoRetrieveTaskComponent@officialœ, œidœ: œext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:SunoRetrieveTaskComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:SunoRetrieveTaskComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ChatOutput-suno",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-sunoœ, œinputTypesœ: [œDataœ, œJSONœ, œDataFrameœ, œTableœ, œMessageœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ChatOutput-suno\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153, \u0153DataFrame\u0153, \u0153Table\u0153, \u0153Message\u0153], \u0153type\u0153: \u0153other\u0153}"
       }
     ],
     "nodes": [
@@ -97,7 +97,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Suno generation component.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceGenerationComponent, generation_inputs\n\n\nclass SunoGenerateComponent(AceGenerationComponent):\n    display_name = \"Suno Generate\"\n    description = \"Run the Ace Data Cloud Suno first-run API action.\"\n    icon = \"Bot\"\n    service_name = \"suno\"\n    inputs = generation_inputs(\"suno\")\n",
+                "value": "\"\"\"Suno generation component.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceGenerationComponent, generation_inputs\n\n\nclass SunoGenerateComponent(AceGenerationComponent):\n    display_name = \"Suno Generate by Ace Data Cloud\"\n    description = \"Generate Suno music and audio through Ace Data Cloud.\"\n    icon = \"Music\"\n    documentation = \"https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno.md\"\n    service_name = \"suno\"\n    inputs = generation_inputs(\"suno\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -232,13 +232,13 @@
                 "_input_type": "MultilineInput"
               }
             },
-            "description": "Run the Ace Data Cloud Suno first-run API action.",
-            "icon": "Bot",
+            "description": "Generate Suno music and audio through Ace Data Cloud.",
+            "icon": "Music",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "Suno Generate",
-            "documentation": "",
+            "display_name": "Suno Generate by Ace Data Cloud",
+            "documentation": "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno.md",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -288,7 +288,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:SunoGenerateComponent@official",
             "name": "SunoGenerateComponent"
           },
@@ -360,7 +360,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Suno task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass SunoRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"Suno Retrieve Task\"\n    description = \"Read a submitted task without starting another paid generation.\"\n    icon = \"Bot\"\n    service_name = \"suno\"\n    inputs = task_inputs(\"suno\")\n",
+                "value": "\"\"\"Suno task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass SunoRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"Suno Retrieve Task by Ace Data Cloud\"\n    description = \"Query the same Suno task through Ace Data Cloud without another paid generation.\"\n    icon = \"Music\"\n    documentation = \"https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno.md\"\n    service_name = \"suno\"\n    inputs = task_inputs(\"suno\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -420,13 +420,13 @@
                 "_input_type": "IntInput"
               }
             },
-            "description": "Read a submitted task without starting another paid generation.",
-            "icon": "Bot",
+            "description": "Query the same Suno task through Ace Data Cloud without another paid generation.",
+            "icon": "Music",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "Suno Retrieve Task",
-            "documentation": "",
+            "display_name": "Suno Retrieve Task by Ace Data Cloud",
+            "documentation": "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno.md",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -474,7 +474,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:SunoRetrieveTaskComponent@official",
             "name": "SunoRetrieveTaskComponent"
           },

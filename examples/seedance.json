@@ -23,12 +23,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:SeedanceGenerateComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:SeedanceGenerateComponent@officialœ,œidœ:œext:ace_data_cloud:SeedanceGenerateComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart{œfieldNameœ:œsubmitted_taskœ,œidœ:œext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstartœ,œinputTypesœ:[œDataœ,œJSONœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:SeedanceGenerateComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:SeedanceGenerateComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:SeedanceGenerateComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart{\u0153fieldName\u0153:\u0153submitted_task\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:SeedanceGenerateComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:SeedanceGenerateComponent@officialœ, œidœ: œext:ace_data_cloud:SeedanceGenerateComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:SeedanceGenerateComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:SeedanceGenerateComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart",
-        "targetHandle": "{œfieldNameœ: œsubmitted_taskœ, œidœ: œext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstartœ, œinputTypesœ: [œDataœ, œJSONœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153submitted_task\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153], \u0153type\u0153: \u0153other\u0153}"
       },
       {
         "animated": false,
@@ -55,12 +55,12 @@
             "type": "other"
           }
         },
-        "id": "reactflow__edge-ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart{œdataTypeœ:œext:ace_data_cloud:SeedanceRetrieveTaskComponent@officialœ,œidœ:œext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstartœ,œnameœ:œresultœ,œoutput_typesœ:[œJSONœ]}-ChatOutput-seedance{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-seedanceœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart{\u0153dataType\u0153:\u0153ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official\u0153,\u0153id\u0153:\u0153ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart\u0153,\u0153name\u0153:\u0153result\u0153,\u0153output_types\u0153:[\u0153JSON\u0153]}-ChatOutput-seedance{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-seedance\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153JSON\u0153,\u0153DataFrame\u0153,\u0153Table\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}",
         "selected": false,
         "source": "ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart",
-        "sourceHandle": "{œdataTypeœ: œext:ace_data_cloud:SeedanceRetrieveTaskComponent@officialœ, œidœ: œext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstartœ, œnameœ: œresultœ, œoutput_typesœ: [œJSONœ]}",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official\u0153, \u0153id\u0153: \u0153ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official-quickstart\u0153, \u0153name\u0153: \u0153result\u0153, \u0153output_types\u0153: [\u0153JSON\u0153]}",
         "target": "ChatOutput-seedance",
-        "targetHandle": "{œfieldNameœ: œinput_valueœ, œidœ: œChatOutput-seedanceœ, œinputTypesœ: [œDataœ, œJSONœ, œDataFrameœ, œTableœ, œMessageœ], œtypeœ: œotherœ}"
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ChatOutput-seedance\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153, \u0153JSON\u0153, \u0153DataFrame\u0153, \u0153Table\u0153, \u0153Message\u0153], \u0153type\u0153: \u0153other\u0153}"
       }
     ],
     "nodes": [
@@ -97,7 +97,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Seedance generation component.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceGenerationComponent, generation_inputs\n\n\nclass SeedanceGenerateComponent(AceGenerationComponent):\n    display_name = \"Seedance Generate\"\n    description = \"Run the Ace Data Cloud Seedance first-run API action.\"\n    icon = \"Bot\"\n    service_name = \"seedance\"\n    inputs = generation_inputs(\"seedance\")\n",
+                "value": "\"\"\"Seedance generation component.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceGenerationComponent, generation_inputs\n\n\nclass SeedanceGenerateComponent(AceGenerationComponent):\n    display_name = \"Seedance Generate by Ace Data Cloud\"\n    description = \"Generate Seedance videos through Ace Data Cloud.\"\n    icon = \"Clapperboard\"\n    documentation = \"https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance.md\"\n    service_name = \"seedance\"\n    inputs = generation_inputs(\"seedance\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -285,13 +285,13 @@
                 "_input_type": "DropdownInput"
               }
             },
-            "description": "Run the Ace Data Cloud Seedance first-run API action.",
-            "icon": "Bot",
+            "description": "Generate Seedance videos through Ace Data Cloud.",
+            "icon": "Clapperboard",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "Seedance Generate",
-            "documentation": "",
+            "display_name": "Seedance Generate by Ace Data Cloud",
+            "documentation": "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance.md",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -343,7 +343,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:SeedanceGenerateComponent@official",
             "name": "SeedanceGenerateComponent"
           },
@@ -415,7 +415,7 @@
                 "list": false,
                 "show": true,
                 "multiline": true,
-                "value": "\"\"\"Seedance task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass SeedanceRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"Seedance Retrieve Task\"\n    description = \"Read a submitted task without starting another paid generation.\"\n    icon = \"Bot\"\n    service_name = \"seedance\"\n    inputs = task_inputs(\"seedance\")\n",
+                "value": "\"\"\"Seedance task reader.\"\"\"\n\nfrom lfx_acedatacloud.components.base import AceTaskComponent, task_inputs\n\n\nclass SeedanceRetrieveTaskComponent(AceTaskComponent):\n    display_name = \"Seedance Retrieve Task by Ace Data Cloud\"\n    description = \"Query the same Seedance task through Ace Data Cloud without another paid generation.\"\n    icon = \"Clapperboard\"\n    documentation = \"https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance.md\"\n    service_name = \"seedance\"\n    inputs = task_inputs(\"seedance\")\n",
                 "fileTypes": [],
                 "file_path": "",
                 "password": false,
@@ -475,13 +475,13 @@
                 "_input_type": "IntInput"
               }
             },
-            "description": "Read a submitted task without starting another paid generation.",
-            "icon": "Bot",
+            "description": "Query the same Seedance task through Ace Data Cloud without another paid generation.",
+            "icon": "Clapperboard",
             "base_classes": [
               "JSON"
             ],
-            "display_name": "Seedance Retrieve Task",
-            "documentation": "",
+            "display_name": "Seedance Retrieve Task by Ace Data Cloud",
+            "documentation": "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance.md",
             "minimized": false,
             "custom_fields": {},
             "output_types": [],
@@ -529,7 +529,7 @@
             "tool_mode": false,
             "extension": "lfx-acedatacloud",
             "bundle": "ace_data_cloud",
-            "extension_version": "0.1.1",
+            "extension_version": "0.1.3",
             "namespaced_id": "ext:ace_data_cloud:SeedanceRetrieveTaskComponent@official",
             "name": "SeedanceRetrieveTaskComponent"
           },

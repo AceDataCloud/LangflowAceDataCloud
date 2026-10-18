@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 from pathlib import Path
 from types import SimpleNamespace
+from urllib.parse import parse_qs, urlsplit
 
 import httpx
 import pytest
@@ -26,9 +27,10 @@ from lfx_acedatacloud.components.acedatacloud.suno_task import SunoRetrieveTaskC
 from lfx_acedatacloud.components.base import _payload, generation_inputs
 from lfx_acedatacloud.provider import (
     API_BASE,
+    PUBLIC_CHAT_CATALOG,
     ChatAceDataCloud,
-    _chat_model_ids,
     _is_chat_model,
+    fetch_live_models,
     load_catalog,
 )
 from lfx_acedatacloud.specs import SERVICES
@@ -55,6 +57,17 @@ def test_manifest_has_provider_and_bundle() -> None:
     manifest = load_manifest(ROOT).manifest
     assert manifest.providers[0].provider_id == "acedatacloud"
     assert manifest.bundles[0].name == "ace_data_cloud"
+    # Langflow renders api_docs_url as the provider's credential-acquisition link.
+    credential_url = urlsplit(manifest.providers[0].metadata["api_docs_url"])
+    assert credential_url.scheme == "https"
+    assert credential_url.netloc == "platform.acedata.cloud"
+    assert credential_url.path == "/console/applications"
+    assert parse_qs(credential_url.query) == {
+        "utm_source": ["langflow"],
+        "utm_medium": ["referral"],
+        "utm_campaign": ["evergreen"],
+        "utm_content": ["langflow_provider_api_key"],
+    }
 
 
 def test_ui_templates_keep_generation_and_retrieval_forms_separate() -> None:
@@ -64,8 +77,8 @@ def test_ui_templates_keep_generation_and_retrieval_forms_separate() -> None:
     retrieved, _ = create_component_template(
         component_extractor=GPTImageRetrieveTaskComponent()
     )
-    assert generated["display_name"] == "GPT Image Generate"
-    assert retrieved["display_name"] == "GPT Image Retrieve Task"
+    assert generated["display_name"] == "GPT Image Generate by Ace Data Cloud"
+    assert retrieved["display_name"] == "GPT Image Retrieve Task by Ace Data Cloud"
     assert (
         "prompt" in generated["field_order"]
         and "task_id" not in generated["field_order"]
@@ -81,12 +94,84 @@ def test_branded_chat_model_cannot_change_api_host() -> None:
         model="gpt-4.1-mini", api_key="test-only", base_url="https://example.org/v1"
     )
     assert str(model.openai_api_base).rstrip("/") == API_BASE
+    assert model.max_retries == 0
     assert any(item["name"] == "gpt-4.1-mini" for item in load_catalog())
-    assert _is_chat_model({"id": "gpt-4.1-mini", "modalities": {"output": ["text"]}})
+    assert not any(item["tool_calling"] for item in load_catalog())
+    assert _is_chat_model({"id": "gpt-4.1-mini", "type": "chat"})
+    assert not _is_chat_model({"id": "gpt-image-2", "type": "image"})
     assert not _is_chat_model(
-        {"id": "gpt-image-2", "modalities": {"output": ["image"]}}
+        {"id": "gpt-4o-image", "type": "chat", "capabilities": ["image_generation"]}
     )
-    assert len(_chat_model_ids()) == 84
+
+
+def test_live_models_use_current_typed_catalog_and_account_visibility(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[str] = []
+
+    def fake_get(url: str, **kwargs: object) -> httpx.Response:
+        calls.append(url)
+        if url == PUBLIC_CHAT_CATALOG:
+            assert kwargs["params"] == {"type": "chat", "limit": 200}
+            assert "headers" not in kwargs
+            rows = [
+                {"id": "gpt-4.1-mini", "type": "chat", "capabilities": []},
+                {"id": "new-chat-model", "type": "chat", "capabilities": ["reasoning"]},
+                {
+                    "id": "gpt-4o-image",
+                    "type": "chat",
+                    "capabilities": ["image_generation"],
+                },
+                {"id": "image-only", "type": "image"},
+            ]
+        else:
+            assert url == f"{API_BASE}/models"
+            assert kwargs["headers"] == {"Authorization": "Bearer test-secret"}
+            rows = [
+                {"id": "gpt-4.1-mini"},
+                {"id": "new-chat-model"},
+                {"id": "gpt-4o-image"},
+                {"id": "account-only-model"},
+            ]
+        return httpx.Response(
+            200, json={"data": rows}, request=httpx.Request("GET", url)
+        )
+
+    monkeypatch.setattr(
+        "lfx_acedatacloud.provider.get_provider_variable_value",
+        lambda *_: "test-secret",
+    )
+    monkeypatch.setattr("lfx_acedatacloud.provider.httpx.get", fake_get)
+    models = fetch_live_models("user-1")
+    assert [item["name"] for item in models] == ["gpt-4.1-mini", "new-chat-model"]
+    assert models[1]["reasoning"] is True
+    assert all(item["tool_calling"] is False for item in models)
+    assert calls == [f"{API_BASE}/models", PUBLIC_CHAT_CATALOG]
+
+
+def test_live_models_do_not_claim_availability_without_both_catalogs(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        "lfx_acedatacloud.provider.get_provider_variable_value", lambda *_: None
+    )
+    assert fetch_live_models("user-1") == []
+
+    monkeypatch.setattr(
+        "lfx_acedatacloud.provider.get_provider_variable_value",
+        lambda *_: "test-secret",
+    )
+
+    def fake_get(url: str, **_kwargs: object) -> httpx.Response:
+        status = 503 if url == PUBLIC_CHAT_CATALOG else 200
+        return httpx.Response(
+            status,
+            json={"data": [{"id": "gpt-4.1-mini"}]},
+            request=httpx.Request("GET", url),
+        )
+
+    monkeypatch.setattr("lfx_acedatacloud.provider.httpx.get", fake_get)
+    assert fetch_live_models("user-1") == []
 
 
 def test_protocol_special_cases() -> None:
@@ -327,3 +412,35 @@ def test_importable_examples_have_no_keys_and_connect_existing_nodes() -> None:
             assert not any(
                 "GenerateComponent" in node["data"]["type"] for node in nodes
             )
+
+
+def test_service_first_labels_keep_stable_saved_flow_ids() -> None:
+    loaded = load_extension(ROOT)
+    for component in loaded.components:
+        if component.klass.service_name in {
+            "suno",
+            "seedance",
+            "happy_horse",
+            "gpt_image",
+            "nano_banana",
+        }:
+            assert component.klass.display_name.endswith("by Ace Data Cloud")
+            assert component.klass.icon in {"Music", "Clapperboard", "Image"}
+            assert component.namespaced_id.startswith("ext:ace_data_cloud:")
+            assert component.klass.documentation.startswith(
+                "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/"
+            )
+
+
+def test_top_service_examples_show_candidate_service_labels() -> None:
+    import json
+
+    for slug in ("suno", "seedance", "happy_horse", "gpt_image", "nano_banana"):
+        for folder in ("examples", "examples/retrieve_only"):
+            flow = json.loads((ROOT.parents[1] / folder / f"{slug}.json").read_text())
+            for node in flow["data"]["nodes"]:
+                if node["data"]["type"].startswith("ext:ace_data_cloud:"):
+                    form = node["data"]["node"]
+                    assert form["display_name"].endswith("by Ace Data Cloud")
+                    assert "by Ace Data Cloud" in form["template"]["code"]["value"]
+                    assert form["extension_version"] == "0.1.3"
