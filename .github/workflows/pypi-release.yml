@@ -15,7 +15,6 @@ jobs:
     env:
       DO_NOT_TRACK: "1"
       LANGFLOW_MODELS_DEV_REFRESH: "false"
-      LANGFLOW_CONFIG_DIR: ${{ runner.temp }}/langflow-pypi-install
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
@@ -24,6 +23,7 @@ jobs:
       - name: Install the published service packages through the normal PyPI index
         env:
           GH_TOKEN: ${{ github.token }}
+          LANGFLOW_CONFIG_DIR: ${{ runner.temp }}/langflow-pypi-install
         run: |
           release_version=$(gh api repos/AceDataCloud/LangflowAceDataCloud/releases/latest --jq .tag_name)
           [[ "$release_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
