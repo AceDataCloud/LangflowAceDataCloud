@@ -2,7 +2,7 @@
 
 在 Langflow 1.12.5 及以上版本中使用 Ace Data Cloud 对话模型与服务组件。一个 Extension Bundle 提供命名的 **Ace Data Cloud** 模型 Provider，以及图像、视频、音频、搜索和人脸共 17 类服务的独立组件。示例文件不含密钥。
 
-[English guide](README.md) · [当前模型和价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
+[English guide](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/README.md) · [当前模型和价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
 > **版本 0.1.3：** 可从 PyPI 安装合集或单个服务，也可使用 [GitHub Release 的 wheel](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3)。[Langflow 官方默认收录](https://github.com/langflow-ai/langflow/pull/15659)仍在审核中。
 
@@ -11,11 +11,11 @@
 
 本扩展提供 **Suno / Seedance / Happy Horse / GPT Image / Nano Banana … by Ace Data Cloud** 独立节点；生成和查询分开。可在组件搜索直接输入服务名，不必先知道Ace。图标按音频、视频和图片分类。现有`ext:ace_data_cloud:<Class>@official`流程ID不变。
 
-- [Suno：音乐与音频](guides/suno_zh_CN.md)
-- [Seedance：视频](guides/seedance_zh_CN.md)
-- [Happy Horse：视频](guides/happy-horse_zh_CN.md)
-- [GPT Image：图片](guides/gpt-image_zh_CN.md)
-- [Nano Banana：图片](guides/nano-banana_zh_CN.md)
+- [Suno：音乐与音频](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno_zh_CN.md)
+- [Seedance：视频](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance_zh_CN.md)
+- [Happy Horse：视频](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/happy-horse_zh_CN.md)
+- [GPT Image：图片](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/gpt-image_zh_CN.md)
+- [Nano Banana：图片](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/nano-banana_zh_CN.md)
 
 这些集成由 Ace Data Cloud 提供，不冒充原服务官方插件。下方历史截图保留原日期、宿主版本和旧标签。
 
@@ -82,7 +82,7 @@ langflow run
 
 ## 4. 首次调用对话模型
 
-在 Projects 页面点 **Upload a flow**，选择 [`examples/chat_model.json`](examples/chat_model.json)。流程把 **Ace Data Cloud → `gpt-4.1-mini`** 的 Language Model 连到 Chat Output，固定输入为 `Reply with exactly OK.`。API Key 覆盖字段留空，使用上一步配置的 Provider 凭据。只点击一次 Chat Output 的 **Run component** 三角按钮，再查看输出或 **Traces**。
+在 Projects 页面点 **Upload a flow**，选择 [`examples/chat_model.json`](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/chat_model.json)。流程把 **Ace Data Cloud → `gpt-4.1-mini`** 的 Language Model 连到 Chat Output，固定输入为 `Reply with exactly OK.`。API Key 覆盖字段留空，使用上一步配置的 Provider 凭据。只点击一次 Chat Output 的 **Run component** 三角按钮，再查看输出或 **Traces**。
 
 ![可导入的对话模型最小流程](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/31-chat-model-flow.png)
 
@@ -92,7 +92,7 @@ langflow run
 
 ## 5. 生成一张 GPT Image，只查询同一个任务
 
-上传 [`examples/gpt_image.json`](examples/gpt_image.json)。Langflow 1.12.5 成功导入该无密钥文件，显示三节点路径：
+上传 [`examples/gpt_image.json`](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/gpt_image.json)。Langflow 1.12.5 成功导入该无密钥文件，显示三节点路径：
 
 ![Projects 页面显示无密钥流程上传成功](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/12-import-result.png)
 
@@ -128,7 +128,7 @@ langflow run
 
 ![该任务生成的图片](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/38-generated-image.png)
 
-如果状态仍是 `pending`，**不要重跑生成流程**，否则会再次提交付费任务。导入 [`examples/retrieve_only/gpt_image.json`](examples/retrieve_only/gpt_image.json)，绑定同一个 Credential 变量，在 **Task ID** 粘贴原任务 ID，然后运行 Chat Output。这个流程没有生成节点；直到任务结束前，只重复运行此查询流程。
+如果状态仍是 `pending`，**不要重跑生成流程**，否则会再次提交付费任务。导入 [`examples/retrieve_only/gpt_image.json`](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/gpt_image.json)，绑定同一个 Credential 变量，在 **Task ID** 粘贴原任务 ID，然后运行 Chat Output。这个流程没有生成节点；直到任务结束前，只重复运行此查询流程。
 
 如果提交超时但服务已接收，先查 Usage History，不要再提交。GPT Image、Midjourney、Veo 的任务查询组件还可在未返回任务 ID 时用请求历史中的 **Trace ID** 找回任务；其他服务可从原用量记录找任务 ID，或带 trace ID 联系支持。只查询找回的任务，不要为了解状态而重新生成。
 
@@ -142,7 +142,7 @@ langflow run
 
 到 [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_usage) 按 API、Key 和时间过滤，对照任务或 trace ID。本次 GPT Image 测试的 trace ID 为 `813ac552-4724-4d05-8b17-3c93534fbed6`；平台对该 trace 只查到**一条** HTTP 200 用量记录，扣除 **0.099 Credits**。Langflow 的任务输出也显示 `cost.amount=0.099`、货币为 `credit`。这是该次测试的证据，并非永久价格；如需换算 USD，应读取你当前套餐的单价。
 
-对话模型示例对应一条 `gpt-4.1-mini` 用量记录，共 16 tokens，扣除 `0.0000234636021` Credits。[脱敏验证记录](tests/evidence/) 分别保存任务、媒体、导入和账单读回。
+对话模型示例对应一条 `gpt-4.1-mini` 用量记录，共 16 tokens，扣除 `0.0000234636021` Credits。[脱敏验证记录](https://github.com/AceDataCloud/LangflowAceDataCloud/tree/v0.1.3/tests/evidence/) 分别保存任务、媒体、导入和账单读回。
 
 ## 其他服务示例
 
@@ -150,29 +150,29 @@ langflow run
 
 15 个异步首跑流程及新添加的媒体组件预填 `{"async": true}`，使查询组件能尽快收到任务 ID。Fish Audio 不设置该选项时也可能同步完成；已完成的结果会直接通过其查询节点，不会再次发 API 请求。
 
-每项的公开接口路径、默认值和验证级别见 [能力清单](CAPABILITIES_zh_CN.md)。
+每项的公开接口路径、默认值和验证级别见 [能力清单](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/CAPABILITIES_zh_CN.md)。
 
 | 服务 | 首跑动作 | 导入流程 | 任务查询 |
 | --- | --- | --- | --- |
-| GPT Image | 生成一张图 | [流程](examples/gpt_image.json) | [查询](examples/retrieve_only/gpt_image.json) |
-| Suno | 生成纯音乐 | [流程](examples/suno.json) | [查询](examples/retrieve_only/suno.json) |
-| Seedance | 文生视频 | [流程](examples/seedance.json) | [查询](examples/retrieve_only/seedance.json) |
-| Fish Audio | 文本转语音 | [流程](examples/fish_audio.json) | [查询](examples/retrieve_only/fish_audio.json) |
-| Seedream | 生成一张图 | [流程](examples/seedream.json) | [查询](examples/retrieve_only/seedream.json) |
-| Happy Horse | 文生视频 | [流程](examples/happy_horse.json) | [查询](examples/retrieve_only/happy_horse.json) |
-| Qwen Image | 生成一张图 | [流程](examples/qwen_image.json) | [查询](examples/retrieve_only/qwen_image.json) |
-| Veo | 文生视频 | [流程](examples/veo.json) | [查询](examples/retrieve_only/veo.json) |
-| Google Search | 网页搜索，同步返回 | [流程](examples/google_search.json) | 无任务 ID |
-| Grok Video | 文生视频 | [流程](examples/grok.json) | [查询](examples/retrieve_only/grok.json) |
-| Face Transform | 人脸关键点分析，同步返回 | [流程](examples/face_transform.json) | 无任务 ID |
-| Midjourney | 生成一张图 | [流程](examples/midjourney.json) | [查询](examples/retrieve_only/midjourney.json) |
-| Flux | 生成一张图 | [流程](examples/flux.json) | [查询](examples/retrieve_only/flux.json) |
-| MiniMax H3 | 文生视频 | [流程](examples/minimax_h3.json) | [查询](examples/retrieve_only/minimax_h3.json) |
-| Wan | 文生视频 | [流程](examples/wan.json) | [查询](examples/retrieve_only/wan.json) |
-| Kling | 文生视频 | [流程](examples/kling.json) | [查询](examples/retrieve_only/kling.json) |
-| Nano Banana | 生成一张图 | [流程](examples/nano_banana.json) | [查询](examples/retrieve_only/nano_banana.json) |
+| GPT Image | 生成一张图 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/gpt_image.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/gpt_image.json) |
+| Suno | 生成纯音乐 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/suno.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/suno.json) |
+| Seedance | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/seedance.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/seedance.json) |
+| Fish Audio | 文本转语音 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/fish_audio.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/fish_audio.json) |
+| Seedream | 生成一张图 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/seedream.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/seedream.json) |
+| Happy Horse | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/happy_horse.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/happy_horse.json) |
+| Qwen Image | 生成一张图 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/qwen_image.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/qwen_image.json) |
+| Veo | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/veo.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/veo.json) |
+| Google Search | 网页搜索，同步返回 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/google_search.json) | 无任务 ID |
+| Grok Video | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/grok.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/grok.json) |
+| Face Transform | 人脸关键点分析，同步返回 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/face_transform.json) | 无任务 ID |
+| Midjourney | 生成一张图 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/midjourney.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/midjourney.json) |
+| Flux | 生成一张图 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/flux.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/flux.json) |
+| MiniMax H3 | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/minimax_h3.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/minimax_h3.json) |
+| Wan | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/wan.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/wan.json) |
+| Kling | 文生视频 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/kling.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/kling.json) |
+| Nano Banana | 生成一张图 | [流程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/nano_banana.json) | [查询](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/nano_banana.json) |
 
-18 个首跑 JSON（1 个模型 + 17 个服务）和 15 个独立查询 JSON 全部已在 Langflow 1.12.5 导入。15 个查询组件先复用了已有完成任务，没有再次生成。随后其余 14 个媒体 Component 类各自仅新发一次付费请求：14 项任务全部完成，首媒体链接均为 HTTP 200，每项各匹配一条 Credits 用量；合计扣费 19.302232 Credits，见[逐服务脱敏证据](tests/evidence/media-generation-live.json)。Midjourney 与 Grok 的原同步提交在服务接收后发生客户端超时；两项均从账单记录找回原任务并完成，未重发付费生成。GPT Image 与对话模型已验证完整导入 UI 流程；其他服务已导入 flow 并真实调用组件方法，但不把它们称为完整 UI 图执行已验证。
+18 个首跑 JSON（1 个模型 + 17 个服务）和 15 个独立查询 JSON 全部已在 Langflow 1.12.5 导入。15 个查询组件先复用了已有完成任务，没有再次生成。随后其余 14 个媒体 Component 类各自仅新发一次付费请求：14 项任务全部完成，首媒体链接均为 HTTP 200，每项各匹配一条 Credits 用量；合计扣费 19.302232 Credits，见[逐服务脱敏证据](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/tests/evidence/media-generation-live.json)。Midjourney 与 Grok 的原同步提交在服务接收后发生客户端超时；两项均从账单记录找回原任务并完成，未重发付费生成。GPT Image 与对话模型已验证完整导入 UI 流程；其他服务已导入 flow 并真实调用组件方法，但不把它们称为完整 UI 图执行已验证。
 
 ## 常见问题
 
@@ -188,7 +188,7 @@ langflow run
 
 ## 隐私、范围与开发
 
-扩展把选定输入和 Bearer token 发往 `https://api.acedata.cloud`。密钥应存放在 Langflow 的 Credential 全局变量中。持有生成媒体链接的人可能访问对应产物，分享流程与输出时请留意。扩展本身免费；API 调用遵循当前服务价格与账号余额。参见 [隐私说明](PRIVACY.md)、[问题反馈](https://github.com/AceDataCloud/LangflowAceDataCloud/issues) 或 dev@acedata.cloud。
+扩展把选定输入和 Bearer token 发往 `https://api.acedata.cloud`。密钥应存放在 Langflow 的 Credential 全局变量中。持有生成媒体链接的人可能访问对应产物，分享流程与输出时请留意。扩展本身免费；API 调用遵循当前服务价格与账号余额。参见 [隐私说明](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/PRIVACY.md)、[问题反馈](https://github.com/AceDataCloud/LangflowAceDataCloud/issues) 或 dev@acedata.cloud。
 
 开发或审核命令：
 

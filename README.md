@@ -2,7 +2,7 @@
 
 Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or later. One Extension Bundle supplies a named **Ace Data Cloud** model provider and separate components for 17 image, video, audio, search, and face service families. The examples contain no credentials.
 
-[简体中文教程](README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
+[简体中文教程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
 > **Version 0.1.3:** install the aggregate or a single service from PyPI, or use the wheels in the [GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3). [Official Langflow default inclusion](https://github.com/langflow-ai/langflow/pull/15659) remains under review.
 
@@ -11,11 +11,11 @@ Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or late
 
 Search the component palette for **suno**, **seedance**, **happyhorse**, **gpt image**, or **nano banana**. The extension exposes independent **Generate** and **Retrieve Task** nodes with service-first labels ending **by Ace Data Cloud**, category-appropriate audio/video/image icons, and their own guide links. Existing `ext:ace_data_cloud:<Class>@official` saved-flow IDs are unchanged.
 
-- [Suno music and audio](guides/suno.md) · [中文](guides/suno_zh_CN.md)
-- [Seedance video](guides/seedance.md) · [中文](guides/seedance_zh_CN.md)
-- [Happy Horse video](guides/happy-horse.md) · [中文](guides/happy-horse_zh_CN.md)
-- [GPT Image images](guides/gpt-image.md) · [中文](guides/gpt-image_zh_CN.md)
-- [Nano Banana images](guides/nano-banana.md) · [中文](guides/nano-banana_zh_CN.md)
+- [Suno music and audio](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno.md) · [中文](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/suno_zh_CN.md)
+- [Seedance video](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance.md) · [中文](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/seedance_zh_CN.md)
+- [Happy Horse video](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/happy-horse.md) · [中文](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/happy-horse_zh_CN.md)
+- [GPT Image images](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/gpt-image.md) · [中文](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/gpt-image_zh_CN.md)
+- [Nano Banana images](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/nano-banana.md) · [中文](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/guides/nano-banana_zh_CN.md)
 
 These integrations are provided by Ace Data Cloud and do not claim endorsement by the service owners. Historical screenshots below retain their original date, Langflow version and labels.
 
@@ -82,7 +82,7 @@ On each service node, click the globe icon in **Ace Data Cloud API key** and sel
 
 ## 4. Try the chat model provider
 
-On the Projects page, click **Upload a flow** and select [`examples/chat_model.json`](examples/chat_model.json). It has a Language Model node set to **Ace Data Cloud → `gpt-4.1-mini`**, connected to Chat Output. Its fixed input says `Reply with exactly OK.`. The API Key override is empty so Langflow uses the provider credential configured above. Click the **Run component** triangle on Chat Output once, then inspect the output or **Traces**.
+On the Projects page, click **Upload a flow** and select [`examples/chat_model.json`](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/chat_model.json). It has a Language Model node set to **Ace Data Cloud → `gpt-4.1-mini`**, connected to Chat Output. Its fixed input says `Reply with exactly OK.`. The API Key override is empty so Langflow uses the provider credential configured above. Click the **Run component** triangle on Chat Output once, then inspect the output or **Traces**.
 
 ![Ready-to-import chat model flow](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/31-chat-model-flow.png)
 
@@ -92,7 +92,7 @@ The recorded test returned `OK` using 11 input and 5 output tokens. The model an
 
 ## 5. Generate one GPT Image and query the same task
 
-Upload [`examples/gpt_image.json`](examples/gpt_image.json). Langflow 1.12.5 accepted the no-key JSON and displayed this path:
+Upload [`examples/gpt_image.json`](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/gpt_image.json). Langflow 1.12.5 accepted the no-key JSON and displayed this path:
 
 ![The no-key flow uploaded successfully in Projects](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/12-import-result.png)
 
@@ -128,7 +128,7 @@ The real test returned `status=succeeded`, `success=true`, task ID `ac4ffabb-ada
 
 ![Image produced by that run](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.3/_assets/tutorial/38-generated-image.png)
 
-If the result is still `pending`, **do not rerun the generation flow**. That would submit another paid task. Import [`examples/retrieve_only/gpt_image.json`](examples/retrieve_only/gpt_image.json), bind the same Credential variable, paste the original task ID into **Task ID**, and run Chat Output. This flow contains no generation node. Repeat this read-only flow until the task is terminal.
+If the result is still `pending`, **do not rerun the generation flow**. That would submit another paid task. Import [`examples/retrieve_only/gpt_image.json`](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/gpt_image.json), bind the same Credential variable, paste the original task ID into **Task ID**, and run Chat Output. This flow contains no generation node. Repeat this read-only flow until the task is terminal.
 
 If a submission times out after the service accepted it, check Usage History before another submission. GPT Image, Midjourney, and Veo task readers also accept a **Trace ID** from request history when the task ID was not returned. For other services, recover the task ID from the original usage record or ask support with its trace ID. Query the recovered task; never regenerate only to learn its status.
 
@@ -142,7 +142,7 @@ If a submission times out after the service accepted it, check Usage History bef
 
 In [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_usage), filter to the relevant API, key, and time, then compare the task or trace ID. The completed GPT Image test had trace ID `813ac552-4724-4d05-8b17-3c93534fbed6`; the platform returned **one** HTTP 200 usage record for that trace and deducted **0.099 Credits**. Langflow's task output also reported `cost.amount=0.099` in `credit` currency. This is evidence for that single test, not a fixed future price. Read your account's current package rate if you need a USD conversion.
 
-The chat model example had one matching usage record for `gpt-4.1-mini`, 16 tokens, and `0.0000234636021` Credits. [Sanitized run evidence](tests/evidence/) keeps task, media, import, and billing readbacks separate.
+The chat model example had one matching usage record for `gpt-4.1-mini`, 16 tokens, and `0.0000234636021` Credits. [Sanitized run evidence](https://github.com/AceDataCloud/LangflowAceDataCloud/tree/v0.1.3/tests/evidence/) keeps task, media, import, and billing readbacks separate.
 
 ## Other service examples
 
@@ -150,29 +150,29 @@ Each file below is a no-key first-run flow. For asynchronous services, the match
 
 The 15 asynchronous first-run flows and newly added media components prefill `{"async": true}` so the task reader can query promptly. Fish Audio can also finish synchronously when used without that option; a connected completed result passes through its reader without another API call.
 
-The exact public routes, default values, and proof level for each action are in [Capabilities](CAPABILITIES.md).
+The exact public routes, default values, and proof level for each action are in [Capabilities](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/CAPABILITIES.md).
 
 | Service | First-run action | Import flow | Task lookup |
 | --- | --- | --- | --- |
-| GPT Image | Generate one image | [Flow](examples/gpt_image.json) | [Lookup](examples/retrieve_only/gpt_image.json) |
-| Suno | Generate instrumental audio | [Flow](examples/suno.json) | [Lookup](examples/retrieve_only/suno.json) |
-| Seedance | Generate text-to-video | [Flow](examples/seedance.json) | [Lookup](examples/retrieve_only/seedance.json) |
-| Fish Audio | Text-to-speech | [Flow](examples/fish_audio.json) | [Lookup](examples/retrieve_only/fish_audio.json) |
-| Seedream | Generate one image | [Flow](examples/seedream.json) | [Lookup](examples/retrieve_only/seedream.json) |
-| Happy Horse | Generate text-to-video | [Flow](examples/happy_horse.json) | [Lookup](examples/retrieve_only/happy_horse.json) |
-| Qwen Image | Generate one image | [Flow](examples/qwen_image.json) | [Lookup](examples/retrieve_only/qwen_image.json) |
-| Veo | Generate text-to-video | [Flow](examples/veo.json) | [Lookup](examples/retrieve_only/veo.json) |
-| Google Search | Web search, synchronous | [Flow](examples/google_search.json) | No task ID |
-| Grok Video | Generate text-to-video | [Flow](examples/grok.json) | [Lookup](examples/retrieve_only/grok.json) |
-| Face Transform | Analyze face keypoints, synchronous | [Flow](examples/face_transform.json) | No task ID |
-| Midjourney | Imagine one image | [Flow](examples/midjourney.json) | [Lookup](examples/retrieve_only/midjourney.json) |
-| Flux | Generate one image | [Flow](examples/flux.json) | [Lookup](examples/retrieve_only/flux.json) |
-| MiniMax H3 | Generate text-to-video | [Flow](examples/minimax_h3.json) | [Lookup](examples/retrieve_only/minimax_h3.json) |
-| Wan | Generate text-to-video | [Flow](examples/wan.json) | [Lookup](examples/retrieve_only/wan.json) |
-| Kling | Generate text-to-video | [Flow](examples/kling.json) | [Lookup](examples/retrieve_only/kling.json) |
-| Nano Banana | Generate one image | [Flow](examples/nano_banana.json) | [Lookup](examples/retrieve_only/nano_banana.json) |
+| GPT Image | Generate one image | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/gpt_image.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/gpt_image.json) |
+| Suno | Generate instrumental audio | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/suno.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/suno.json) |
+| Seedance | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/seedance.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/seedance.json) |
+| Fish Audio | Text-to-speech | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/fish_audio.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/fish_audio.json) |
+| Seedream | Generate one image | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/seedream.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/seedream.json) |
+| Happy Horse | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/happy_horse.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/happy_horse.json) |
+| Qwen Image | Generate one image | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/qwen_image.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/qwen_image.json) |
+| Veo | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/veo.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/veo.json) |
+| Google Search | Web search, synchronous | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/google_search.json) | No task ID |
+| Grok Video | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/grok.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/grok.json) |
+| Face Transform | Analyze face keypoints, synchronous | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/face_transform.json) | No task ID |
+| Midjourney | Imagine one image | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/midjourney.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/midjourney.json) |
+| Flux | Generate one image | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/flux.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/flux.json) |
+| MiniMax H3 | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/minimax_h3.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/minimax_h3.json) |
+| Wan | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/wan.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/wan.json) |
+| Kling | Generate text-to-video | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/kling.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/kling.json) |
+| Nano Banana | Generate one image | [Flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/nano_banana.json) | [Lookup](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/examples/retrieve_only/nano_banana.json) |
 
-All 18 first-run JSON flows (one model plus 17 services) and all 15 retrieve-only flows were imported into Langflow 1.12.5. The 15 readers first retrieved existing completed tasks without submitting generation. We then made exactly one new paid submission through each of the other 14 media Component classes: all 14 tasks completed, their first media URLs returned HTTP 200, and each matched one Credits usage record. Those 14 calls deducted 19.302232 Credits in total; see [sanitized per-service evidence](tests/evidence/media-generation-live.json). Midjourney and Grok's original synchronous submit calls timed out after the service accepted them; both tasks were recovered from usage records and completed without a paid retry. The imported UI flow itself was run end to end for GPT Image and the chat model; the other service flows were imported and their component methods were called, but their full UI graph execution has not been claimed.
+All 18 first-run JSON flows (one model plus 17 services) and all 15 retrieve-only flows were imported into Langflow 1.12.5. The 15 readers first retrieved existing completed tasks without submitting generation. We then made exactly one new paid submission through each of the other 14 media Component classes: all 14 tasks completed, their first media URLs returned HTTP 200, and each matched one Credits usage record. Those 14 calls deducted 19.302232 Credits in total; see [sanitized per-service evidence](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/tests/evidence/media-generation-live.json). Midjourney and Grok's original synchronous submit calls timed out after the service accepted them; both tasks were recovered from usage records and completed without a paid retry. The imported UI flow itself was run end to end for GPT Image and the chat model; the other service flows were imported and their component methods were called, but their full UI graph execution has not been claimed.
 
 ## Troubleshooting
 
@@ -188,7 +188,7 @@ All 18 first-run JSON flows (one model plus 17 services) and all 15 retrieve-onl
 
 ## Privacy, scope, and development
 
-The extension sends the selected inputs and Bearer token to `https://api.acedata.cloud`. Secrets belong in Langflow Credential global variables. Generated media links can be shared by anyone who has the URL; handle exported flows and outputs accordingly. The extension itself is free; Ace Data Cloud API usage follows the current service price and your account balance. See [Privacy](PRIVACY.md), [Issues](https://github.com/AceDataCloud/LangflowAceDataCloud/issues), or dev@acedata.cloud.
+The extension sends the selected inputs and Bearer token to `https://api.acedata.cloud`. Secrets belong in Langflow Credential global variables. Generated media links can be shared by anyone who has the URL; handle exported flows and outputs accordingly. The extension itself is free; Ace Data Cloud API usage follows the current service price and your account balance. See [Privacy](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.3/PRIVACY.md), [Issues](https://github.com/AceDataCloud/LangflowAceDataCloud/issues), or dev@acedata.cloud.
 
 To develop or review the package:
 
