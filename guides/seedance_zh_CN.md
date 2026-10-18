@@ -7,7 +7,7 @@
 在运行 Langflow 的同一 Python 环境安装后重启：
 
 ```bash
-python -m pip install "lfx-acedatacloud-seedance==0.1.3"
+python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.3/lfx_acedatacloud_seedance-0.1.3-py3-none-any.whl"
 ```
 
 [v0.1.3 GitHub Release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.3) 也提供该服务的独立 wheel。打开 **Components → Seedance by Ace Data Cloud**，或直接搜索服务名。单服务包只注册两个节点，不注册聊天 Provider。使用该 Python 包内 `examples/` 的生成/纯查询两份无 Key 流程；详见[包 README](../packages/seedance/README.md)。

@@ -23,10 +23,12 @@
 
 ### 只安装一个服务
 
+> **PyPI 状态：** Suno、Seedance 的新项目创建暂被 PyPI 限流。两者 0.1.3 wheel 已在 GitHub Release 正式发布，可按下方 URL 直接安装；合集、GPT Image、HappyHorse、Nano Banana 已在 PyPI。安装公开 wheel 不需新账号。
+
 | 服务 | 发行包 | 在 Langflow 同一 Python 环境安装 |
 | --- | --- | --- |
-| Suno | `lfx-acedatacloud-suno` | `python -m pip install "lfx-acedatacloud-suno==0.1.3"` |
-| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "lfx-acedatacloud-seedance==0.1.3"` |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.3/lfx_acedatacloud_suno-0.1.3-py3-none-any.whl"` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.3/lfx_acedatacloud_seedance-0.1.3-py3-none-any.whl"` |
 | HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "lfx-acedatacloud-happyhorse==0.1.3"` |
 | GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "lfx-acedatacloud-gpt-image==0.1.3"` |
 | Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "lfx-acedatacloud-nano-banana==0.1.3"` |

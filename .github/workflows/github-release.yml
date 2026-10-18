@@ -1,0 +1,50 @@
+name: Published GitHub service installs
+
+on:
+  pull_request:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  published-services:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DO_NOT_TRACK: "1"
+      LANGFLOW_MODELS_DEV_REFRESH: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - name: Install the published service packages from the public GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LANGFLOW_CONFIG_DIR: ${{ runner.temp }}/langflow-github-install
+        run: |
+          release_version=$(gh api repos/AceDataCloud/LangflowAceDataCloud/releases/latest --jq .tag_name)
+          [[ "$release_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
+          release_tag=$release_version
+          release_version=${release_version#v}
+          uv venv "$RUNNER_TEMP/github-venv"
+          uv pip install --python "$RUNNER_TEMP/github-venv/bin/python" 'lfx==1.12.6'
+          for service in suno seedance happyhorse gpt-image nano-banana; do
+            uv pip install --python "$RUNNER_TEMP/github-venv/bin/python" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud_$(echo "$service" | tr '-' '_')-$release_version-py3-none-any.whl"
+            "$RUNNER_TEMP/github-venv/bin/python" scripts/check_service_install.py --services "$service" --output "github-evidence/$service.json"
+            uv pip uninstall --python "$RUNNER_TEMP/github-venv/bin/python" "lfx-acedatacloud-$service"
+          done
+          uv pip install --python "$RUNNER_TEMP/github-venv/bin/python" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud_suno-$release_version-py3-none-any.whl" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud_seedance-$release_version-py3-none-any.whl" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud_happyhorse-$release_version-py3-none-any.whl" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud_gpt_image-$release_version-py3-none-any.whl" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud_nano_banana-$release_version-py3-none-any.whl"
+          "$RUNNER_TEMP/github-venv/bin/python" scripts/check_service_install.py --services suno seedance happyhorse gpt-image nano-banana --output github-evidence/together.json
+          uv pip install --python "$RUNNER_TEMP/github-venv/bin/python" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/$release_tag/lfx_acedatacloud-$release_version-py3-none-any.whl"
+          "$RUNNER_TEMP/github-venv/bin/python" scripts/check_service_install.py --services suno seedance happyhorse gpt-image nano-banana --aggregate --output github-evidence/with-aggregate.json
+          uv pip uninstall --python "$RUNNER_TEMP/github-venv/bin/python" lfx-acedatacloud-suno
+          "$RUNNER_TEMP/github-venv/bin/python" scripts/check_service_install.py --services seedance happyhorse gpt-image nano-banana --aggregate --output github-evidence/after-uninstall.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: published-github-service-install-evidence
+          path: github-evidence/
+          if-no-files-found: error
