@@ -1,4 +1,7 @@
 .venv/
+.service-venv/
+service-dist/
+service-evidence/
 dist/
 build/
 *.egg-info/

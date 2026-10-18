@@ -21,6 +21,30 @@
 
 ## 1. 安装扩展
 
+### 只安装一个服务（0.1.3 源码候选）
+
+本候选有五个实际独立的发行包。在 PR #6 精确 head 的完整仓库中，按需选择：
+
+| 服务 | 发行包 | 在仓库根目录安装 |
+| --- | --- | --- |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install ./packages/suno` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install ./packages/seedance` |
+| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install ./packages/happyhorse` |
+| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install ./packages/gpt-image` |
+| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install ./packages/nano-banana` |
+
+在 Langflow 的同一个 Python 环境安装并重启；每包只注册本服务的生成和查询两个节点，
+分类为 **服务名 by Ace Data Cloud**，不安装完整合集、不注册聊天 Provider。
+五包尚未在 PyPI 或 0.1.2 GitHub Release 发布；先核对并检出
+[PR #6](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6) 当前完整 head。
+
+每个 wheel 的 Python 包内 `examples/` 附有生成和纯查询两份无 Key 流程，使用独立的
+`ext:ace_<service>:*` ID。仓库根目录原示例仍用合集 `ext:ace_data_cloud:*` ID，需安装合集。
+五包可共同安装，文件和注册 ID 均不冲突；与合集共存时两个分类都会保留，旧保存流继续使用
+旧 ID。安装单服务包不会自动迁移旧节点。
+
+### 安装当前正式合集
+
 请管理员在运行 Langflow 的**同一个 Python 环境**中安装。本地全新环境示例：
 
 ```bash

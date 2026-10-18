@@ -9,6 +9,8 @@ For a currently available installation, ask the Langflow administrator to follow
 
 After installation and restart, search **gpt image** under Components, or open **Components → Ace Data Cloud**. Import the [no-key GPT Image flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/main/examples/gpt_image.json) if you prefer ready connections.
 
+For a **service-only 0.1.3 source candidate**, check out the exact [PR #6 head](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6), then run `python -m pip install ./packages/gpt-image` from the repository root in Langflow's Python environment. Restart and open the service's **by Ace Data Cloud** category. This installs only its two nodes and no chat provider. It is not a published package listing. Use the two flow JSONs shipped inside its Python package `examples/`, whose service bundle IDs differ from the aggregate examples linked below. See the [package README](../packages/gpt-image/README.md) for coexistence and build details.
+
 ## 2. Get an application API Token
 
 Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_gpt_image_guide_api_key). If there is no **General application**, choose **Initialize General Application**. Copy its existing API Key or choose **Manage Keys → Create** for a dedicated Langflow token. Check GPT Image access, expiry, usage limit, [current price](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_gpt_image_guide_pricing) and balance. If **Allowed APIs** is restricted, allow both `/openai/images/generations` and `/openai/tasks`.

@@ -8,6 +8,8 @@
 
 组件搜索输入`seedance`或`seedance`；候选0.1.3会显示**Seedance Generate by Ace Data Cloud**与**Seedance Retrieve Task by Ace Data Cloud**，0.1.2仍是旧标题。也可进入**Components → Ace Data Cloud**，导入[不含Key的现有示例](../examples/seedance.json)。
 
+**只装本服务的 0.1.3 源码候选：** 检出 [PR #6 精确 head](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6)，在仓库根目录、Langflow 同一 Python 环境运行 `python -m pip install ./packages/seedance`，重启后打开本服务 **by Ace Data Cloud** 分类。只注册两个服务节点，不注册聊天 Provider；尚未正式发包。使用 wheel 的 Python 包内 `examples/` 两份无 Key 流程，其服务 ID 与下文合集示例不同。共存和构建说明见[包 README](../packages/seedance/README.md)。
+
 ## 2. 注册、取得应用API Token
 
 打开[Ace Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_seedance_guide_api_key)注册或登录。无通用应用时先点**Initialize General Application**。复制General application的API Key，或**Manage Keys → Create**创建专用Langflow Key。先核Seedance服务权限、有效期、调用限额、[当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_seedance_guide_pricing)和余额。若限制Allowed APIs，至少允许`/seedance/videos`和`/seedance/tasks`。

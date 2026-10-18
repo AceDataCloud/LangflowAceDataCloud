@@ -21,6 +21,34 @@ These integrations are provided by Ace Data Cloud and do not claim endorsement b
 
 ## 1. Install the extension
 
+### Install only one service (0.1.3 source candidate)
+
+Five separate distributions are buildable from this candidate checkout:
+
+| Service | Distribution | Install from the repository root |
+| --- | --- | --- |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install ./packages/suno` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install ./packages/seedance` |
+| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install ./packages/happyhorse` |
+| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install ./packages/gpt-image` |
+| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install ./packages/nano-banana` |
+
+Use the same Python environment as Langflow, then restart the server. Each
+service package registers only Generate and Retrieve Task under **Components →
+<service> by Ace Data Cloud**, with no chat provider or aggregate extension
+dependency. These packages are not published on PyPI or in the 0.1.2 release.
+Review or clone [PR #6](https://github.com/AceDataCloud/LangflowAceDataCloud/pull/6)
+at its exact head before using these candidate paths.
+
+Each wheel includes two no-key flow JSONs inside its Python package's `examples/`
+directory. Use those with a service-only install. Root `examples/` retain
+aggregate `ext:ace_data_cloud:*` IDs. Service packages use distinct
+`ext:ace_<service>:*` IDs; all five can coexist without file or registry collisions.
+If installed alongside the aggregate, both categories remain visible so existing
+saved flows keep working. Installing a service does not migrate saved nodes.
+
+### Install the released aggregate
+
 Ask your Langflow administrator to install it in the **same Python environment** as Langflow. For a fresh local environment:
 
 ```bash
