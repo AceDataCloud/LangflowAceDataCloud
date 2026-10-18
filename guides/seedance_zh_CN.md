@@ -4,7 +4,7 @@
 
 ## 1. 安装后按服务名搜索
 
-先读[官方组件安装入口](https://docs.langflow.org/bundles-acedatacloud)。[默认发行投稿](https://github.com/langflow-ai/langflow/pull/15659)仍待审核和正式发包；目前请管理员在Langflow同一Python环境安装[公开0.1.2 wheel](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2)，然后重启。官方目录、安装成功和默认内置不是同一件事。
+当前可用安装方式：请管理员按[公开安装说明](../README_zh_CN.md#1-安装扩展)，在运行Langflow的同一Python环境安装[公开0.1.2 wheel](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.2)，然后重启。下方带品牌标题的0.1.3节点仍是候选，不能用0.1.2安装结果证明这些标题已发布。[默认发行投稿](https://github.com/langflow-ai/langflow/pull/15659)仍待审核及发包；[拟发布官方组件页](https://docs.langflow.org/bundles-acedatacloud)尚不是当前可用的安装入口，未发布时可能返回404。官方目录、安装成功和默认内置不是同一件事。
 
 组件搜索输入`seedance`或`seedance`；候选0.1.3会显示**Seedance Generate by Ace Data Cloud**与**Seedance Retrieve Task by Ace Data Cloud**，0.1.2仍是旧标题。也可进入**Components → Ace Data Cloud**，导入[不含Key的现有示例](../examples/seedance.json)。
 
