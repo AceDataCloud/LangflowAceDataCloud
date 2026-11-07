@@ -23,15 +23,15 @@
 
 ### 只安装一个服务
 
-> **PyPI 状态：** Suno、Seedance 的新项目创建暂被 PyPI 限流。两者 0.1.4 wheel 已在 GitHub Release 正式发布，可按下方 URL 直接安装；合集、GPT Image、HappyHorse、Nano Banana 已有 PyPI 项目；按版本号安装前，先确认该版本已在项目中列出。安装公开 wheel 不需新账号。
+> **PyPI 状态（2026-11-07已核验）：** 合集及五个独立服务包均已发布0.1.4。可按下方精确PyPI包名/版本安装，也可继续使用原GitHub Release wheel。
 
 | 服务 | 发行包 | 在 Langflow 同一 Python 环境安装 |
 | --- | --- | --- |
-| Suno | `lfx-acedatacloud-suno` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_suno-0.1.4-py3-none-any.whl"` |
-| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_seedance-0.1.4-py3-none-any.whl"` |
-| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_happyhorse-0.1.4-py3-none-any.whl"` |
-| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_gpt_image-0.1.4-py3-none-any.whl"` |
-| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_nano_banana-0.1.4-py3-none-any.whl"` |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install "lfx-acedatacloud-suno==0.1.4"` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "lfx-acedatacloud-seedance==0.1.4"` |
+| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "lfx-acedatacloud-happyhorse==0.1.4"` |
+| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "lfx-acedatacloud-gpt-image==0.1.4"` |
+| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "lfx-acedatacloud-nano-banana==0.1.4"` |
 
 每包只注册本服务的 Generate 和 Retrieve Task 两个节点，分类为 **服务名 by Ace Data Cloud**，不安装完整合集、不注册聊天 Provider。安装后重启服务器。每个 wheel 的 Python 包内 `examples/` 附生成与纯查询两份无 Key 流程。
 
@@ -42,7 +42,7 @@
 ```bash
 uv venv --python 3.12
 source .venv/bin/activate
-uv pip install "langflow==1.12.6" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud-0.1.4-py3-none-any.whl"
+uv pip install "langflow==1.12.6" "lfx-acedatacloud==0.1.4"
 lfx extension list
 langflow run
 ```

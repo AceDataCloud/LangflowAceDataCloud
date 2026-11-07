@@ -23,15 +23,15 @@ These integrations are provided by Ace Data Cloud and do not claim endorsement b
 
 ### Install only one service
 
-> **PyPI availability:** Suno and Seedance project creation is temporarily rate-limited by PyPI. Both 0.1.4 wheels are already available in the GitHub release; install them directly using the URLs below. The aggregate, GPT Image, HappyHorse and Nano Banana have PyPI listings; use a version from PyPI only after it appears in that listing. No separate account is required to install a public wheel.
+> **PyPI availability (verified 2026-11-07):** the aggregate and all five service distributions are published at version 0.1.4. Install by the exact PyPI package/version below, or use the unchanged GitHub release wheels.
 
 | Service | Distribution | Install in Langflow's Python environment |
 | --- | --- | --- |
-| Suno | `lfx-acedatacloud-suno` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_suno-0.1.4-py3-none-any.whl"` |
-| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_seedance-0.1.4-py3-none-any.whl"` |
-| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_happyhorse-0.1.4-py3-none-any.whl"` |
-| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_gpt_image-0.1.4-py3-none-any.whl"` |
-| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_nano_banana-0.1.4-py3-none-any.whl"` |
+| Suno | `lfx-acedatacloud-suno` | `python -m pip install "lfx-acedatacloud-suno==0.1.4"` |
+| Seedance | `lfx-acedatacloud-seedance` | `python -m pip install "lfx-acedatacloud-seedance==0.1.4"` |
+| HappyHorse | `lfx-acedatacloud-happyhorse` | `python -m pip install "lfx-acedatacloud-happyhorse==0.1.4"` |
+| GPT Image | `lfx-acedatacloud-gpt-image` | `python -m pip install "lfx-acedatacloud-gpt-image==0.1.4"` |
+| Nano Banana | `lfx-acedatacloud-nano-banana` | `python -m pip install "lfx-acedatacloud-nano-banana==0.1.4"` |
 
 Each service package registers only Generate and Retrieve Task under **Components → service name by Ace Data Cloud**, with no chat provider or aggregate dependency. Restart an existing server after installation. Each wheel includes matching no-key flows in its Python package's `examples/` directory.
 
@@ -42,7 +42,7 @@ Service flows use `ext:ace_<service>:*` IDs. Root `examples/` keep aggregate `ex
 ```bash
 uv venv --python 3.12
 source .venv/bin/activate
-uv pip install "langflow==1.12.6" "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud-0.1.4-py3-none-any.whl"
+uv pip install "langflow==1.12.6" "lfx-acedatacloud==0.1.4"
 lfx extension list
 langflow run
 ```

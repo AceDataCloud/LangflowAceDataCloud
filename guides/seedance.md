@@ -8,7 +8,7 @@
 In Langflow's Python environment, install `lfx-acedatacloud-seedance==0.1.4`, then restart the server:
 
 ```bash
-python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/v0.1.4/lfx_acedatacloud_seedance-0.1.4-py3-none-any.whl"
+python -m pip install "lfx-acedatacloud-seedance==0.1.4"
 ```
 
 The [v0.1.4 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.4) also provides a wheel for this service. Open **Components → Seedance by Ace Data Cloud** or search the service name. This package registers only its two nodes and no chat provider. Its Python package `examples/` directory contains matching no-key Generate and Retrieve-only flows. See the [package README](../packages/seedance/README.md).
