@@ -56,7 +56,15 @@ def main() -> None:
         template, _ = create_component_template(component_extractor=component.klass())
         assert template.get("outputs")
         forms.append({"id": component.namespaced_id, "label": template["display_name"]})
-    assert len(forms) == len(args.services) * 2 + (34 if args.aggregate else 0)
+    expected_form_count = len(args.services) * 2
+    if args.aggregate:
+        # Use the contract from the installed aggregate, including when testing an older public wheel.
+        from lfx_acedatacloud.specs import SERVICES as installed_services
+
+        expected_form_count += sum(
+            1 + bool(spec.task_path) for spec in installed_services.values()
+        )
+    assert len(forms) == expected_form_count
     flows = []
     sources = {}
     for slug in args.services:
