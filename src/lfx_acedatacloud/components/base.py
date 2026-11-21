@@ -135,6 +135,13 @@ def _payload(
         )
     body.update({k: v for k, v in extra.items() if v is not None})
     path = service.path
+    if service.name == "acemusic":
+        if len(body["prompt"]) > 20000:
+            raise ValueError(
+                "ACE Music accepts up to 20000 characters in a music idea."
+            )
+        if body.get("model") not in {"acemusic-v1.1", "acemusic-v1"}:
+            raise ValueError("Choose a supported ACE Music model.")
     if service.prompt_as_content:
         body["content"] = [{"type": "text", "text": body.pop("prompt")}]
     if service.name == "face_transform":

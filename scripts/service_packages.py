@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SERVICES = {
+    "acemusic": ("acemusic", "ACE Music", "Music"),
     "suno": ("suno", "Suno", "Music"),
     "seedance": ("seedance", "Seedance", "Clapperboard"),
     "happyhorse": ("happy_horse", "HappyHorse", "Clapperboard"),
@@ -15,6 +16,7 @@ SERVICES = {
     "nano-banana": ("nano_banana", "Nano Banana", "Image"),
 }
 SERVICE_ROUTES = {
+    "acemusic": ("/acemusic/audios", "/acemusic/tasks"),
     "suno": ("/suno/audios", "/suno/tasks"),
     "seedance": ("/seedance/videos", "/seedance/tasks"),
     "happyhorse": ("/happyhorse/videos", "/happyhorse/tasks"),
@@ -44,6 +46,7 @@ def generated_files() -> dict[Path, str]:
         source = "https://github.com/AceDataCloud/LangflowAceDataCloud"
         wheel = f"lfx_acedatacloud_{slug.replace('-', '_')}-{version}-py3-none-any.whl"
         wheel_url = f"{source}/releases/download/v{version}/{wheel}"
+        source_ref = "main" if slug == "acemusic" else f"v{version}"
         generation_route, task_route = SERVICE_ROUTES[slug]
         files[
             directory / "pyproject.toml"
@@ -65,7 +68,7 @@ dependencies = ["lfx>=1.12.5,<2", "httpx>=0.24,<1"]
 
 [project.urls]
 Homepage = "{platform}?{attribution}_homepage"
-Documentation = "{source}/blob/v{version}/guides/{guide}.md"
+Documentation = "{source}/blob/{source_ref}/guides/{guide}.md"
 Repository = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 
 [project.entry-points."langflow.extensions"]
@@ -93,6 +96,9 @@ include = ["/pyproject.toml", "/README.md", "/LICENSE", "/hatch_build.py", "/src
             + (ROOT / "scripts/service_build_hook.py").read_text()
         )
         files[directory / "LICENSE"] = (ROOT / "LICENSE").read_text()
+        if slug == "acemusic":
+            files[directory / "README.md"] = (ROOT / "guides/acemusic.md").read_text()
+            continue
         files[directory / "README.md"] = f"""# {display} for Langflow
 
 Install just the {label} Generate and Retrieve Task nodes. This service package

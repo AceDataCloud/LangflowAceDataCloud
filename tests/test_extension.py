@@ -42,7 +42,7 @@ def test_manifest_loads_every_named_service_and_its_task_reader() -> None:
     result = load_extension(ROOT)
     assert not result.errors
     names = {component.class_name for component in result.components}
-    assert len(names) == 32
+    assert len(names) == 34
     for slug, spec in SERVICES.items():
         related = [
             component
@@ -385,7 +385,7 @@ def test_importable_examples_have_no_keys_and_connect_existing_nodes() -> None:
 
     examples = sorted((ROOT.parents[1] / "examples").glob("*.json"))
     queries = sorted((ROOT.parents[1] / "examples" / "retrieve_only").glob("*.json"))
-    assert len(examples) == 18 and len(queries) == 15
+    assert len(examples) == 19 and len(queries) == 16
     for path in [*examples, *queries]:
         flow = json.loads(path.read_text())
         nodes = flow["data"]["nodes"]
@@ -444,3 +444,63 @@ def test_top_service_examples_show_candidate_service_labels() -> None:
                     assert form["display_name"].endswith("by Ace Data Cloud")
                     assert "by Ace Data Cloud" in form["template"]["code"]["value"]
                     assert form["extension_version"] == "0.1.3"
+
+
+def test_acemusic_generation_and_partial_task_keep_public_contract(monkeypatch):
+    from lfx_acedatacloud.components.acedatacloud.acemusic import (
+        AceMusicGenerateComponent,
+    )
+    from lfx_acedatacloud.components.acedatacloud.acemusic_task import (
+        AceMusicRetrieveTaskComponent,
+    )
+
+    calls = []
+
+    async def post(path, key, body, **kwargs):
+        calls.append((path, body))
+        if path.endswith("/audios"):
+            return {"task_id": "saved"}
+        return {
+            "id": "saved",
+            "finished_at": 1,
+            "response": {
+                "status": "partial_failed",
+                "success": False,
+                "data": [
+                    {"state": "succeeded", "audio_url": "https://example.com/song.mp3"},
+                    {"state": "failed", "audio_url": "https://example.com/preview.mp3"},
+                ],
+            },
+        }
+
+    monkeypatch.setattr("lfx_acedatacloud.components.base.post_json", post)
+    submit = SimpleNamespace(
+        service_name="acemusic",
+        api_key="fixture",
+        prompt="Folk song",
+        model="acemusic-v1.1",
+        extra_parameters={"async": True},
+    )
+    created = asyncio.run(AceMusicGenerateComponent.run(submit))
+    read = SimpleNamespace(
+        service_name="acemusic",
+        api_key="fixture",
+        submitted_task=created,
+        wait_seconds=0,
+    )
+    result = asyncio.run(AceMusicRetrieveTaskComponent.run(read)).data
+    assert calls == [
+        (
+            "/acemusic/audios",
+            {
+                "action": "generate",
+                "custom": False,
+                "model": "acemusic-v1.1",
+                "prompt": "Folk song",
+                "async": True,
+            },
+        ),
+        ("/acemusic/tasks", {"action": "retrieve", "id": "saved"}),
+    ]
+    assert result["status"] == "partial_failed" and result["success"] is False
+    assert result["media_urls"] == ["https://example.com/song.mp3"]

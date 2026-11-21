@@ -56,7 +56,7 @@ def main() -> None:
         template, _ = create_component_template(component_extractor=component.klass())
         assert template.get("outputs")
         forms.append({"id": component.namespaced_id, "label": template["display_name"]})
-    assert len(forms) == len(args.services) * 2 + (32 if args.aggregate else 0)
+    assert len(forms) == len(args.services) * 2 + (34 if args.aggregate else 0)
     flows = []
     sources = {}
     for slug in args.services:

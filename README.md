@@ -1,5 +1,9 @@
 # Ace Data Cloud for Langflow
 
+The [ACE Music source integration](guides/acemusic.md) adds Generate and Retrieve Task components, also buildable as a separate service wheel.
+
+The [ACE Music source integration](guides/acemusic.md) adds Generate and Retrieve Task components, also buildable as a separate service wheel.
+
 Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or later. One Extension Bundle supplies a named **Ace Data Cloud** model provider and separate components for 17 image, video, audio, search, and face service families. The examples contain no credentials.
 
 [简体中文教程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
