@@ -57,8 +57,8 @@ def main() -> None:
                 "form": "accepted",
             }
         )
-    if len(components) != 32:
-        raise RuntimeError(f"Expected 32 service components, got {len(components)}")
+    if len(components) != 34:
+        raise RuntimeError(f"Expected 34 service components, got {len(components)}")
 
     flows = []
     for path in sorted((repo_root / "examples").rglob("*.json")):
@@ -77,8 +77,8 @@ def main() -> None:
                 "parse": "accepted",
             }
         )
-    if len(flows) != 33:
-        raise RuntimeError(f"Expected 33 no-key flows, got {len(flows)}")
+    if len(flows) != 35:
+        raise RuntimeError(f"Expected 35 no-key flows, got {len(flows)}")
 
     evidence = {
         "checked_at": datetime.now(timezone.utc).isoformat(),

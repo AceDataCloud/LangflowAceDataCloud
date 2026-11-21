@@ -25,11 +25,13 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install the public wheel with stable Langflow
+        id: public_release
         env:
           GH_TOKEN: ${{ github.token }}
           LANGFLOW_VERSION: ${{ matrix.langflow-version }}
         run: |
           gh api repos/AceDataCloud/LangflowAceDataCloud/releases/latest > "$RUNNER_TEMP/release.json"
+          jq -er '"tag=refs/tags/" + .tag_name' "$RUNNER_TEMP/release.json" >> "$GITHUB_OUTPUT"
           wheel_url=$(jq -er '[.assets[] | select(.name | test("^lfx_acedatacloud-[0-9]+\\.[0-9]+\\.[0-9]+-py3-none-any\\.whl$")) | .browser_download_url] | if length == 1 then .[0] else error("Expected exactly one wheel") end' "$RUNNER_TEMP/release.json")
           case "$wheel_url" in
             https://github.com/AceDataCloud/LangflowAceDataCloud/releases/download/*) ;;
@@ -42,12 +44,22 @@ jobs:
           "$RUNNER_TEMP/public-venv/bin/lfx" extension list
           package_root=$("$RUNNER_TEMP/public-venv/bin/python" -c 'from pathlib import Path; import lfx_acedatacloud; print(Path(lfx_acedatacloud.__file__).parent)')
           "$RUNNER_TEMP/public-venv/bin/lfx" extension validate "$package_root" --execute-imports
+      - name: Check out the examples and acceptance checks shipped with this wheel
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.public_release.outputs.tag }}
+          path: public-release-source
+          sparse-checkout: |
+            examples
+            scripts/check_public_release.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - name: Check every component form and parse the no-key flows
         env:
           DO_NOT_TRACK: "1"
           LANGFLOW_CONFIG_DIR: ${{ runner.temp }}/langflow-public-install
         run: |
-          "$RUNNER_TEMP/public-venv/bin/python" scripts/check_public_release.py --langflow-version "${{ matrix.langflow-version }}" --release "$RUNNER_TEMP/release.json" --output "$RUNNER_TEMP/public-release-readback.json"
+          "$RUNNER_TEMP/public-venv/bin/python" public-release-source/scripts/check_public_release.py --langflow-version "${{ matrix.langflow-version }}" --release "$RUNNER_TEMP/release.json" --output "$RUNNER_TEMP/public-release-readback.json"
       - uses: actions/upload-artifact@v4
         with:
           name: public-release-readback-${{ matrix.langflow-version }}
