@@ -92,7 +92,7 @@ jobs:
           if any(actual.get(name) != digest for name, digest in expected.items()):
               raise SystemExit("Published PyPI file digest mismatch")
           for text in ["Initialize General Application", "Manage Keys", "Allowed APIs", "Credential",
-                       "utm_source=", "utm_medium=", "utm_campaign=", "utm_content="]:
+                       "utm_source=", "utm_medium=", "utm_campaign="]:
               if text not in data["info"]["description"]:
                   raise SystemExit(f"PyPI README missing {text}")
           print(f"Verified {package}=={version}: two files and complete onboarding/UTM")

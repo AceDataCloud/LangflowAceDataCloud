@@ -16,7 +16,7 @@ python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/rele
 
 ## 2. 注册、取得应用API Token
 
-打开[Ace Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_nano_banana_guide_api_key)注册或登录。无通用应用时先点**Initialize General Application**。复制General application的API Key，或**Manage Keys → Create**创建专用Langflow Key。先核Nano Banana服务权限、有效期、调用限额、[当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_nano_banana_guide_pricing)和余额。若限制Allowed APIs，至少允许`/nano-banana/images`和`/nano-banana/tasks`。
+打开[Ace Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)注册或登录。无通用应用时先点**Initialize General Application**。复制General application的API Key，或**Manage Keys → Create**创建专用Langflow Key。先核Nano Banana服务权限、有效期、调用限额、[当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)和余额。若限制Allowed APIs，至少允许`/nano-banana/images`和`/nano-banana/tasks`。
 
 只复制原始token，不加`Bearer `或引号，不用账号管理token。以下为Ace既有真实控制台截图（2026-10-12源版本），敏感Key已打码。
 
@@ -54,7 +54,7 @@ python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/rele
 
 若等待结束仍pending，导入[只查询流程](../examples/retrieve_only/nano_banana.json)，填原task ID并绑定同一凭据。不要重新点Generate轮询。若提交超时，先查Usage History找回原task/trace，再决定是否另发；不能因不知道状态重复扣费。
 
-终态输出应有`status=succeeded`、`success=true`和`media_urls`。打开返回的媒体链接，再到[Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_nano_banana_guide_usage)按原task/trace核对一条账单。Credits不是USD，历史测试价格不保证将来价格。
+终态输出应有`status=succeeded`、`success=true`和`media_urls`。打开返回的媒体链接，再到[Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)按原task/trace核对一条账单。Credits不是USD，历史测试价格不保证将来价格。
 
 ## 常见问题
 

@@ -15,7 +15,7 @@ keywords = ["langflow", "lfx", "suno", "acedatacloud"]
 dependencies = ["lfx>=1.12.5,<2", "httpx>=0.24,<1"]
 
 [project.urls]
-Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_suno_package_homepage"
+Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen"
 Documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/guides/suno.md"
 Repository = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 
