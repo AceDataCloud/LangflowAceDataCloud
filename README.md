@@ -2,7 +2,7 @@
 
 Use Ace Data Cloud chat models and service components in Langflow 1.12.5 or later. One Extension Bundle supplies a named **Ace Data Cloud** model provider and separate components for 17 image, video, audio, search, and face service families. The examples contain no credentials.
 
-[简体中文教程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_pricing) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
+[简体中文教程](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/README_zh_CN.md) · [Current models and prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [Source](https://github.com/AceDataCloud/LangflowAceDataCloud)
 
 > **Version 0.1.4:** install the aggregate or a single service using the wheels in the [GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud/releases/tag/v0.1.4). [Official Langflow default inclusion](https://github.com/langflow-ai/langflow/pull/15659) remains under review.
 
@@ -55,7 +55,7 @@ The [v0.1.4 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud
 
 New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
 
-1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_api_key) and open **General application**. A general-application key can use the services your account has access to; a service-specific key is limited to that service.
+1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) and open **General application**. A general-application key can use the services your account has access to; a service-specific key is limited to that service.
 2. To reuse the selected key, click the copy icon marked **1** below. For a separate Langflow key, click **Manage Keys** marked **2**, then **Create**.
 
 ![Copy the selected key or open Manage Keys](https://raw.githubusercontent.com/AceDataCloud/LangflowAceDataCloud/v0.1.4/_assets/tutorial/get-api-key-en.png)
@@ -142,7 +142,7 @@ If a submission times out after the service accepted it, check Usage History bef
 
 ## 6. Check the charge
 
-In [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_readme_usage), filter to the relevant API, key, and time, then compare the task or trace ID. The completed GPT Image test had trace ID `813ac552-4724-4d05-8b17-3c93534fbed6`; the platform returned **one** HTTP 200 usage record for that trace and deducted **0.099 Credits**. Langflow's task output also reported `cost.amount=0.099` in `credit` currency. This is evidence for that single test, not a fixed future price. Read your account's current package rate if you need a USD conversion.
+In [Ace Data Cloud → Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen), filter to the relevant API, key, and time, then compare the task or trace ID. The completed GPT Image test had trace ID `813ac552-4724-4d05-8b17-3c93534fbed6`; the platform returned **one** HTTP 200 usage record for that trace and deducted **0.099 Credits**. Langflow's task output also reported `cost.amount=0.099` in `credit` currency. This is evidence for that single test, not a fixed future price. Read your account's current package rate if you need a USD conversion.
 
 The chat model example had one matching usage record for `gpt-4.1-mini`, 16 tokens, and `0.0000234636021` Credits. [Sanitized run evidence](https://github.com/AceDataCloud/LangflowAceDataCloud/tree/v0.1.4/tests/evidence/) keeps task, media, import, and billing readbacks separate.
 

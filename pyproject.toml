@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflowacedatacloud_package_homepage"
+Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen"
 Documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 Repository = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 
