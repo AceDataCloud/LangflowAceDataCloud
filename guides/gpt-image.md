@@ -17,7 +17,7 @@ The [aggregate installation](../README.md#1-install-the-extension) provides all 
 
 ## 2. Get an application API Token
 
-Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_gpt_image_guide_api_key). If there is no **General application**, choose **Initialize General Application**. Copy its existing API Key or choose **Manage Keys → Create** for a dedicated Langflow token. Check GPT Image access, expiry, usage limit, [current price](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_gpt_image_guide_pricing) and balance. If **Allowed APIs** is restricted, allow both `/openai/images/generations` and `/openai/tasks`.
+Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen). If there is no **General application**, choose **Initialize General Application**. Copy its existing API Key or choose **Manage Keys → Create** for a dedicated Langflow token. Check GPT Image access, expiry, usage limit, [current price](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) and balance. If **Allowed APIs** is restricted, allow both `/openai/images/generations` and `/openai/tasks`.
 
 Copy only the raw token, without `Bearer ` or quotes. Do not use an account-management token. The Console images below are real existing screenshots from the Ace guide (2026-10-12 source revision); displayed keys are redacted.
 
@@ -59,7 +59,7 @@ Click the Chat Output run control **once**. Generate makes one paid submission. 
 
 If the wait ends with `pending`, use the separate [retrieve-only GPT Image flow](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/main/examples/retrieve_only/gpt_image.json), paste the original task ID, and bind the same Credential. Do not rerun Generate just to check status. If a submission was accepted but its response timed out, recover the original ID from request history before considering another submission.
 
-Check [Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_gpt_image_guide_usage) against that original task or trace. Charges are Credits, not a fixed USD amount. Historical component tests are documented in the [capability matrix](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/main/CAPABILITIES.md); a component test is not proof that every UI path or advanced API action has been exercised.
+Check [Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) against that original task or trace. Charges are Credits, not a fixed USD amount. Historical component tests are documented in the [capability matrix](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/main/CAPABILITIES.md); a component test is not proof that every UI path or advanced API action has been exercised.
 
 ## Troubleshooting
 

@@ -66,7 +66,6 @@ def test_manifest_has_provider_and_bundle() -> None:
         "utm_source": ["langflow"],
         "utm_medium": ["referral"],
         "utm_campaign": ["evergreen"],
-        "utm_content": ["langflow_provider_api_key"],
     }
 
 

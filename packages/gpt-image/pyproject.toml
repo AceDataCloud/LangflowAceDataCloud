@@ -15,7 +15,7 @@ keywords = ["langflow", "lfx", "gpt-image", "acedatacloud"]
 dependencies = ["lfx>=1.12.5,<2", "httpx>=0.24,<1"]
 
 [project.urls]
-Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_gpt_image_package_homepage"
+Homepage = "https://platform.acedata.cloud?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen"
 Documentation = "https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/guides/gpt-image.md"
 Repository = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 

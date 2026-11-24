@@ -37,10 +37,7 @@ def generated_files() -> dict[Path, str]:
         bundle = f"ace_{key}"
         display = f"{label} by Ace Data Cloud"
         directory = ROOT / "packages" / slug
-        attribution = (
-            "utm_source=opensource&utm_medium=referral&utm_campaign=evergreen"
-            f"&utm_content=langflow_{slug.replace('-', '_')}_package"
-        )
+        attribution = "utm_source=opensource&utm_medium=referral&utm_campaign=evergreen"
         platform = "https://platform.acedata.cloud"
         guide = slug if slug != "happyhorse" else "happy-horse"
         source = "https://github.com/AceDataCloud/LangflowAceDataCloud"
@@ -67,7 +64,7 @@ keywords = ["langflow", "lfx", "{slug}", "acedatacloud"]
 dependencies = ["lfx>=1.12.5,<2", "httpx>=0.24,<1"]
 
 [project.urls]
-Homepage = "{platform}?{attribution}_homepage"
+Homepage = "{platform}?{attribution}"
 Documentation = "{source}/blob/{source_ref}/guides/{guide}.md"
 Repository = "https://github.com/AceDataCloud/LangflowAceDataCloud"
 
@@ -131,7 +128,7 @@ Restart an existing server. Open **Components → {display}** or search **{label
 
 ## 2. Create and copy your application API key
 
-1. Register or sign in at [Ace Data Cloud → Applications]({platform}/console/applications?{attribution}_api_key).
+1. Register or sign in at [Ace Data Cloud → Applications]({platform}/console/applications?{attribution}).
    If there is no **General application**, choose **Initialize General Application**
    first, then open it. A general-application key uses your account's enabled
    services; a service-specific application key is limited to that service.
@@ -141,7 +138,7 @@ Restart an existing server. Open **Components → {display}** or search **{label
    restrict Allowed APIs, include both `{generation_route}` and `{task_route}`
    so Generate and Retrieve Task can both work. Click **Create**, return to the
    key list or application card, and copy the token.
-4. Confirm {label} service access, [current price and balance]({platform}/models?{attribution}_pricing)
+4. Confirm {label} service access, [current price and balance]({platform}/models?{attribution})
    before a paid run. Copy only the raw token, without `Bearer ` or quotes.
    Use an application API key, not an account-management token.
 
@@ -168,7 +165,7 @@ Generate submits once; Retrieve Task only queries the original task. API usage
 is paid according to current service prices; installing this extension is free.
 Use the retrieve-only flow with the original task ID while a task is pending;
 do not rerun Generate just to check progress. Compare the task or trace with
-[Usage History]({platform}/console/usages?{attribution}_usage). Charges are in Credits.
+[Usage History]({platform}/console/usages?{attribution}). Charges are in Credits.
 See the [English guide]({source}/blob/v{version}/guides/{guide}.md)
 and [Chinese guide]({source}/blob/v{version}/guides/{guide}_zh_CN.md)
 for first-run inputs and troubleshooting. For 401/403, check the copied key,

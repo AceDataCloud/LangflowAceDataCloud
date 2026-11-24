@@ -30,7 +30,7 @@ Restart an existing server. Open **Components → Suno by Ace Data Cloud** or se
 
 ## 2. Create and copy your application API key
 
-1. Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_suno_package_api_key).
+1. Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen).
    If there is no **General application**, choose **Initialize General Application**
    first, then open it. A general-application key uses your account's enabled
    services; a service-specific application key is limited to that service.
@@ -40,7 +40,7 @@ Restart an existing server. Open **Components → Suno by Ace Data Cloud** or se
    restrict Allowed APIs, include both `/suno/audios` and `/suno/tasks`
    so Generate and Retrieve Task can both work. Click **Create**, return to the
    key list or application card, and copy the token.
-4. Confirm Suno service access, [current price and balance](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_suno_package_pricing)
+4. Confirm Suno service access, [current price and balance](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
    before a paid run. Copy only the raw token, without `Bearer ` or quotes.
    Use an application API key, not an account-management token.
 
@@ -67,7 +67,7 @@ Generate submits once; Retrieve Task only queries the original task. API usage
 is paid according to current service prices; installing this extension is free.
 Use the retrieve-only flow with the original task ID while a task is pending;
 do not rerun Generate just to check progress. Compare the task or trace with
-[Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=langflow_suno_package_usage). Charges are in Credits.
+[Usage History](https://platform.acedata.cloud/console/usages?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen). Charges are in Credits.
 See the [English guide](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/guides/suno.md)
 and [Chinese guide](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/guides/suno_zh_CN.md)
 for first-run inputs and troubleshooting. For 401/403, check the copied key,
