@@ -1,5 +1,9 @@
 # Ace Data Cloud Langflow 扩展
 
+[ACE Music 源码接入](guides/acemusic_zh_CN.md)提供生成与查询节点，也可从源码单独构建服务组件包。
+
+[ACE Music 源码接入](guides/acemusic_zh_CN.md)提供生成与查询节点，也可从源码单独构建服务组件包。
+
 在 Langflow 1.12.5 及以上版本中使用 Ace Data Cloud 对话模型与服务组件。一个 Extension Bundle 提供命名的 **Ace Data Cloud** 模型 Provider，以及图像、视频、音频、搜索和人脸共 17 类服务的独立组件。示例文件不含密钥。
 
 [English guide](https://github.com/AceDataCloud/LangflowAceDataCloud/blob/v0.1.4/README.md) · [当前模型和价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [源码](https://github.com/AceDataCloud/LangflowAceDataCloud)

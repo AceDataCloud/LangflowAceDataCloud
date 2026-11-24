@@ -62,6 +62,23 @@ SERVICES: dict[str, Service] = {
             "async",
         ),
     ),
+    "acemusic": Service(
+        "acemusic",
+        "ACE Music",
+        "/acemusic/audios",
+        "/acemusic/tasks",
+        (
+            Field("prompt", "Music idea", "multiline", required=True),
+            Field(
+                "model",
+                "Model",
+                default="acemusic-v1.1",
+                options=("acemusic-v1.1", "acemusic-v1"),
+            ),
+        ),
+        fixed=(("action", "generate"), ("custom", False)),
+        advanced=("async",),
+    ),
     "suno": Service(
         "suno",
         "Suno",

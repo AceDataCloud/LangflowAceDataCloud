@@ -194,7 +194,32 @@ def normalize(
         retrieved and isinstance(body, dict) and body.get("finished_at") and response
     )
     completed_by_url = bool(retrieved and urls and not states)
-    if unfinished:
+    if (
+        service == "acemusic"
+        and isinstance(response, dict)
+        and (
+            response.get("status") == "partial_failed"
+            or isinstance(body, dict)
+            and (
+                body.get("state") == "partial_failed"
+                or body.get("status") == "partial_failed"
+            )
+        )
+    ):
+        status = "partial_failed"
+        tracks = response.get("data")
+        urls = (
+            media_urls(
+                [
+                    track
+                    for track in tracks
+                    if isinstance(track, dict) and track.get("state") == "succeeded"
+                ]
+            )
+            if isinstance(tracks, list)
+            else []
+        )
+    elif unfinished:
         status = "pending"
     elif failed:
         status = "failed"
@@ -215,6 +240,6 @@ def normalize(
         "success": status == "succeeded",
         "task_id": task_id,
         "trace_id": str(trace_id or requested_trace_id),
-        "media_urls": urls if status == "succeeded" else [],
+        "media_urls": urls if status in {"succeeded", "partial_failed"} else [],
         "result": safe,
     }
