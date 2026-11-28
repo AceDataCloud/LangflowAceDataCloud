@@ -57,8 +57,6 @@ The [v0.1.4 GitHub release](https://github.com/AceDataCloud/LangflowAceDataCloud
 
 ## 2. Create an API key with the right access
 
-New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
-
 1. Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) and open **General application**. A general-application key can use the services your account has access to; a service-specific key is limited to that service.
 2. To reuse the selected key, click the copy icon marked **1** below. For a separate Langflow key, click **Manage Keys** marked **2**, then **Create**.
 

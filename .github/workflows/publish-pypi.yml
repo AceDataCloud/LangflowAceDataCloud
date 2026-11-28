@@ -91,7 +91,7 @@ jobs:
           expected = json.loads(Path("expected.json").read_text())
           if any(actual.get(name) != digest for name, digest in expected.items()):
               raise SystemExit("Published PyPI file digest mismatch")
-          for text in ["Initialize General Application", "Manage Keys", "Allowed APIs", "Credential",
+          for text in ["General application", "Manage Keys", "Allowed APIs", "Credential",
                        "utm_source=", "utm_medium=", "utm_campaign="]:
               if text not in data["info"]["description"]:
                   raise SystemExit(f"PyPI README missing {text}")

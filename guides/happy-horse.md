@@ -17,7 +17,7 @@ The [aggregate installation](../README.md#1-install-the-extension) provides all 
 
 ## 2. Get an application API Token
 
-Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen). If there is no **General application**, choose **Initialize General Application**. Copy its existing API Key or choose **Manage Keys → Create** for a dedicated Langflow token. Check Happy Horse access, expiry, usage limit, [current price](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) and balance. If **Allowed APIs** is restricted, allow both `/happyhorse/videos` and `/happyhorse/tasks`.
+Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen). Open **General application**. Copy its API Key or choose **Manage Keys → Create** for a dedicated Langflow token. Check Happy Horse access, expiry, usage limit, [current price](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) and balance. If **Allowed APIs** is restricted, allow both `/happyhorse/videos` and `/happyhorse/tasks`.
 
 Copy only the raw token, without `Bearer ` or quotes. Do not use an account-management token. The Console images below are real existing screenshots from the Ace guide (2026-10-12 source revision); displayed keys are redacted.
 
