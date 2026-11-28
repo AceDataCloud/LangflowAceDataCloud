@@ -31,8 +31,7 @@ Restart an existing server. Open **Components → Nano Banana by Ace Data Cloud*
 ## 2. Create and copy your application API key
 
 1. Register or sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen).
-   If there is no **General application**, choose **Initialize General Application**
-   first, then open it. A general-application key uses your account's enabled
+   Open **General application**. A general-application key uses your account's enabled
    services; a service-specific application key is limited to that service.
 2. Copy the existing API Key with the copy icon, or choose **Manage Keys → Create**
    to make a dedicated key, for example `Langflow Nano Banana`.

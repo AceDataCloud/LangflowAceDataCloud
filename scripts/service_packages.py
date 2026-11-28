@@ -129,8 +129,7 @@ Restart an existing server. Open **Components → {display}** or search **{label
 ## 2. Create and copy your application API key
 
 1. Register or sign in at [Ace Data Cloud → Applications]({platform}/console/applications?{attribution}).
-   If there is no **General application**, choose **Initialize General Application**
-   first, then open it. A general-application key uses your account's enabled
+   Open **General application**. A general-application key uses your account's enabled
    services; a service-specific application key is limited to that service.
 2. Copy the existing API Key with the copy icon, or choose **Manage Keys → Create**
    to make a dedicated key, for example `Langflow {label}`.

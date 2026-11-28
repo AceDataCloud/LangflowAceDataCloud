@@ -57,8 +57,6 @@ langflow run
 
 ## 2. 获取权限正确的 API Key
 
-首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
-
 1. 登录 [Ace Data Cloud → 我的应用](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)，打开 **General application（通用应用）**。通用应用 Key 可用于账号有权使用的多个服务；服务专用 Key 仅限对应服务。
 2. 复用当前 Key 时，点击下图 **①复制**。要单独给 Langflow 创建 Key，点击 **②Manage Keys（管理密钥）→ Create（创建）**。
 

@@ -16,7 +16,7 @@ python -m pip install "https://github.com/AceDataCloud/LangflowAceDataCloud/rele
 
 ## 2. 注册、取得应用API Token
 
-打开[Ace Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)注册或登录。无通用应用时先点**Initialize General Application**。复制General application的API Key，或**Manage Keys → Create**创建专用Langflow Key。先核Happy Horse服务权限、有效期、调用限额、[当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)和余额。若限制Allowed APIs，至少允许`/happyhorse/videos`和`/happyhorse/tasks`。
+打开[Ace Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)注册或登录。打开**通用应用**，复制 API Key，或**Manage Keys → Create**创建专用Langflow Key。先核Happy Horse服务权限、有效期、调用限额、[当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)和余额。若限制Allowed APIs，至少允许`/happyhorse/videos`和`/happyhorse/tasks`。
 
 只复制原始token，不加`Bearer `或引号，不用账号管理token。以下为Ace既有真实控制台截图（2026-10-12源版本），敏感Key已打码。
 
